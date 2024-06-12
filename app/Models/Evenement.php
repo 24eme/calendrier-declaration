@@ -13,13 +13,13 @@ class Evenement extends Cortex
 
     // Relations
     protected $fieldConf = [
-        /* 'type_id' => ['belongs-to-one' => Type::class], */
-        /* 'organismes' => ['has-many' => [Organisme::class, 'evenement_id', 'evenement_organisme']], */
+        'type_id' => ['belongs-to-one' => Type::class],
+        'organismes' => ['has-many' => [Organisme::class, 'evenements', 'evenement_organisme', 'relField' => 'evenement_id']],
         'tags' => [
             'has-many' => [Tag::class, 'evenements', 'evenement_tag',
                 'relField' => 'evenement_id'
             ]
         ],
-        /* 'familles' => ['has-many' => [Famille::class, 'evenement_id', 'evenement_famille']], */
+        'familles' => ['has-many' => [Famille::class, 'evenements', 'evenement_famille', 'relField' => 'evenement_id']],
     ];
 }

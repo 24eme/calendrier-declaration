@@ -16,6 +16,7 @@ class Evenement extends Controller
             foreach ($t as $tag) {
                 echo "\t tag: $tag->nom";
             }
+            echo "<span style='background-color: #F00'>".$event->type_id->name."</span>";
             echo '</li>';
         }
         echo '</ul>';
