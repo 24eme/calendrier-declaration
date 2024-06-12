@@ -22,4 +22,32 @@ class Evenement extends Cortex
         ],
         'familles' => ['has-many' => [Famille::class, 'evenements', 'evenement_famille', 'relField' => 'evenement_id']],
     ];
+
+    /**
+     * @param int
+     * @return bool
+     */
+    public function hasFamille($familleid)
+    {
+        return $this->familles && $this->familles->contains($familleid);
+    }
+
+    /**
+     * @param int
+     * @return bool
+     */
+    public function hasOrganisme($organismeid)
+    {
+        return $this->organismes && $this->organismes->contains($organismeid);
+    }
+
+    public function getTags()
+    {
+        $t = [];
+        foreach ($this->tags as $tag) {
+            $t[] = $tag->nom;
+        }
+
+        return implode(', ', $t);
+    }
 }
