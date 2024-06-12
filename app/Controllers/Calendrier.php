@@ -2,15 +2,8 @@
 
 namespace Controllers;
 
-class Calendrier
+class Calendrier extends Controller
 {
-    private $f3 = null;
-
-    public function __construct()
-    {
-        $this->f3 = \Base::instance();
-    }
-
     public function home()
     {
         echo "Hello world";
