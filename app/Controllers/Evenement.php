@@ -55,6 +55,7 @@ class Evenement extends Controller
         }
 
         $event->copyfrom('POST', $event->fillable);
+        $event->active = $f3->get('POST.active');
         $event->tags = $f3->get('POST.tags');
         $event->save();
 

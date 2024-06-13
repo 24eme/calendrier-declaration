@@ -49,6 +49,11 @@ class Evenement extends Cortex
         return $this->organismes && $this->organismes->contains($organismeid);
     }
 
+    public function set_active($active)
+    {
+        return $active ? true : false;
+    }
+
     public function getTags()
     {
         if (! $this->count_tags) {
