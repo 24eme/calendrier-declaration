@@ -11,6 +11,6 @@ abstract class Controller
         $this->f3 = \Base::instance();
     }
 
-    public function beforeroute() {}
+    abstract public function beforeroute($f3, $params);
     public function afterroute() {}
 }
