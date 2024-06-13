@@ -60,4 +60,10 @@ class Evenement extends Controller
 
         return $f3->reroute('@eventedit');
     }
+
+    public function delete($f3, $params)
+    {
+        $this->event->erase();
+        return $f3->reroute('@eventlist');
+    }
 }
