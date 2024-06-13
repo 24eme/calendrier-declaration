@@ -84,7 +84,6 @@ class Evenement extends Cortex
             $tagModel = new Tag();
             $tagModel->load(['nom = ?', $tag]);
 
-            var_dump($tag);
             if ($tagModel->dry()) {
                 $tagModel->nom = $tag;
                 $tagModel->slug = $tag;
