@@ -9,7 +9,7 @@ class Evenement extends Cortex
     protected $db = 'DB';
     protected $table = 'evenements';
 
-    protected $fillable = ['type_id', 'organismes', 'familles', 'tags', 'title', 'description', 'start', 'end', 'textedeloi', 'liendeclaration', 'active', 'rrule'];
+    public $fillable = ['type_id', 'organismes', 'familles', 'title', 'description', 'start', 'end', 'textedeloi', 'liendeclaration', 'active', 'rrule'];
 
     public static $rrules = [
         '' => 'Aucune',
@@ -51,11 +51,44 @@ class Evenement extends Cortex
 
     public function getTags()
     {
+        if (! $this->count_tags) {
+            return '';
+        }
+
         $t = [];
         foreach ($this->tags as $tag) {
             $t[] = $tag->nom;
         }
 
         return implode(', ', $t);
+    }
+
+    public function set_tags($tags)
+    {
+        if (! is_array($tags)) {
+            $tags = explode(',', $tags);
+        }
+
+        if (! is_array($tags)) {
+            $tags = [$tags];
+        }
+
+        $tags = array_map('trim', $tags);
+
+        foreach ($tags as $tag) {
+            $tagModel = new Tag();
+            $tagModel->load(['nom = ?', $tag]);
+
+            var_dump($tag);
+            if ($tagModel->dry()) {
+                $tagModel->nom = $tag;
+                $tagModel->slug = $tag;
+                $tagModel->save();
+            }
+
+            $t[] = $tagModel->id;
+        }
+
+        return $t;
     }
 }

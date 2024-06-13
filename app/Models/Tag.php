@@ -19,4 +19,14 @@ class Tag extends Cortex
             ]
         ],
     ];
+
+    public function set_nom($nom)
+    {
+        return trim($nom);
+    }
+
+    public function set_slug($slug)
+    {
+        return \Web::instance()->slug($slug);
+    }
 }

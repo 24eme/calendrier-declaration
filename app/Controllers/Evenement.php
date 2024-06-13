@@ -26,11 +26,12 @@ class Evenement extends Controller
         echo '</ul>';
     }
 
-    public function edit()
+    public function edit($f3, $params)
     {
         $evenementID = $this->f3->get('PARAMS.evenement');
 
         $event = new Event();
+        $event->countRel('tags');
         if ($event->load(['_id = ?', $evenementID]) === false) {
             return $this->f3->error(404, "L'évnèment n'existe pas");
         }
@@ -42,5 +43,21 @@ class Evenement extends Controller
         $f3 = $this->f3;
 
         echo \View::instance()->render('admin/evenement/edit.html.php', 'text/html', compact('f3', 'event', 'familles', 'organismes', 'tags', 'types'));
+    }
+
+    public function update($f3, $params)
+    {
+        $evenementID = $f3->get('PARAMS.evenement');
+
+        $event = new Event();
+        if ($event->load(['_id = ?', $evenementID]) === false) {
+            return $this->f3->error(404, "L'évnèment n'existe pas");
+        }
+
+        $event->copyfrom('POST', $event->fillable);
+        $event->tags = $f3->get('POST.tags');
+        $event->save();
+
+        return $f3->reroute('@eventedit');
     }
 }

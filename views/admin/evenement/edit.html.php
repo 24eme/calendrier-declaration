@@ -4,7 +4,7 @@
   </nav>
 
   <div class="mainContent clearfix">
-  <form method="post" action="<?php echo $f3->alias('eventedit', ['evenement' => $event->id]) ?>">
+  <form method="post" action="<?php echo $f3->alias('eventupdate', ['evenement' => $event->id]) ?>">
     <div class="form-group row">
       <label for="type_id" class="col-2">Edition d'une déclaration</label>
         <div class="col-4">
