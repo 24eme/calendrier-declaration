@@ -94,38 +94,39 @@
         <label for="rrule" class="col-2">Récurrence <small>(sur 1 année glissante)</small></label>
         <div class="col-4">
           <select class="form-control " name="rrule">
-              <option value="">Aucune</option>
-              <option value="mensuel">Tous les mois</option>
-              <option value="trimestriel">Tous les 3 mois</option>
-              <option value="semestriel">Tous les 6 mois</option>
-              <option value="annuel" selected="selected" >Tous les ans</option>
+            <?php foreach ($event::$rrules as $recurrence => $desc): ?>
+              <option value="<?php echo $recurrence ?>"<?php echo $event->rrule === $recurrence ? ' selected' : '' ?>>
+                <?php echo $desc ?>
+              </option>
+            <?php endforeach ?>
           </select>
-                  </div>
+        </div>
       </div>
+
       <div class="form-group row">
-        <label class="col-2">&nbsp;</label>
         <div class="col-4">
           <div class="form-check form-check-inline">
-            <input type="checkbox" class="form-check-input " name="active" id="active" value="1" checked="checked"  />
-            <label for="active">Actif</label>
+            <input type="checkbox" class="form-check-input " name="active" id="active" value="1" <?php echo $event->active ? 'checked' : '' ?>/>
+            <label class="form-check-label" for="active">Actif</label>
           </div>
-                  </div>
+        </div>
       </div>
 
       <div class="row">
         <div class="col-sm-2">
-          <a href="https://calendrier-vitivini.vinsdeprovence.com" class="btn btn-secondary float-left">Retour</a>
+          <a href="/" class="btn btn-secondary float-left">Retour</a>
         </div>
         <div class="col-sm-2 text-center text-muted">
-            <a href="https://calendrier-vitivini.vinsdeprovence.com/admin/evenement/delete/65" onclick="return confirm('Etes vous sûr de vouloir supprimer cette déclaration ?')">[x] Supprimer</a>
+            <a href="<?php echo $f3->alias('eventdelete', ['evenement' => $event->id]) ?>" onclick="return confirm('Etes vous sûr de vouloir supprimer cette déclaration ?')">
+              <i class="bi bi-trash"></i> Supprimer
+            </a>
         </div>
         <div class="col-sm-2">
-          <button type="submit" class="btn btn-primary float-right"><i class="fas fa-check"></i>&nbsp;Valider</button>
+          <button type="submit" class="btn btn-primary float-right"><i class="fas fa-check"></i> Valider</button>
         </div>
       </div>
   </form>
-</div>
-
   </div>
-  <div class="modal fade" id="popupEvenement" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"></div>
+
+</div>
 

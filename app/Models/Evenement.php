@@ -11,6 +11,14 @@ class Evenement extends Cortex
 
     protected $fillable = ['type_id', 'organismes', 'familles', 'tags', 'title', 'description', 'start', 'end', 'textedeloi', 'liendeclaration', 'active', 'rrule'];
 
+    public static $rrules = [
+        '' => 'Aucune',
+        'mensuel' => 'Tous les mois',
+        'trimestriel' => 'Tous les 3 mois',
+        'semestriel' => 'Tous les 6 mois',
+        'annuel' => 'Tous les ans'
+    ];
+
     // Relations
     protected $fieldConf = [
         'type_id' => ['belongs-to-one' => Type::class],
