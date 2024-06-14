@@ -9,7 +9,7 @@ class Organisme extends Cortex
     protected $db = 'DB';
     protected $table = 'organismes';
 
-    protected $fillable = ['nom', 'adresse', 'code_postal', 'ville', 'contact', 'telephone', 'email', 'site', 'couleur', 'logo', 'visible_filtre'];
+    protected $fillable = ['nom', 'adresse', 'code_postal', 'ville', 'contact', 'telephone', 'email', 'site', 'couleur', 'logo'];
 
     // Relations
     protected $fieldConf = [
@@ -19,4 +19,9 @@ class Organisme extends Cortex
             ]
         ],
     ];
+
+    public function set_visible_filtre($visible)
+    {
+        return $visible ? true : false;
+    }
 }
