@@ -43,8 +43,17 @@ class Evenement extends Controller
     {
         $this->event = new Event();
 
-        $f3->set('formurl', $f3->alias('eventcreate'));
-        return $this->edit($f3, $params);
+        if ($f3->get('VERB') === 'GET') {
+            $f3->set('formurl', $f3->alias('eventcreate'));
+            return $this->edit($f3, $params);
+        }
+
+        $this->event->copyfrom('POST', $this->event->fillable);
+        $this->event->active = $f3->get('POST.active');
+        $this->event->tags = $f3->get('POST.tags');
+        $this->event->save();
+
+        return $f3->reroute(['eventedit', ['evenement' => $this->event->id]]);
     }
 
     public function edit($f3, $params)
