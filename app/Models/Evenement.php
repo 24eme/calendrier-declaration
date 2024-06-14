@@ -29,6 +29,8 @@ class Evenement extends Cortex
             ]
         ],
         'familles' => ['has-many' => [Famille::class, 'evenements', 'evenement_famille', 'relField' => 'evenement_id']],
+        'created_at' => ['type' => \DB\SQL\Schema::DT_DATETIME],
+        'updated_at' => ['type' => \DB\SQL\Schema::DT_DATETIME],
     ];
 
     /**
@@ -94,5 +96,19 @@ class Evenement extends Cortex
         }
 
         return $t;
+    }
+
+    public function save()
+    {
+        $this->beforeupdate(function ($self) {
+            $self->touch('updated_at');
+        });
+
+        $this->beforeinsert(function ($self) {
+            $self->touch('created_at');
+            $self->touch('updated_at');
+        });
+
+        parent::save();
     }
 }
