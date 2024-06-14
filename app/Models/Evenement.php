@@ -33,6 +33,20 @@ class Evenement extends Cortex
         'updated_at' => ['type' => \DB\SQL\Schema::DT_DATETIME],
     ];
 
+    public function __construct()
+    {
+        $this->beforeupdate(function ($self) {
+            $self->touch('updated_at');
+        });
+
+        $this->beforeinsert(function ($self) {
+            $self->touch('created_at');
+            $self->touch('updated_at');
+        });
+
+        parent::__construct();
+    }
+
     /**
      * @param int
      * @return bool
@@ -96,19 +110,5 @@ class Evenement extends Cortex
         }
 
         return $t;
-    }
-
-    public function save()
-    {
-        $this->beforeupdate(function ($self) {
-            $self->touch('updated_at');
-        });
-
-        $this->beforeinsert(function ($self) {
-            $self->touch('created_at');
-            $self->touch('updated_at');
-        });
-
-        parent::save();
     }
 }
