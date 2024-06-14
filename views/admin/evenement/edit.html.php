@@ -4,7 +4,7 @@
   </nav>
 
   <div class="mainContent clearfix">
-  <form method="post" action="<?php echo $f3->alias('eventupdate', ['evenement' => $event->id]) ?>">
+  <form method="post" action="<?php echo $formurl ?>">
     <div class="form-group row">
       <label for="type_id" class="col-2">Edition d'une déclaration</label>
         <div class="col-4">
@@ -117,9 +117,11 @@
           <a href="/" class="btn btn-secondary float-left">Retour</a>
         </div>
         <div class="col-sm-2 text-center text-muted">
-            <a href="<?php echo $f3->alias('eventdelete', ['evenement' => $event->id]) ?>" onclick="return confirm('Etes vous sûr de vouloir supprimer cette déclaration ?')">
+            <?php if ($event->id): ?>
+            <a href="<?php echo Base::instance()->alias('eventdelete', ['evenement' => $event->id]) ?>" onclick="return confirm('Etes vous sûr de vouloir supprimer cette déclaration ?')">
               <i class="bi bi-trash"></i> Supprimer
             </a>
+            <?php endif ?>
         </div>
         <div class="col-sm-2">
           <button type="submit" class="btn btn-primary float-right"><i class="fas fa-check"></i> Valider</button>

@@ -39,6 +39,14 @@ class Evenement extends Controller
         echo '</ul>';
     }
 
+    public function new($f3, $params)
+    {
+        $this->event = new Event();
+
+        $f3->set('formurl', $f3->alias('eventcreate'));
+        return $this->edit($f3, $params);
+    }
+
     public function edit($f3, $params)
     {
         $familles = new Famille();
@@ -46,9 +54,9 @@ class Evenement extends Controller
         $tags = new Tag();
         $types = new Type();
         $event = $this->event;
-        $f3 = $this->f3;
+        $formurl = $f3->get('formurl') ?: $f3->alias('eventupdate', ['evenement' => $this->event->id]);
 
-        echo \View::instance()->render('admin/evenement/edit.html.php', 'text/html', compact('f3', 'event', 'familles', 'organismes', 'tags', 'types'));
+        echo \View::instance()->render('admin/evenement/edit.html.php', 'text/html', compact('formurl', 'event', 'familles', 'organismes', 'tags', 'types'));
     }
 
     public function update($f3, $params)
