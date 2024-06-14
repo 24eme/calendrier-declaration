@@ -65,7 +65,8 @@ class Evenement extends Controller
         $event = $this->event;
         $formurl = $f3->get('formurl') ?: $f3->alias('eventupdate', ['evenement' => $this->event->id]);
 
-        echo \View::instance()->render('admin/evenement/edit.html.php', 'text/html', compact('formurl', 'event', 'familles', 'organismes', 'tags', 'types'));
+        $f3->set('content', 'admin/evenement/edit.html.php');
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('formurl', 'event', 'familles', 'organismes', 'tags', 'types'));
     }
 
     public function update($f3, $params)

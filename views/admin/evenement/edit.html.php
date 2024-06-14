@@ -1,11 +1,10 @@
-<div id="main" class="main col-10">
   <nav class="mt-4 clearfix">
     <h1 class="h3 col-md-auto float-left">Édition d'une déclaration</h1>
   </nav>
 
   <div class="mainContent clearfix">
   <form method="post" action="<?php echo $formurl ?>">
-    <div class="form-group row">
+    <div class="row mb-3">
       <label for="type_id" class="col-2">Edition d'une déclaration</label>
         <div class="col-4">
           <select class="form-control " name="type_id">
@@ -16,7 +15,7 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="row mb-3">
         <label for="familles" class="col-2">Familles viti/vinicoles</label>
         <div class="col-4">
           <?php foreach ($familles->find() as $famille): ?>
@@ -29,34 +28,34 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="row mb-3">
         <label for="start" class="col-2">Date début</label>
         <div class="col-4">
           <input type="date" min="2000-01-01" max="2100-12-31" class="form-control " name="start" value="<?php echo $event->start ?>" />
         </div>
       </div>
-      <div class="form-group row">
+      <div class="row mb-3">
         <label for="end" class="col-2">Date de fin</label>
         <div class="col-4">
           <input type="date" min="2000-01-01" max="2100-12-31" class="form-control " name="end" value="<?php echo $event->end ?>" />
          </div>
       </div>
 
-      <div class="form-group row">
+      <div class="row mb-3">
         <label for="title" class="col-2">Titre</label>
         <div class="col-4">
           <input type="text" class="form-control " name="title" value="<?php echo $event->title ?>" />
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="row mb-3">
         <label for="description" class="col-2">Description</label>
         <div class="col-4">
           <textarea id="editor" class="form-control " rows="3" name="description"><?php echo $event->description ?></textarea>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="row mb-3">
         <label for="organismes" class="col-2">Organismes destinataires</label>
         <div class="col-4">
           <?php foreach ($organismes->find() as $organisme): ?>
@@ -69,28 +68,28 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="row mb-3">
         <label for="textdeloi" class="col-2">Texte de loi</label>
         <div class="col-4">
           <input type="text" class="form-control " name="textdeloi" value="<?php echo $event->textedeloi ?>" />
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="row mb-3">
         <label for="liendeclaration" class="col-2">Lien de télédéclaration</label>
         <div class="col-4">
           <input type="text" class="form-control " name="liendeclaration" value="<?php echo $event->liendeclaration ?>" />
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="row mb-3">
         <label for="tags" class="col-2">Mots-Clés  <small>(séparés par des virgules)</small></label>
         <div class="col-4">
             <input type="text" class="form-control " name="tags" value="<?php echo $event->getTags() ?>" />
          </div>
       </div>
 
-      <div class="form-group row">
+      <div class="row mb-3">
         <label for="rrule" class="col-2">Récurrence <small>(sur 1 année glissante)</small></label>
         <div class="col-4">
           <select class="form-control " name="rrule">
@@ -103,7 +102,7 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="row mb-3">
         <div class="col-4">
           <div class="form-check form-check-inline">
             <input type="checkbox" class="form-check-input " name="active" id="active" value="1" <?php echo $event->active ? 'checked' : '' ?>/>
@@ -112,7 +111,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-sm-2">
           <a href="/" class="btn btn-secondary float-left">Retour</a>
         </div>
@@ -123,12 +122,9 @@
             </a>
             <?php endif ?>
         </div>
-        <div class="col-sm-2">
-          <button type="submit" class="btn btn-primary float-right"><i class="fas fa-check"></i> Valider</button>
+        <div class="col-sm-2 text-end">
+          <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Valider</button>
         </div>
       </div>
   </form>
   </div>
-
-</div>
-
