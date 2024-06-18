@@ -24,8 +24,8 @@
   </div>
 
   <div class="row">
-    <div id="sideNavigation" class="bg-light col-2 mh-100 border-end border-2">
-      <!-- include sidebar -->
+    <div id="sideNavigation" class="bg-light col-2 mh-100 border-end border-2 p-4">
+      <?php Views\Sidebar::instance()->render(); ?>
     </div>
 
     <div id="main" class="main col-10">
