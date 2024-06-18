@@ -4,13 +4,13 @@ namespace Controllers;
 
 abstract class Controller
 {
-    protected $f3 = null;
+    protected $data = [];
 
     public function __construct()
     {
-        $this->f3 = \Base::instance();
+        $this->data = [];
     }
 
     public function beforeroute($f3, $params) {}
-    public function afterroute() {}
+    public function afterroute($f3, $params) {}
 }

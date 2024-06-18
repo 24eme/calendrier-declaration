@@ -18,7 +18,7 @@ class Evenement extends Controller
             $this->event = new Event();
             $this->event->countRel('tags');
             if ($this->event->load(['_id = ?', $evenementID]) === false) {
-                return $this->f3->error(404, "L'évènement n'existe pas");
+                return $f3->error(404, "L'évènement n'existe pas");
             }
         }
     }
