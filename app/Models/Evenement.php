@@ -106,6 +106,11 @@ class Evenement extends Cortex
         }
 
         $tags = array_map('trim', $tags);
+        $tags = array_filter($tags, 'strlen');
+
+        if (empty($tags)) {
+            return;
+        }
 
         foreach ($tags as $tag) {
             $tagModel = new Tag();
