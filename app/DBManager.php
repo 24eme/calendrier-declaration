@@ -19,6 +19,12 @@ class DBManager
             \Models\Type::setup();
             \Models\Tag::setup();
             \Models\Famille::setup();
+
+            foreach (['Obligation', 'Autre'] as $type) {
+                $t = new \Models\Type();
+                $t->name = $type;
+                $t->save();
+            }
         }
 
         return $db;
