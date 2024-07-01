@@ -11,8 +11,13 @@ class Famille extends Cortex
 
     protected $fillable = ['nom', 'description'];
 
-    // Relations
     protected $fieldConf = [
+        'nom' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => false],
+        'description' => ['type' => \DB\SQL\Schema::DT_LONGTEXT, 'nullable' => true],
+        'couleur' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
+        'slug' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => false],
+
+        // Relations
         'evenements' => [
             'has-many' => [Evenement::class, 'familles', 'evenement_famille',
                 'relField' => 'famille_id'

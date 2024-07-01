@@ -11,8 +11,11 @@ class Tag extends Cortex
 
     protected $fillable = ['nom'];
 
-    // Relations
     protected $fieldConf = [
+        'name' => ['type' => \DB\SQL\Schema::DT_VARCHAR128],
+        'slug' => ['type' => \DB\SQL\Schema::DT_VARCHAR128],
+
+        // Relations
         'evenements' => [
             'has-many' => [Evenement::class, 'tags', 'evenement_tag',
                 'relField' => 'tag_id'

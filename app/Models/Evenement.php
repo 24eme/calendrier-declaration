@@ -19,9 +19,20 @@ class Evenement extends Cortex
         'annuel' => 'Tous les ans'
     ];
 
-    // Relations
     protected $fieldConf = [
-        'type_id' => ['belongs-to-one' => Type::class],
+        'title' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => false, 'index' => true],
+        'start' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
+        'end' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
+        'description' => ['type' => \DB\SQL\Schema::DT_TEXT, 'nullable' => false, 'index' => true],
+        'textedeloi' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
+        'liendeclaration' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
+        'active' => ['type' => \DB\SQL\Schema::DT_BOOL],
+        'rrule' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
+        'created_at' => ['type' => \DB\SQL\Schema::DT_DATETIME],
+        'updated_at' => ['type' => \DB\SQL\Schema::DT_DATETIME],
+
+        // Relations
+        'type_id' => ['belongs-to-one' => Type::class, 'index' => true],
         'organismes' => ['has-many' => [Organisme::class, 'evenements', 'evenement_organisme', 'relField' => 'evenement_id']],
         'tags' => [
             'has-many' => [Tag::class, 'evenements', 'evenement_tag',
@@ -29,8 +40,6 @@ class Evenement extends Cortex
             ]
         ],
         'familles' => ['has-many' => [Famille::class, 'evenements', 'evenement_famille', 'relField' => 'evenement_id']],
-        'created_at' => ['type' => \DB\SQL\Schema::DT_DATETIME],
-        'updated_at' => ['type' => \DB\SQL\Schema::DT_DATETIME],
     ];
 
     public function __construct()

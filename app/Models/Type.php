@@ -11,8 +11,12 @@ class Type extends Cortex
 
     protected $fillable = ['nom'];
 
-    // Relations
     protected $fieldConf = [
+        'name' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'unique' => true],
+        'couleur' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
+        'slug' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'unique' => true],
+
+        // Relations
         'evenements' => [
             'has-many' => [Evenement::class, 'type_id']
         ],
