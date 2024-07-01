@@ -6,6 +6,8 @@ use \DB\Cortex;
 
 class Type extends Cortex
 {
+    use EmptyArrayFindTrait;
+
     protected $db = 'DB';
     protected $table = 'types';
 

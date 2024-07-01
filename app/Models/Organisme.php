@@ -6,6 +6,8 @@ use \DB\Cortex;
 
 class Organisme extends Cortex
 {
+    use EmptyArrayFindTrait;
+
     protected $db = 'DB';
     protected $table = 'organismes';
 
