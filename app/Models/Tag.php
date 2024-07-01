@@ -14,7 +14,7 @@ class Tag extends Cortex
     protected $fillable = ['nom'];
 
     protected $fieldConf = [
-        'name' => ['type' => \DB\SQL\Schema::DT_VARCHAR128],
+        'nom' => ['type' => \DB\SQL\Schema::DT_VARCHAR128],
         'slug' => ['type' => \DB\SQL\Schema::DT_VARCHAR128],
 
         // Relations

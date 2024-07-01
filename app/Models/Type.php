@@ -11,7 +11,7 @@ class Type extends Cortex
     protected $db = 'DB';
     protected $table = 'types';
 
-    protected $fillable = ['nom'];
+    protected $fillable = ['name'];
 
     protected $fieldConf = [
         'name' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'unique' => true],
