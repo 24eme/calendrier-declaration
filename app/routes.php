@@ -2,6 +2,7 @@
 
 use Controllers\Calendrier;
 use Controllers\Evenement;
+use Controllers\Famille;
 use Controllers\Organisme;
 
 $f3 = \Base::instance();
@@ -19,3 +20,9 @@ $f3->route('GET|POST @organismecreate: /admin/organismes/create', Organisme::cla
 $f3->route('GET      @organismeedit:   /admin/organismes/edit/@organisme', Organisme::class.'->edit');
 $f3->route('POST     @organismeupdate: /admin/organismes/update/@organisme', Organisme::class.'->update');
 $f3->route('GET      @organismedelete: /admin/organismes/delete/@organisme', Organisme::class.'->delete');
+
+$f3->route('GET      @famillelist:   /admin/familles', Famille::class.'->index');
+$f3->route('GET|POST @famillecreate: /admin/familles/create', Famille::class.'->new');
+$f3->route('GET      @familleedit:   /admin/familles/edit/@famille', Famille::class.'->edit');
+$f3->route('POST     @familleupdate: /admin/familles/update/@famille', Famille::class.'->update');
+$f3->route('GET      @familledelete: /admin/familles/delete/@famille', Famille::class.'->delete');

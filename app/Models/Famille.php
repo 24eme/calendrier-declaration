@@ -26,4 +26,9 @@ class Famille extends Cortex
             ]
         ],
     ];
+
+    public function set_slug($slug)
+    {
+        return \Web::instance()->slug($slug);
+    }
 }
