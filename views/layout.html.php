@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
-  <div class="w-100 m-2">
+  <div class="w-100">
     <div class="d-flex align-items-center">
       <a href="/"><img src="https://calendrier-vitivini.vinsdeprovence.com/images/logos/logo-P.svg" alt="logo" /></a>
       <a href="/">
@@ -23,13 +23,15 @@
     </div>
   </div>
 
-  <div class="row">
-    <div id="sideNavigation" class="bg-light col-2 mh-100 border-end border-2 p-4">
-      <?php Views\Sidebar::instance()->render(); ?>
-    </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div id="sideNavigation" class="bg-light col-2 mh-100 border-end border-2 p-4">
+        <?php Views\Sidebar::instance()->render(); ?>
+      </div>
 
-    <div id="main" class="main col-10">
-      <?php include __DIR__.'/'.Base::instance()->get('content') ?>
+      <div id="main" class="main col-10">
+        <?php include __DIR__.'/'.Base::instance()->get('content') ?>
+      </div>
     </div>
   </div>
 
