@@ -127,4 +127,80 @@ class Evenement extends Cortex
 
         return $t;
     }
+
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    public function isDate()
+    {
+        return ($this->end || $this->start);
+    }
+
+    public function getDuree()
+    {
+        if (!$this->start || !$this->end) return null;
+        $start = new DateTime($this->start);
+        $end = new DateTime($this->end);
+        $interval = $start->diff($end);
+        return $interval->days;
+    }
+
+    public function getPourCalendrier($year)
+    {
+        $evenementsDates = [];
+        $evenementsNonDates = [];
+        $evenements = $this->find();
+        foreach ($evenements as $evenement) {
+            if (!$evenement->isActive()) continue;
+            $isDate = $evenement->isDate();
+            if (!$evenement->end) {
+                $evenement->end = date('Y').'-12-31';
+            }
+            if (!$evenement->start) {
+                $evenement->start = date('Y').'-01-01';
+            }
+            $evts = [];
+            $start = new \DateTime($evenement->start);
+            $end = new \DateTime($evenement->end);
+            if(in_array($evenement->rrule, array('mensuel', 'trimestriel', 'semestriel', 'annuel'))) {
+                $stop = date('Y').'-12-31';
+                while($end->format('Y-m-d') < $stop) {
+                    if ($evenement->rrule == 'mensuel') {
+                        $start->modify('+1 month');
+                        $end->modify('+1 month');
+                   }
+                   if ($evenement->rrule == 'trimestriel') {
+                       $start->modify('+3 months');
+                       $end->modify('+3 months');
+                   }
+                   if ($evenement->rrule == 'semestriel') {
+                       $start->modify('+6 months');
+                       $end->modify('+6 months');
+                   }
+                   if ($evenement->rrule == 'annuel') {
+                       $start->modify('+1 year');
+                       $end->modify('+1 year');
+                   }
+                   if ($end->format('Y') >= $year) {
+                       $evts[] = ['start' => $start->format('Y-m-d'), 'end' => $end->format('Y-m-d'), 'title' => $evenement->title, 'id' => $evenement->id];
+                   }
+                 }
+            } else {
+                if ($end->format('Y') >= $year) {
+                    $evts[] = ['start' => $evenement->start, 'end' => $evenement->end, 'title' => $evenement->title, 'id' => $evenement->id];
+                }
+            }
+            if (!$evts) continue;
+            if ($isDate) {
+                $evenementsDates[$evenement->title] = $evts;
+            } else {
+                $evenementsNonDates[$evenement->title] = $evts;
+            }
+        }
+        ksort($evenementsDates);
+        ksort($evenementsNonDates);
+        return $evenementsDates + $evenementsNonDates;
+    }
 }
