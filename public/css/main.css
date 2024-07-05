@@ -1,0 +1,20 @@
+#calendrierVue .ligne .jour {
+    display: block;
+    float: left;
+    height: 30px;
+    width: 4px;
+    background-color: #e2e2e2;
+    border-left: 1px solid #f2f2f2;
+    cursor: pointer;
+}
+#calendrierVue .ligne .jour:hover {
+    background-color: #000 !important;
+}
+
+#calendrierVue .ligne .finMois {
+    background-color: #fff !important;
+}
+
+#calendrierVue .ligne .jourcourant {
+    background-color: #000 !important;
+}
