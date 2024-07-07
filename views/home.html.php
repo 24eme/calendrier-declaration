@@ -4,14 +4,15 @@
 
 <?php
 ?>
-  <div class="row" style="width: 93%; margin: 30px 0;">
+  <div class="d-flex justify-content-around" style="width: 74%; margin: 30px 0; text-align: center;">
     <?php
       for($m = 1; $m<=12; $m++) {
         $month = date('F', mktime(0, 0, 0, $m, 1, date('Y')));
-        echo strtoupper("<div class='span5' style='margin: 0 auto; display: inline-block; font-size: 18px; font-weight: 900; width: 90px; padding: 0; text-align: center;'> {$month} </div>");
+        echo strtoupper("<div class='' style='width:200px; font-weight:800; font-size: 18px;'> {$month} </div>");
       }
     ?>
-  </div>
+</div>
+
 
   <?php foreach ($evenements as $titre => $evts): ?>
   <?php echo $titre ?>
