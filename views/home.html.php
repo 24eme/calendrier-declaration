@@ -2,16 +2,14 @@
 
 <div id="calendrierVue">
 
-<?php
-?>
-  <div class="d-flex justify-content-around" style="width: 74%; margin: 30px 0; text-align: center;">
-    <?php
-      for($m = 1; $m<=12; $m++) {
-        $month = date('F', mktime(0, 0, 0, $m, 1, date('Y')));
-        echo strtoupper("<div class='' style='width:200px; font-weight:800; font-size: 18px;'> {$month} </div>");
-      }
-    ?>
-</div>
+  <div class="container text-center">
+    <div class="row">
+      <?php for($m = 1; $m<=12; $m++): ?>
+        <?php $month = date('F', mktime(0, 0, 0, $m, 1, date('Y'))); ?>
+        <div class="col"><?php echo strtoupper($month); ?></div>
+      <?php endfor; ?>
+    </div>
+  </div>
 
 
   <?php foreach ($evenements as $titre => $evts): ?>
