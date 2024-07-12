@@ -147,10 +147,19 @@ class Evenement extends Cortex
         return $interval->days;
     }
 
-    public function getPourCalendrier($year)
+    public function getPourCalendrier($year, $filters = [])
     {
         $evenementsDates = [];
         $evenementsNonDates = [];
+
+        if (empty($filters) === false) {
+            foreach ($filters as $type => $filter) {
+                if ($type === "query") { continue; }
+                if ($type === "tags") { $filter = array_keys($filter); }
+                $this->has($type, ['id IN ?', $filter]);
+            }
+        }
+
         $evenements = $this->find();
         foreach ($evenements as $evenement) {
             if (!$evenement->isActive()) continue;
