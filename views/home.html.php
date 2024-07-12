@@ -2,43 +2,30 @@
 
 <div id="calendrierVue">
 
-  <div class="container text-center">
+  <div class="container-fluid text-center">
     <div class="row">
       <?php for($m = 1; $m<=12; $m++): ?>
-        <?php $month = date('F', mktime(0, 0, 0, $m, 1, date('Y'))); ?>
-        <div class="col"><?php echo strtoupper($month); ?></div>
+      <div class="col-1 bg-warning border-start border-end border-white border-2">
+        <?php $month = date('M', mktime(0, 0, 0, $m, 1, date('Y'))); ?>
+        <?php echo ucfirst($month); ?>
+      </div>
       <?php endfor; ?>
     </div>
-  </div>
 
+    <?php foreach ($evenements as $titre => $evts): ?>
+    <div class="row border-bottom border-start border-end">
+      <div class="text-start w-100">
+        <?php echo $titre ?>
+      </div>
 
-  <?php foreach ($evenements as $titre => $evts): ?>
-  <?php echo $titre ?>
-  <div class="ligne pb-2">
-    <?php
-      $annee = date('Y');
-      $date = strtotime($annee.'-01-01');
-      while (date('Y', $date) == $annee):
-        $dateSuivante = strtotime('+1 day', $date);
-        $isEventDate = false;
-        foreach ($evts as $evt) {
-          if (date('Y-m-d', $date) >= $evt['start'] && date('Y-m-d', $date) <= $evt['end']) {
-            $isEventDate = true;
-            break;
-          }
-        }
-    ?>
-    <?php if ($isEventDate): ?>
-    <a style="background-color: red;" title="<?php echo date('d/m/Y', $date)?>" class="jour<?php if (date('m', $dateSuivante) != date('m', $date)): ?> finMois<?php endif; ?><?php if (date('Y-m-d') == date('Y-m-d', $date)): ?> jourcourant<?php endif; ?>"></a>
-    <?php else: ?>
-    <a title="<?php echo date('d/m/Y', $date)?>" class="jour<?php if (date('m', $dateSuivante) != date('m', $date)): ?> finMois<?php endif; ?><?php if (date('Y-m-d') == date('Y-m-d', $date)): ?> jourcourant<?php endif; ?>"></a>
-    <?php endif; ?>
-    <?php
-        $date = $dateSuivante;
-      endwhile;
-    ?>
+      <?php for ($mois = 1; $mois <= 12; $mois++): ?>
+        <div class="col-1 px-0 pb-2 border-start border-end border-white border-2">
+          <?php echo \Views\MonthTimeline::render($mois, $evts); ?>
+        </div>
+      <?php endfor; ?>
+
     </div>
-    <br />
     <?php endforeach; ?>
+  </div>
 
 </div>
