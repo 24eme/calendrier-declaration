@@ -3,7 +3,7 @@
 <div id="calendrierVue">
 
   <div class="container-fluid text-center">
-    <div class="row">
+    <div class="row sticky-top">
       <?php for($m = 1; $m<=12; $m++): ?>
       <div class="col-1 bg-warning border-start border-end border-white border-2">
         <?php $month = date('M', mktime(0, 0, 0, $m, 1, date('Y'))); ?>
