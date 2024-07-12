@@ -25,11 +25,16 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div id="sideNavigation" class="bg-light col-2 mh-100 border-end border-2 p-4">
-        <?php Views\Sidebar::instance()->render(); ?>
+      <div class="offcanvas-lg col-2" tabindex="-1" id="offcanvas-sidebar" aria-labelledby="offcanvas sidebar">
+        <div id="sideNavigation" class="bg-light mh-100 border-end border-2 p-4">
+          <?php Views\Sidebar::instance()->render(); ?>
+        </div>
       </div>
 
-      <div id="main" class="main col-10">
+      <div id="main" class="main col">
+        <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-sidebar" aria-controls="offcanvas-sidebar">
+          <i class="bi bi-filter"></i> Ouvrir les filtres
+        </button>
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
       </div>
     </div>
