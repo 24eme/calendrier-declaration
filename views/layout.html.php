@@ -26,7 +26,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="offcanvas-lg col-2" tabindex="-1" id="offcanvas-sidebar" aria-labelledby="offcanvas sidebar">
-        <div id="sideNavigation" class="bg-light mh-100 border-end border-2 p-4">
+        <div id="sideNavigation" class="bg-light h-100 border-end border-2 p-1">
           <?php Views\Sidebar::instance()->render(); ?>
         </div>
       </div>
