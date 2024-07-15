@@ -16,3 +16,12 @@
 #calendrierVue .ligne .jourcourant {
     background-color: #000 !important;
 }
+
+.organisme-card {
+    background-color: #ddd;
+    margin-bottom: 1rem;
+}
+
+.organisme-card > div {
+    padding-bottom: .5rem;
+}
