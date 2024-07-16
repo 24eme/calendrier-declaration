@@ -52,6 +52,9 @@ class MonthTimeline
             if ($currentDate >= new DateTime($event['start']) && $currentDate <= new DateTime($event['end'])) {
                 $class[] = 'active';
             }
+            if ($currentDate == new DateTime($event['end']) && $event['isDate']) {
+                $class[] = 'jourfin';
+            }
         }
 
         $class = array_unique($class);
