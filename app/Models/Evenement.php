@@ -193,12 +193,12 @@ class Evenement extends Cortex
                        $end->modify('+1 year');
                    }
                    if ($end->format('Y') >= $year) {
-                       $evts[] = ['start' => $start->format('Y-m-d'), 'end' => $end->format('Y-m-d'), 'title' => $evenement->title, 'id' => $evenement->id];
+                       $evts[] = ['start' => $start->format('Y-m-d'), 'end' => $end->format('Y-m-d'), 'title' => $evenement->title, 'id' => $evenement->id, 'isDate' => $isDate];
                    }
                  }
             } else {
                 if ($end->format('Y') >= $year) {
-                    $evts[] = ['start' => $evenement->start, 'end' => $evenement->end, 'title' => $evenement->title, 'id' => $evenement->id];
+                    $evts[] = ['start' => $evenement->start, 'end' => $evenement->end, 'title' => $evenement->title, 'id' => $evenement->id, 'isDate' => $isDate];
                 }
             }
             if (!$evts) continue;
