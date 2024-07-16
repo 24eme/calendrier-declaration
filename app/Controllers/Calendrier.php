@@ -30,4 +30,12 @@ class Calendrier extends Controller
         $f3->set('content', 'calendrier/evenement.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('event'));
     }
+
+    public function eventsList(Base $f3)
+    {
+        $evenement = new Evenement();
+        $evenements = $evenement->find(['active = ?', 1], ['order' => 'title ASC']);
+        $f3->set('content', 'eventslist.html.php');
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements'));
+    }
 }
