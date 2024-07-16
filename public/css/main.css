@@ -2,19 +2,19 @@
     display: block;
     float: left;
     height: 30px;
-    background-color: #e2e2e2;
+    background-color: #e9ecef;
     cursor: pointer;
-}
-#calendrierVue .ligne .jour:hover {
-    background-color: #000 !important;
 }
 
 #calendrierVue .ligne .active {
-    background-color: #f00 !important;
+    background-color: #d1e7dd !important;
 }
-
+#calendrierVue .ligne .jourfin {
+    background-color: #75b798 !important;
+}
+#calendrierVue .ligne .jour:hover,
 #calendrierVue .ligne .jourcourant {
-    background-color: #000 !important;
+    background-color: #6c757d !important;
 }
 
 .organisme-card {
