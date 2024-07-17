@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div id="main" class="main col">
+      <div id="main" class="main col" style="overflow: scroll; height: calc(100vh - 100px);">
         <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-sidebar" aria-controls="offcanvas-sidebar">
           <i class="bi bi-filter"></i> Ouvrir les filtres
         </button>

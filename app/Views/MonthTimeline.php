@@ -14,10 +14,9 @@ class MonthTimeline
      * @param int $month Mois (1 - 12)
      * @param array $evenements Les évènements à afficher
      */
-    public static function render($month, array $evenements)
+    public static function render(DateTime $date, array $evenements)
     {
-        $monthStart = sprintf('%02d', $month);
-        $monthStart = new DateTimeImmutable(date('Y')."-$monthStart-01");
+        $monthStart = new DateTimeImmutable($date->format('Y-m-d'));
         $monthEnd = $monthStart->modify('last day of');
 
         $events = array_filter($evenements, function ($e) use ($monthStart) {
@@ -28,7 +27,7 @@ class MonthTimeline
             return false;
         });
 
-        $nbDays = $monthEnd->format('d');
+        $nbDays = $monthEnd->format('t');
         $today = new DateTime();
         $current = new DateTime($monthStart->format('Y-m-d'));
 

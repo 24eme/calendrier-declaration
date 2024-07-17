@@ -174,7 +174,7 @@ class Evenement extends Cortex
             $start = new \DateTime($evenement->start);
             $end = new \DateTime($evenement->end);
             if(in_array($evenement->rrule, array('mensuel', 'trimestriel', 'semestriel', 'annuel'))) {
-                $stop = date('Y').'-12-31';
+                $stop = (date('Y') + 1).'-12-31';
                 while($end->format('Y-m-d') < $stop) {
                     if ($evenement->rrule == 'mensuel') {
                         $start->modify('+1 month');

@@ -1,42 +1,38 @@
-<h3>Hello world</h3>
-
-<div id="calendrierVue">
-
-  <div class="container-fluid text-center">
-    <div class="row sticky-top">
-      <?php
-        $date = new DateTime();
-        $date->modify('-1 month');
-        for($i = 0; $i < 12; $i++):
-      ?>
-      <div class="col-1 bg-warning border-start border-end border-white border-1">
-        <?php echo $date->format('M'); ?>
+<div id="calendrierVue" style="width: max-content; ">
+    <div class="cal-ligne cal-ligne-head">
+      <div class="cal-titre">
       </div>
       <?php
-        $date->modify('+1 month');
+        $date = new DateTime(date('Y-m-d'));
+        $date->modify('first day of previous month');
+        for($i = 0; $i < 16; $i++):
+      ?>
+      <div class="cal-month" style="width: <?php echo ($date->format('t')+1)*3; ?>px;">
+        <?php echo $date->format('M Y'); ?>
+      </div>
+      <?php
+        $date->modify('next month');
         endfor;
       ?>
     </div>
 
     <?php foreach ($evenements as $titre => $evts): ?>
-    <div class="row border-bottom border-start border-end">
-      <div class="text-start w-100">
+    <div class="cal-ligne">
+      <div class="cal-titre">
         <?php echo $titre ?>
       </div>
       <?php
         $date = new DateTime();
-        $date->modify('-1 month');
-        for($i = 0; $i < 12; $i++):
+        $date->modify('first day of previous month');
+        for($i = 0; $i < 16; $i++):
       ?>
-      <div class="col-1 px-0 pb-2 border-start border-end border-white border-2">
-        <?php echo \Views\MonthTimeline::render($date->format('n'), $evts); ?>
+      <div class="cal-month">
+        <?php echo \Views\MonthTimeline::render($date, $evts); ?>
       </div>
       <?php
-        $date->modify('+1 month');
+        $date->modify('next month');
         endfor;
       ?>
     </div>
     <?php endforeach; ?>
-  </div>
-
 </div>

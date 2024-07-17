@@ -1,9 +1,36 @@
+:root {
+  --calendar-bg-color: #f6f6f6;
+}
+
+#calendrierVue .cal-titre {
+    height: 30px;
+    width: 400px;
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-right: 3px solid white;
+    background: var(--calendar-bg-color);
+}
+
+#calendrierVue .cal-month {
+    border-right: 3px solid white;
+    background: var(--calendar-bg-color);
+
+}
+
+#calendrierVue .cal-ligne {
+    display: flex;
+    margin-bottom: 3px;
+}
+
 #calendrierVue .ligne .jour {
     display: block;
     float: left;
     height: 30px;
-    background-color: #e9ecef;
+    background-color: var(--calendar-bg-color);
     cursor: pointer;
+    width: 3px;
 }
 
 #calendrierVue .ligne .active {
