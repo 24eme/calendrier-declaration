@@ -1,47 +1,92 @@
-:root {
-  --calendar-bg-color: #f6f6f6;
+#main.main-calendar {
+    overflow: scroll;
+    padding: 0;
+
 }
 
-#calendrierVue .cal-titre {
-    height: 30px;
+#calendar {
+    --calendar-bg-header-color: #ececec;
+    --calendar-bg-day-color: #f6f6f6;
+    --calendar-bg-day-event-color: #d1e7dd;
+    --calendar-bg-day-event-end-color:#75b798;
+    --calendar-bg-day-current-color: #6c757d;
+    --calendar-line-height: 30px;
+    --calendar-day-width: 3px;
+    width: max-content;
+    height: calc(100vh - 100px);
+}
+
+.cal-titre {
+    height: var(--calendar-line-height);
     width: 400px;
     overflow: hidden;
-    text-align: start;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-right: 3px solid white;
-    background: var(--calendar-bg-color);
+    border-right: var(--calendar-day-width) solid white;
+    background: var(--calendar-bg-header-color);
+    z-index: 1000;
+    line-height: var(--calendar-line-height);
+    position: sticky;
+    left: 0;
+    top: 0;
+    z-index: 100;
 }
 
-#calendrierVue .cal-month {
-    border-right: 3px solid white;
-    background: var(--calendar-bg-color);
-
-}
-
-#calendrierVue .cal-ligne {
-    display: flex;
-    margin-bottom: 3px;
-}
-
-#calendrierVue .ligne .jour {
+.cal-titre.cal-titre-header {
+    background: #fff;
+    z-index: 101;
     display: block;
     float: left;
-    height: 30px;
-    background-color: var(--calendar-bg-color);
-    cursor: pointer;
-    width: 3px;
 }
 
-#calendrierVue .ligne .active {
-    background-color: #d1e7dd !important;
+.cal-month[data-nbdays="28"] { --calendar-nb-days: 28; }
+.cal-month[data-nbdays="29"] { --calendar-nb-days: 29; }
+.cal-month[data-nbdays="30"] { --calendar-nb-days: 30; }
+.cal-month[data-nbdays="31"] { --calendar-nb-days: 31; }
+
+.cal-month[data-nbdays] {
+    width: calc(var(--calendar-day-width) * (var(--calendar-nb-days) + 1));
 }
-#calendrierVue .ligne .jourfin {
-    background-color: #75b798 !important;
+
+.cal-month {
+    border-right: var(--calendar-day-width) solid white;
+    background: #ececec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-#calendrierVue .ligne .jour:hover,
-#calendrierVue .ligne .jourcourant {
-    background-color: #6c757d !important;
+
+.cal-ligne {
+    display: flex;
+    margin-bottom: var(--calendar-day-width);
+}
+
+.cal-ligne.cal-ligne-head {
+    position: sticky;
+    z-index: 100;
+    top: 0;
+    float: left;
+    height: var(--calendar-line-height);
+}
+
+.cal-month .jour {
+    display: block;
+    float: left;
+    height: var(--calendar-line-height);
+    background-color: var(--calendar-bg-day-color);
+    cursor: pointer;
+    width: var(--calendar-day-width);
+}
+
+.cal-month .active {
+    background-color: var(--calendar-bg-day-event-color) !important;
+}
+.cal-month .jourfin {
+    background-color: var(--calendar-bg-day-event-end-color) !important;
+}
+.cal-month .jour:hover,
+.cal-month .jourcourant {
+    background-color: var(--calendar-bg-day-current-color) !important;
 }
 
 .organisme-card {
