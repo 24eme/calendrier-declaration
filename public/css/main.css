@@ -15,6 +15,17 @@
     width: max-content;
 }
 
+.cal-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    z-index: 101;
+}
+
+.cal-header .cal-titre-header {
+    background: #fff;
+}
+
 .cal-titre {
     height: var(--calendar-line-height);
     width: 400px;
@@ -23,19 +34,10 @@
     white-space: nowrap;
     border-right: var(--calendar-day-width) solid white;
     background: var(--calendar-bg-header-color);
-    z-index: 1000;
     line-height: var(--calendar-line-height);
+    padding-left: .25rem;
     position: sticky;
     left: 0;
-    top: 0;
-    z-index: 100;
-}
-
-.cal-titre.cal-titre-header {
-    background: #fff;
-    z-index: 101;
-    display: block;
-    float: left;
 }
 
 .cal-month[data-nbdays="28"] { --calendar-nb-days: 28; }
@@ -58,14 +60,6 @@
 .cal-ligne {
     display: flex;
     margin-bottom: var(--calendar-day-width);
-}
-
-.cal-ligne.cal-ligne-head {
-    position: sticky;
-    z-index: 100;
-    top: 0;
-    float: left;
-    height: var(--calendar-line-height);
 }
 
 .cal-month .jour {

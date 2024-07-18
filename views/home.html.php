@@ -1,4 +1,5 @@
   <div id="calendar">
+    <div class="cal-header">
       <div class="cal-titre cal-titre-header"></div>
       <div class="cal-ligne cal-ligne-head shadow-sm">
         <?php
@@ -14,8 +15,10 @@
           endfor;
         ?>
       </div>
+    </div>
+    <div class="cal-events">
       <?php foreach ($evenements as $titre => $evts): ?>
-      <div class="cal-ligne" style="clear: both;">
+      <div class="cal-ligne">
         <div class="cal-titre" title="<?php echo $titre ?>">
           <?php echo $titre ?>
         </div>
@@ -33,5 +36,6 @@
         ?>
       </div>
       <?php endforeach; ?>
+    </div>
   </div>
 </div>
