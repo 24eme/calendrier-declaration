@@ -153,7 +153,7 @@ class Evenement extends Cortex
     {
         $evenementsDates = [];
         $evenementsNonDates = [];
-        $stop = $today->modify('last day of 14 months');
+        $stop = $today->modify('last day of '.(self::$displayMonths - 2).' months');
 
         if (empty($filters) === false) {
             foreach ($filters as $type => $filter) {
