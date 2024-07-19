@@ -59,12 +59,12 @@
     }
   });
 
-  const form = document.getElementById("filter-form")
-  form.addEventListener('input', function(e) {
+  const formfilter = document.getElementById("filter-form")
+  formfilter.addEventListener('input', function(e) {
     if (e.inputType === "insertText") {
       return false; // on ne veut pas submit dès qu'on rentre du texte
     }
 
-    form.submit();
+    formfilter.submit();
   })
 </script>
