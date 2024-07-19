@@ -5,7 +5,7 @@
         <?php
           $date = DateTime::createFromImmutable($today);
           $date->modify('first day of previous month');
-          for($i = 0; $i < 16; $i++):
+          for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
         ?>
         <div class="cal-month" data-nbdays="<?php echo ($date->format('t')); ?>">
           <?php echo $date->format('M Y'); ?>
@@ -20,12 +20,12 @@
       <?php foreach ($evenements as $titre => $evts): ?>
       <div class="cal-ligne">
         <div class="cal-titre" title="<?php echo $titre ?>">
-          <a href="<?php echo Base::instance()->alias('event', ['evenement' => current($evts)['id']]) ?>"><?php echo $titre ?></a>
+          <a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => current($evts)['id']]) ?>"><?php echo $titre ?></a>
         </div>
         <?php
           $date = DateTime::createFromImmutable($today);
           $date->modify('first day of previous month');
-          for($i = 0; $i < 16; $i++):
+          for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
         ?>
         <div class="cal-month">
           <?php echo \Views\MonthTimeline::render($date, $today, $evts); ?>

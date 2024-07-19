@@ -13,6 +13,8 @@ class Evenement extends Cortex
 
     public $fillable = ['type_id', 'organismes', 'familles', 'title', 'description', 'start', 'end', 'textedeloi', 'liendeclaration', 'active', 'rrule'];
 
+    public static $displayMonths = 16;
+
     public static $rrules = [
         '' => 'Aucune',
         'mensuel' => 'Tous les mois',
