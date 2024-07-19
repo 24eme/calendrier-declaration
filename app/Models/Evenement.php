@@ -164,20 +164,26 @@ class Evenement extends Cortex
         $evenements = $this->find();
         foreach ($evenements as $evenement) {
             if (!$evenement->isActive()) continue;
-            $isDate = $evenement->isDate();
+            $isDate = $evenement->isDate(); // à une date de début ou de fin ?
+
             if (!$evenement->end) {
-                $evenement->end = date('Y').'-12-31';
+                $evenement->end = $stop->format('Y-m-d');
             }
+
             if (!$evenement->start) {
-                $evenement->start = date('Y').'-01-01';
+                $evenement->start = $today->modify('first day of january')->format('Y-m-d');
             }
+
             $evts = [];
             $start = new \DateTime($evenement->start);
             $end = new \DateTime($evenement->end);
+
             if(in_array($evenement->rrule, array('mensuel', 'trimestriel', 'semestriel', 'annuel'))) {
-                $stop = (date('Y') + 1).'-12-31';
-                while($end->format('Y-m-d') < $stop) {
-                    if ($evenement->rrule == 'mensuel') {
+                while($end <= $stop || $start <= $stop) {
+                   if ($end->format('Y') >= $today->format('Y')) {
+                       $evts[] = ['start' => $start->format('Y-m-d'), 'end' => $end->format('Y-m-d'), 'title' => $evenement->title, 'id' => $evenement->id, 'isDate' => $isDate];
+                   }
+                   if ($evenement->rrule == 'mensuel') {
                         $start->modify('+1 month');
                         $end->modify('+1 month');
                    }
@@ -193,12 +199,9 @@ class Evenement extends Cortex
                        $start->modify('+1 year');
                        $end->modify('+1 year');
                    }
-                   if ($end->format('Y') >= $year) {
-                       $evts[] = ['start' => $start->format('Y-m-d'), 'end' => $end->format('Y-m-d'), 'title' => $evenement->title, 'id' => $evenement->id, 'isDate' => $isDate];
-                   }
                  }
             } else {
-                if ($end->format('Y') >= $year) {
+                if ($end->format('Y') >= $today->format('Y')) {
                     $evts[] = ['start' => $evenement->start, 'end' => $evenement->end, 'title' => $evenement->title, 'id' => $evenement->id, 'isDate' => $isDate];
                 }
             }
