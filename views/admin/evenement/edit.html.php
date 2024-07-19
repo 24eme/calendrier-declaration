@@ -3,7 +3,7 @@
   </nav>
 
   <div class="mainContent clearfix">
-  <form method="post" action="<?php echo $formurl ?>">
+  <form method="post" action="<?php echo $formurl ?>" id="event-form">
     <div class="row mb-3">
       <label for="type_id" class="col-2 col-form-label">Type de déclaration</label>
         <div class="col-4">
@@ -51,7 +51,7 @@
       <div class="row mb-3">
         <label for="description" class="col-2 col-form-label">Description</label>
         <div class="col-4">
-          <div id="editor" class="form-control " rows="3" name="description"><?php echo $event->description ?></div>
+          <div id="editor" class="form-control" name="description"><?php echo $event->description ?></div>
         </div>
       </div>
 
@@ -128,3 +128,17 @@
       </div>
   </form>
   </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const formevent = document.getElementById("event-form")
+    const quill = new Quill('#editor', {
+      theme: 'snow'
+    });
+
+    formevent.addEventListener('formdata', (event) => {
+      // Append Quill content before submitting
+      event.formData.append('description', quill.getSemanticHTML());
+    });
+  });
+</script>
