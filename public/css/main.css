@@ -90,3 +90,7 @@
 .organisme-card > div {
     padding-bottom: .5rem;
 }
+
+.ql-container {
+    height: unset;
+}
