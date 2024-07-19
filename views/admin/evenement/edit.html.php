@@ -5,7 +5,7 @@
   <div class="mainContent clearfix">
   <form method="post" action="<?php echo $formurl ?>">
     <div class="row mb-3">
-      <label for="type_id" class="col-2">Edition d'une déclaration</label>
+      <label for="type_id" class="col-2 col-form-label">Type de déclaration</label>
         <div class="col-4">
           <select class="form-control " name="type_id">
             <?php foreach ($types->find() as $t): ?>
@@ -16,8 +16,8 @@
       </div>
 
       <div class="row mb-3">
-        <label for="familles" class="col-2">Familles viti/vinicoles</label>
-        <div class="col-4">
+        <label for="familles" class="col-2 col-form-label">Familles viti/vinicoles</label>
+        <fieldset class="col-4">
           <?php foreach ($familles->find() as $famille): ?>
           <div class="form-check form-check-inline">
             <input name="familles[]" <?php echo $event->hasFamille($famille->id) ? 'checked' : '' ?>  class="form-check-input " id="famille-<?php echo $famille->id ?>" type="checkbox" value="<?php echo $famille->id ?>">
@@ -25,39 +25,39 @@
           </div>
           <?php endforeach ?>
           <p class="text-right primary-link"><a href="https://calendrier-vitivini.vinsdeprovence.com/admin/familles">Gérer les familles</a></p>
-        </div>
+        </fieldset>
       </div>
 
       <div class="row mb-3">
-        <label for="start" class="col-2">Date début</label>
+        <label for="start" class="col-2 col-form-label">Date début</label>
         <div class="col-4">
           <input type="date" min="2000-01-01" max="2100-12-31" class="form-control " name="start" value="<?php echo $event->start ?>" />
         </div>
       </div>
       <div class="row mb-3">
-        <label for="end" class="col-2">Date de fin</label>
+        <label for="end" class="col-2 col-form-label">Date de fin</label>
         <div class="col-4">
           <input type="date" min="2000-01-01" max="2100-12-31" class="form-control " name="end" value="<?php echo $event->end ?>" />
          </div>
       </div>
 
       <div class="row mb-3">
-        <label for="title" class="col-2">Titre</label>
+        <label for="title" class="col-2 col-form-label">Titre</label>
         <div class="col-4">
           <input type="text" class="form-control " name="title" value="<?php echo $event->title ?>" />
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="description" class="col-2">Description</label>
+        <label for="description" class="col-2 col-form-label">Description</label>
         <div class="col-4">
-          <textarea id="editor" class="form-control " rows="3" name="description"><?php echo $event->description ?></textarea>
+          <div id="editor" class="form-control " rows="3" name="description"><?php echo $event->description ?></div>
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="organismes" class="col-2">Organismes destinataires</label>
-        <div class="col-4">
+        <label for="organismes" class="col-2 col-form-label">Organismes destinataires</label>
+        <fieldset class="col-4">
           <?php foreach ($organismes->find() as $organisme): ?>
             <div class="form-check form-check-inline">
               <input name="organismes[]" <?php if ($event->hasOrganisme($organisme->id)): ?>checked<?php endif ?> class="form-check-input " id="organisme-<?php echo $organisme->id ?>" type="checkbox" value="<?php echo $organisme->id ?>">
@@ -65,32 +65,32 @@
             </div>
           <?php endforeach ?>
           <p class="text-right primary-link"><a href="https://calendrier-vitivini.vinsdeprovence.com/admin/organismes">Gérer les organismes</a></p>
-        </div>
+        </fieldset>
       </div>
 
       <div class="row mb-3">
-        <label for="textdeloi" class="col-2">Texte de loi</label>
+        <label for="textdeloi" class="col-2 col-form-label">Texte de loi</label>
         <div class="col-4">
           <input type="text" class="form-control " name="textdeloi" value="<?php echo $event->textedeloi ?>" />
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="liendeclaration" class="col-2">Lien de télédéclaration</label>
+        <label for="liendeclaration" class="col-2 col-form-label">Lien de télédéclaration</label>
         <div class="col-4">
           <input type="text" class="form-control " name="liendeclaration" value="<?php echo $event->liendeclaration ?>" />
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="tags" class="col-2">Mots-Clés  <small>(séparés par des virgules)</small></label>
+        <label for="tags" class="col-2 col-form-label">Mots-Clés <small>(séparés par des virgules)</small></label>
         <div class="col-4">
             <input type="text" class="form-control " name="tags" value="<?php echo $event->getTags() ?>" />
          </div>
       </div>
 
       <div class="row mb-3">
-        <label for="rrule" class="col-2">Récurrence <small>(sur 1 année glissante)</small></label>
+        <label for="rrule" class="col-2 col-form-label">Récurrence <small>(sur 1 année glissante)</small></label>
         <div class="col-4">
           <select class="form-control " name="rrule">
             <?php foreach ($event::$rrules as $recurrence => $desc): ?>
