@@ -147,10 +147,11 @@ class Evenement extends Cortex
         return $interval->days;
     }
 
-    public function getPourCalendrier($year, $filters = [])
+    public function getPourCalendrier(\DateTimeInterface $today, $filters = [])
     {
         $evenementsDates = [];
         $evenementsNonDates = [];
+        $stop = $today->modify('last day of 14 months');
 
         if (empty($filters) === false) {
             foreach ($filters as $type => $filter) {

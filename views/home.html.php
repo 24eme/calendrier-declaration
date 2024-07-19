@@ -3,7 +3,7 @@
       <div class="cal-titre cal-titre-header"></div>
       <div class="cal-ligne cal-ligne-head shadow-sm">
         <?php
-          $date = new DateTime(date('Y-m-d'));
+          $date = DateTime::createFromImmutable($today);
           $date->modify('first day of previous month');
           for($i = 0; $i < 16; $i++):
         ?>
@@ -23,12 +23,12 @@
           <?php echo $titre ?>
         </div>
         <?php
-          $date = new DateTime();
+          $date = DateTime::createFromImmutable($today);
           $date->modify('first day of previous month');
           for($i = 0; $i < 16; $i++):
         ?>
         <div class="cal-month">
-          <?php echo \Views\MonthTimeline::render($date, $evts); ?>
+          <?php echo \Views\MonthTimeline::render($date, $today, $evts); ?>
         </div>
         <?php
           $date->modify('next month');

@@ -14,7 +14,7 @@ class MonthTimeline
      * @param int $month Mois (1 - 12)
      * @param array $evenements Les évènements à afficher
      */
-    public static function render(DateTime $date, array $evenements)
+    public static function render(DateTime $date, DateTimeInterface $today, array $evenements)
     {
         $monthStart = new DateTimeImmutable($date->format('Y-m-d'));
         $monthEnd = $monthStart->modify('last day of');
@@ -28,7 +28,6 @@ class MonthTimeline
         });
 
         $nbDays = $monthEnd->format('t');
-        $today = new DateTime();
         $current = new DateTime($monthStart->format('Y-m-d'));
 
         return View::instance()->render('calendrier/_timeline.html.php',

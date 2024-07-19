@@ -11,12 +11,13 @@ class Calendrier extends Controller
     {
         $filters = $f3->get('GET.filters') ?? [];
         $evenement = new Evenement();
-        $evenements = $evenement->getPourCalendrier(date('Y'), $filters);
+        $today = new \DateTimeImmutable();
+        $evenements = $evenement->getPourCalendrier($today, $filters);
 
         $f3->set('filters', $filters);
 
         $f3->set('content', 'home.html.php');
-        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements'));
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements', 'today'));
     }
 
     public function show(Base $f3)
