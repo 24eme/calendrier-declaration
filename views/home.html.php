@@ -20,7 +20,7 @@
       <?php foreach ($evenements as $titre => $evts): ?>
       <div class="cal-ligne">
         <div class="cal-titre" title="<?php echo $titre ?>">
-          <?php echo $titre ?>
+          <a href="<?php echo Base::instance()->alias('event', ['evenement' => current($evts)['id']]) ?>"><?php echo $titre ?></a>
         </div>
         <?php
           $date = DateTime::createFromImmutable($today);
