@@ -131,9 +131,19 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    const QuillToolbarOptions = [
+      ['bold', 'italic', 'underline'], [{ 'size': [] }, 'link', 'image'],
+      [{ 'color': [] }, { 'background': [] }], [{ 'align': [] }], [{ 'indent': '-1'}, { 'indent': '+1' }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+      ['clean']
+    ]
+
     const formevent = document.getElementById("event-form")
     const quill = new Quill('#editor', {
-      theme: 'snow'
+      theme: 'snow',
+      modules: {
+        toolbar: QuillToolbarOptions
+      }
     });
 
     formevent.addEventListener('formdata', (event) => {
