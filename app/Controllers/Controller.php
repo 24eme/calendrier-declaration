@@ -2,13 +2,13 @@
 
 namespace Controllers;
 
+use Base;
+
 abstract class Controller
 {
-    protected $data = [];
-
-    public function __construct()
+    public function __construct(Base $f3)
     {
-        $this->data = [];
+        $f3->set('mainCssClass', ['col']);
     }
 
     public function beforeroute($f3, $params) {}
