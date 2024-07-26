@@ -14,6 +14,8 @@ class Evenement extends Controller
 
     public function beforeroute($f3, $params)
     {
+        parent::beforeroute($f3, $params);
+
         if ($evenementID = $f3->get('PARAMS.evenement')) {
             $this->event = new Event();
             $this->event->countRel('tags');

@@ -10,6 +10,8 @@ class Organisme extends Controller
 
     public function beforeroute($f3, $params)
     {
+        parent::beforeroute($f3, $params);
+
         if ($organismeID = $f3->get('PARAMS.organisme')) {
             $this->organisme = new Org();
             if ($this->organisme->load(['_id = ?', $organismeID]) === false) {

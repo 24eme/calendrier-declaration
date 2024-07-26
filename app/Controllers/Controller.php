@@ -11,6 +11,11 @@ abstract class Controller
         $f3->set('mainCssClass', ['col']);
     }
 
-    public function beforeroute($f3, $params) {}
+    public function beforeroute(Base $f3, $params)
+    {
+        $filters = $f3->get('GET.filters') ?? [];
+        $f3->set('filters', $filters);
+    }
+
     public function afterroute($f3, $params) {}
 }

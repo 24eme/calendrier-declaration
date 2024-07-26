@@ -10,6 +10,8 @@ class Famille extends Controller
 
     public function beforeroute($f3, $params)
     {
+        parent::beforeroute($f3, $params);
+
         if ($familleID = $f3->get('PARAMS.famille')) {
             $this->famille = new F();
             if ($this->famille->load(['_id = ?', $familleID]) === false) {

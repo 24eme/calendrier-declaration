@@ -9,12 +9,10 @@ class Calendrier extends Controller
 {
     public function home(Base $f3)
     {
-        $filters = $f3->get('GET.filters') ?? [];
         $evenement = new Evenement();
         $today = new \DateTimeImmutable();
-        $evenements = $evenement->getPourCalendrier($today, $filters);
+        $evenements = $evenement->getPourCalendrier($today, $f3->get('filters'));
 
-        $f3->set('filters', $filters);
         $f3->push('mainCssClass', 'main-calendar');
 
         $f3->set('content', 'home.html.php');
