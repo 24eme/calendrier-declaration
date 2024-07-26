@@ -34,3 +34,11 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<div class="row mb-2">
+  <div class="col-12 text-end">
+    <a href="<?php echo Base::instance()->alias('organismecreate') ?>" class="btn btn-primary">
+      <i class="bi bi-folder-plus"></i> Ajouter un organisme
+    </a>
+  </div>
+</div>
