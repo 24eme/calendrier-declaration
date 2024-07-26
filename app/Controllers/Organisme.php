@@ -15,7 +15,7 @@ class Organisme extends Controller
         if ($organismeID = $f3->get('PARAMS.organisme')) {
             $this->organisme = new Org();
             if ($this->organisme->load(['_id = ?', $organismeID]) === false) {
-                return $this->f3->error(404, "L'organisme n'existe pas");
+                return $f3->error(404, "L'organisme n'existe pas");
             }
         }
     }
