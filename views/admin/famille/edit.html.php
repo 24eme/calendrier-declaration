@@ -17,7 +17,7 @@
 
   <div class="row mb-3">
     <div class="col-sm-2">
-      <button type="submit" class="btn btn-secondary">Retour</button>
+      <a href="<?php echo Base::instance()->alias('famillelist') ?>" class="btn btn-secondary">Retour</a>
     </div>
     <div class="col-sm-2 offset-sm-7">
       <button type="submit" class="btn btn-primary">
