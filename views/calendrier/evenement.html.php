@@ -9,6 +9,14 @@
       <span><i class="bi bi-calendar-range me-1"></i> Déclaration récurrente</span>
     </p>
   </div>
+
+  <?php if ($event->liendeclaration): ?>
+  <div class="col-2 d-flex align-items-center justify-content-center">
+    <a href="<?php echo $event->liendeclaration ?>" class="btn btn-danger icon-link">
+      Accéder <i class="d-inline-flex bi bi-box-arrow-up-right"></i>
+    </a>
+  </div>
+  <?php endif ?>
 </div>
 
 <div class="row">
@@ -55,10 +63,5 @@
 <div class="row mb-2">
   <div class="col-3 me-auto">
     <a href="/evenement/export/<?php echo $event->id ?>?s=2024-07-01&amp;e=2024-07-10" class="btn btn-primary" title="Exporter la déclaration dans mon calendrier personnel"><i class="far fa-calendar-alt"></i> Ajouter à mon Agenda</a>
-  </div>
-  <div class="col-auto">
-    <?php if ($event->liendeclaration): ?>
-      <a href="<?php echo $event->liendeclaration ?>" target="_blank" class="btn btn-outline-danger"><i class="bi bi-box-arrow-up-right"></i> Accéder à la déclaration</a>
-    <?php endif ?>
   </div>
 </div>
