@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calendrier des déclarations viti/vinicoles</title>
-    <link rel="shortcut icon" href="https://calendrier-vitivini.vinsdeprovence.com/images/logos/logo-P.svg" >
+    <link rel="shortcut icon" href="/images/logos/logo-P.svg" >
 
     <link href='/css/bootstrap.min.css' rel='stylesheet' />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-icons.min.css">
     <link href="/css/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
   <div class="w-100">
     <div class="d-flex align-items-center">
-      <a href="/"><img src="https://calendrier-vitivini.vinsdeprovence.com/images/logos/logo-P.svg" alt="logo" /></a>
+      <a href="/"><img src="/images/logos/logo-P.svg" alt="logo" /></a>
       <a href="/">
         <i class="bi bi-caret-right-fill"></i>
         <span class="fw-bold">déclarations viti/vinicoles</span><br />
