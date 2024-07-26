@@ -1,12 +1,12 @@
-<div class="row">
-  <div class="col-1 text-center">
-    <button class="btn btn-md btn-block btn-outline-secondary"><?php echo $event->type_id->name ?></button>
-  </div>
+<div class="row sticky-top bg-white pt-2">
   <div class="col">
     <h2 class="h2"><?php echo $event->title ?>
       <small>(<a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $event->id]) ?>">modifier</a>)</small>
     </h2>
-    <p><i class="bi bi-calendar-range me-1"></i> Déclaration récurrente</p>
+    <p>
+      <i class="bi bi-calendar-range me-1"></i> Déclaration récurrente<br/>
+      <i class="bi bi-bookmark-fill me-1"></i> <?php echo $event->type_id->name ?>
+    </p>
     <p>
         <b class="text-decoration-underline">Famille(s) :</b>
         <?php echo implode(', ', $event->familles->getAll('nom')) ?>
