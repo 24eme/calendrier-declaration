@@ -2,33 +2,33 @@
 
 namespace Controllers;
 
+use Base;
+use View;
 use Models\Famille as F;
 
 class Famille extends Controller
 {
     private $famille;
 
-    public function beforeroute($f3, $params)
+    public function beforeroute(Base $f3, $params)
     {
         parent::beforeroute($f3, $params);
 
         if ($familleID = $f3->get('PARAMS.famille')) {
             $this->famille = new F();
             if ($this->famille->load(['_id = ?', $familleID]) === false) {
-                return $this->f3->error(404, "La famille n'existe pas");
+                return $f3->error(404, "La famille n'existe pas");
             }
         }
     }
 
-    public function index($f3, $params)
+    public function index(Base $f3, $params)
     {
-        $familles = new F();
+        $famille = new F();
+        $familles = $famille->find();
 
-        echo "<ul>";
-        foreach ($familles->find() as $famille) {
-            echo "<li>".$famille->nom.' <a href='.$f3->alias('familleedit', ['famille' => $famille->id]).'>Editer</a></li>';
-        }
-        echo '</ul>';
+        $f3->set('content', 'admin/famille/list.html.php');
+        echo View::instance()->render('layout.html.php', 'text/html', compact('familles'));
     }
 
     public function new($f3, $params)
