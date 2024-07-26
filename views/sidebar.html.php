@@ -15,7 +15,7 @@
 <h5 class="h5 my-3">Mots-clés liés à une déclaration</h5>
 
 <div id="sidebar-list-tags" class="fs-6 border-bottom" style="max-height:30vh; overflow-y:auto">
-<?php foreach ($tags->find() as $tag): ?>
+<?php foreach (\Views\Sidebar::instance()->displayTags($filters) as $tag): ?>
 <div class="me-1 mb-1 d-inline-block">
   <input name="filters[tags][<?php echo $tag->id ?>]" type="checkbox" class="btn-check" id="btn-check-<?php echo $tag->id ?>" autocomplete="off"
       <?php echo isset($filters['tags']) && array_key_exists($tag->id, $filters['tags']) ? 'checked' : null ?> >

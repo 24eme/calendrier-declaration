@@ -21,4 +21,22 @@ class Sidebar extends Prefab
         Base::instance()->mset($this->data);
         echo View::instance()->render('sidebar.html.php');
     }
+
+    public function displayTags($filtres) {
+        if (! isset($filtres['tags']) || empty($filtres['tags'])) {
+            foreach ($this->data['tags']->find() as $all) {
+                yield $all;
+            }
+
+            return;
+        }
+
+        foreach ($this->data['tags']->find(['id IN ?', array_keys($filtres['tags'])]) as $tagged) {
+            yield $tagged;
+        }
+
+        foreach ($this->data['tags']->find(['id not IN ?', array_keys($filtres['tags'])]) as $nottagged) {
+            yield $nottagged;
+        }
+    }
 }
