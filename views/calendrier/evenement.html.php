@@ -3,7 +3,7 @@
     <button class="btn btn-md btn-block btn-outline-secondary"><?php echo $event->type_id->name ?></button>
   </div>
   <div class="col">
-    <h2 class="h2">Déclaration Récapitulative Mensuelle (DRM)
+    <h2 class="h2"><?php echo $event->title ?>
       <small>(<a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $event->id]) ?>">modifier</a>)</small>
     </h2>
     <p><i class="bi bi-calendar-range me-1"></i> Déclaration récurrente</p>
