@@ -24,7 +24,7 @@
             <label class="form-check-label" for="famille-<?php echo $famille->id ?>"><?php echo $famille->nom ?></label>
           </div>
           <?php endforeach ?>
-          <p class="text-right primary-link"><a href="https://calendrier-vitivini.vinsdeprovence.com/admin/familles">Gérer les familles</a></p>
+          <p class="text-right primary-link"><a href="<?php echo Base::instance()->alias('famillelist') ?>">Gérer les familles</a></p>
         </fieldset>
       </div>
 
@@ -64,7 +64,7 @@
               <label class="form-check-label" for="organisme-<?php echo $organisme->id ?>"><?php echo $organisme->nom ?></label>
             </div>
           <?php endforeach ?>
-          <p class="text-right primary-link"><a href="https://calendrier-vitivini.vinsdeprovence.com/admin/organismes">Gérer les organismes</a></p>
+          <p class="text-right primary-link"><a href="<?php echo Base::instance()->alias('organismelist') ?>">Gérer les organismes</a></p>
         </fieldset>
       </div>
 
