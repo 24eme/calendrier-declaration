@@ -2,13 +2,15 @@
 
 namespace Controllers;
 
+use Base;
+use View;
 use Models\Organisme as Org;
 
 class Organisme extends Controller
 {
     private $organisme;
 
-    public function beforeroute($f3, $params)
+    public function beforeroute(Base $f3, $params)
     {
         parent::beforeroute($f3, $params);
 
@@ -20,15 +22,13 @@ class Organisme extends Controller
         }
     }
 
-    public function index($f3, $params)
+    public function index(Base $f3, $params)
     {
-        $organismes = new Org();
+        $organisme = new Org();
+        $organismes = $organisme->find();
 
-        echo "<ul>";
-        foreach ($organismes->find() as $organisme) {
-            echo "<li>".$organisme->nom.' <a href='.$f3->alias('organismeedit', ['organisme' => $organisme->id]).'>Editer</a></li>';
-        }
-        echo '</ul>';
+        $f3->set('content', 'admin/organisme/list.html.php');
+        echo View::instance()->render('layout.html.php', 'text/html', compact('organismes'));
     }
 
     public function new($f3, $params)
