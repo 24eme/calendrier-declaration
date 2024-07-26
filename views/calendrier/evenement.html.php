@@ -3,13 +3,10 @@
     <h2 class="h2"><?php echo $event->title ?>
       <small>(<a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $event->id]) ?>">modifier</a>)</small>
     </h2>
-    <p>
-      <i class="bi bi-calendar-range me-1"></i> Déclaration récurrente<br/>
-      <i class="bi bi-bookmark-fill me-1"></i> <?php echo $event->type_id->name ?>
-    </p>
-    <p>
-        <b class="text-decoration-underline">Famille(s) :</b>
-        <?php echo implode(', ', $event->familles->getAll('nom')) ?>
+    <p class="tags-header">
+      <span><i class="bi bi-bookmark me-1"></i> <?php echo $event->type_id->name ?></span>
+      <span><i class="bi bi-person-rolodex me-1"></i> <?php echo implode(', ', $event->familles->getAll('nom')) ?></span>
+      <span><i class="bi bi-calendar-range me-1"></i> Déclaration récurrente</span>
     </p>
   </div>
 </div>
