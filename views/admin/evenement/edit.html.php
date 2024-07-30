@@ -90,11 +90,11 @@
       </div>
 
       <div class="row mb-3">
-        <label for="rrule" class="col-2 col-form-label">Récurrence <small>(sur 1 année glissante)</small></label>
+        <label for="recurrence" class="col-2 col-form-label">Récurrence <small>(sur 1 année glissante)</small></label>
         <div class="col-4">
-          <select class="form-control " name="rrule">
-            <?php foreach ($event::$rrules as $recurrence => $desc): ?>
-              <option value="<?php echo $recurrence ?>"<?php echo $event->rrule === $recurrence ? ' selected' : '' ?>>
+          <select class="form-control " name="recurrence">
+            <?php foreach ($event::$recurrences as $recurrence => $desc): ?>
+              <option value="<?php echo $recurrence ?>"<?php echo $event->recurrence === $recurrence ? ' selected' : '' ?>>
                 <?php echo $desc ?>
               </option>
             <?php endforeach ?>

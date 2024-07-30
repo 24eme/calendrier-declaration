@@ -11,11 +11,11 @@ class Evenement extends Cortex
     protected $db = 'DB';
     protected $table = 'evenements';
 
-    public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'description', 'date_debut', 'date_fin', 'textedeloi', 'liendeclaration', 'actif', 'rrule'];
+    public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'description', 'date_debut', 'date_fin', 'textedeloi', 'liendeclaration', 'actif', 'recurrence'];
 
     public static $displayMonths = 16;
 
-    public static $rrules = [
+    public static $recurrences = [
         '' => 'Aucune',
         'mensuel' => 'Tous les mois',
         'trimestriel' => 'Tous les 3 mois',
@@ -31,7 +31,7 @@ class Evenement extends Cortex
         'textedeloi' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'liendeclaration' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'actif' => ['type' => \DB\SQL\Schema::DT_BOOL],
-        'rrule' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
+        'recurrence' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
         'date_creation' => ['type' => \DB\SQL\Schema::DT_DATETIME],
         'date_modification' => ['type' => \DB\SQL\Schema::DT_DATETIME],
 
@@ -179,24 +179,24 @@ class Evenement extends Cortex
             $dateDebut = new \DateTime($evenement->date_debut);
             $dateFin = new \DateTime($evenement->date_fin);
 
-            if(in_array($evenement->rrule, array('mensuel', 'trimestriel', 'semestriel', 'annuel'))) {
+            if(in_array($evenement->recurrence, array('mensuel', 'trimestriel', 'semestriel', 'annuel'))) {
                 while($dateFin <= $stop || $dateDebut <= $stop) {
                    if ($dateFin->format('Y') >= $today->format('Y')) {
                        $evts[] = ['date_debut' => $dateDebut->format('Y-m-d'), 'date_fin' => $dateFin->format('Y-m-d'), 'nom' => $evenement->nom, 'id' => $evenement->id, 'isDate' => $isDate];
                    }
-                   if ($evenement->rrule == 'mensuel') {
+                   if ($evenement->recurrence == 'mensuel') {
                         $dateDebut->modify('+1 month');
                         $dateFin->modify('+1 month');
                    }
-                   if ($evenement->rrule == 'trimestriel') {
+                   if ($evenement->recurrence == 'trimestriel') {
                        $dateDebut->modify('+3 months');
                        $dateFin->modify('+3 months');
                    }
-                   if ($evenement->rrule == 'semestriel') {
+                   if ($evenement->recurrence == 'semestriel') {
                        $dateDebut->modify('+6 months');
                        $dateFin->modify('+6 months');
                    }
-                   if ($evenement->rrule == 'annuel') {
+                   if ($evenement->recurrence == 'annuel') {
                        $dateDebut->modify('+1 year');
                        $dateFin->modify('+1 year');
                    }

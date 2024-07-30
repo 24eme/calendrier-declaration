@@ -62,7 +62,7 @@ class MonthTimeline
 
     public static function renderDatelines(Evenement $event)
     {
-        switch ($event->rrule) {
+        switch ($event->recurrence) {
             case 'mensuel':
                 $dateLines = self::renderMonthlyDatelines($event);
                 break;
