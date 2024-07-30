@@ -11,7 +11,7 @@ class Evenement extends Cortex
     protected $db = 'DB';
     protected $table = 'evenements';
 
-    public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'description', 'date_debut', 'date_fin', 'textedeloi', 'liendeclaration', 'active', 'rrule'];
+    public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'description', 'date_debut', 'date_fin', 'textedeloi', 'liendeclaration', 'actif', 'rrule'];
 
     public static $displayMonths = 16;
 
@@ -30,7 +30,7 @@ class Evenement extends Cortex
         'description' => ['type' => \DB\SQL\Schema::DT_TEXT, 'nullable' => false, 'index' => true],
         'textedeloi' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'liendeclaration' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
-        'active' => ['type' => \DB\SQL\Schema::DT_BOOL],
+        'actif' => ['type' => \DB\SQL\Schema::DT_BOOL],
         'rrule' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
         'created_at' => ['type' => \DB\SQL\Schema::DT_DATETIME],
         'updated_at' => ['type' => \DB\SQL\Schema::DT_DATETIME],
@@ -78,9 +78,9 @@ class Evenement extends Cortex
         return $this->organismes && $this->organismes->contains($organismeid);
     }
 
-    public function set_active($active)
+    public function set_actif($actif)
     {
-        return $active ? true : false;
+        return $actif ? true : false;
     }
 
     public function getTags()
@@ -129,9 +129,9 @@ class Evenement extends Cortex
         return $t;
     }
 
-    public function isActive()
+    public function isActif()
     {
-        return $this->active;
+        return $this->actif;
     }
 
     public function isDate()
@@ -164,7 +164,7 @@ class Evenement extends Cortex
 
         $evenements = $this->find();
         foreach ($evenements as $evenement) {
-            if (!$evenement->isActive()) continue;
+            if (!$evenement->isActif()) continue;
             $isDate = $evenement->isDate(); // à une date de début ou de fin ?
 
             if (!$evenement->date_fin) {

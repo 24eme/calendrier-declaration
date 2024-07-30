@@ -51,7 +51,7 @@ class Evenement extends Controller
         }
 
         $this->event->copyfrom('POST', $this->event->fillable);
-        $this->event->active = $f3->get('POST.active');
+        $this->event->actif = $f3->get('POST.actif');
         $this->event->tags = $f3->get('POST.tags');
         $this->event->save();
 
@@ -74,7 +74,7 @@ class Evenement extends Controller
     public function update($f3, $params)
     {
         $this->event->copyfrom('POST', $this->event->fillable);
-        $this->event->active = $f3->get('POST.active');
+        $this->event->actif = $f3->get('POST.actif');
         $this->event->tags = $f3->get('POST.tags');
         $this->event->save();
 
