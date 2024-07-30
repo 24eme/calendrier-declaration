@@ -9,7 +9,7 @@
         <div class="col-4">
           <select class="form-control " name="type_id">
             <?php foreach ($types->find() as $t): ?>
-                <option value="<?php echo $t->id ?>" <?php echo $event->type_id === $t->id ? "selected" : "" ?>><?php echo $t->name ?></option>
+                <option value="<?php echo $t->id ?>" <?php echo $event->type_id === $t->id ? "selected" : "" ?>><?php echo $t->nom ?></option>
             <?php endforeach ?>
           </select>
         </div>

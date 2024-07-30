@@ -11,7 +11,7 @@
         <a href="/evenement/export/<?php echo $event->id ?>" class="btn btn-primary float-end mx-2" title="Exporter la déclaration dans mon calendrier personnel"><i class="bi bi-calendar-plus"></i></a>
       </h2>
       <p class="tags-header">
-        <span><i class="bi bi-bookmark me-1"></i> <?php echo $event->type_id->name ?></span>
+        <span><i class="bi bi-bookmark me-1"></i> <?php echo $event->type_id->nom ?></span>
         <span><i class="bi bi-person-rolodex me-1"></i> <?php echo implode(', ', $event->familles->getAll('nom')) ?></span>
         <?php if($event->rrule): ?>
         <span><i class="bi bi-calendar-range me-1"></i> Déclaration <?php echo $event->rrule ?>le</span>

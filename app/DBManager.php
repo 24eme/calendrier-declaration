@@ -22,7 +22,7 @@ class DBManager
 
             foreach (['Obligation', 'Autre'] as $type) {
                 $t = new \Models\Type();
-                $t->name = $type;
+                $t->nom = $type;
                 $t->save();
             }
         }
