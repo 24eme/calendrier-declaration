@@ -29,15 +29,15 @@
       </div>
 
       <div class="row mb-3">
-        <label for="start" class="col-2 col-form-label">Date début</label>
+        <label for="date_debut" class="col-2 col-form-label">Date début</label>
         <div class="col-4">
-          <input type="date" min="2000-01-01" max="2100-12-31" class="form-control " name="start" value="<?php echo $event->start ?>" />
+          <input type="date" min="2000-01-01" max="2100-12-31" class="form-control " name="date_debut" value="<?php echo $event->date_debut ?>" />
         </div>
       </div>
       <div class="row mb-3">
-        <label for="end" class="col-2 col-form-label">Date de fin</label>
+        <label for="date_fin" class="col-2 col-form-label">Date de fin</label>
         <div class="col-4">
-          <input type="date" min="2000-01-01" max="2100-12-31" class="form-control " name="end" value="<?php echo $event->end ?>" />
+          <input type="date" min="2000-01-01" max="2100-12-31" class="form-control " name="date_fin" value="<?php echo $event->date_fin ?>" />
          </div>
       </div>
 

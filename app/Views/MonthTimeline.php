@@ -20,7 +20,7 @@ class MonthTimeline
         $monthEnd = $monthStart->modify('last day of');
 
         $events = array_filter($evenements, function ($e) use ($monthStart) {
-            if ($monthStart >= new DateTimeImmutable($e['start']) && $monthStart <= new DateTimeImmutable($e['end'])) {
+            if ($monthStart >= new DateTimeImmutable($e['date_debut']) && $monthStart <= new DateTimeImmutable($e['date_fin'])) {
                 return true;
             }
 
@@ -47,10 +47,10 @@ class MonthTimeline
         }
 
         foreach ($events as $event) {
-            if ($currentDate >= new DateTime($event['start']) && $currentDate <= new DateTime($event['end'])) {
+            if ($currentDate >= new DateTime($event['date_debut']) && $currentDate <= new DateTime($event['date_fin'])) {
                 $class[] = 'active';
             }
-            if ($currentDate == new DateTime($event['end']) && $event['isDate']) {
+            if ($currentDate == new DateTime($event['date_fin']) && $event['isDate']) {
                 $class[] = 'jourfin';
             }
         }
@@ -104,14 +104,14 @@ class MonthTimeline
 
     private static function renderInterval(Evenement $event, $dateFormat = 'd/m/Y')
     {
-        if ($event->start && $event->end) {
-            return 'Du '.date($dateFormat, strtotime($event->start)).' au '.date($dateFormat, strtotime($event->end));
+        if ($event->date_debut && $event->date_fin) {
+            return 'Du '.date($dateFormat, strtotime($event->date_debut)).' au '.date($dateFormat, strtotime($event->date_fin));
         }
-        if ($event->start && !$event->end) {
-            return 'À partir du '.date($dateFormat, strtotime($event->start));
+        if ($event->date_debut && !$event->date_fin) {
+            return 'À partir du '.date($dateFormat, strtotime($event->date_debut));
         }
-        if (!$event->start && $event->end) {
-            return 'Jusqu\'au '.date($dateFormat, strtotime($event->end));
+        if (!$event->date_debut && $event->date_fin) {
+            return 'Jusqu\'au '.date($dateFormat, strtotime($event->date_fin));
         }
         return 'Toute l\'année';
     }

@@ -11,7 +11,7 @@ class Evenement extends Cortex
     protected $db = 'DB';
     protected $table = 'evenements';
 
-    public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'description', 'start', 'end', 'textedeloi', 'liendeclaration', 'active', 'rrule'];
+    public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'description', 'date_debut', 'date_fin', 'textedeloi', 'liendeclaration', 'active', 'rrule'];
 
     public static $displayMonths = 16;
 
@@ -25,8 +25,8 @@ class Evenement extends Cortex
 
     protected $fieldConf = [
         'nom' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => false, 'index' => true],
-        'start' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
-        'end' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
+        'date_debut' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
+        'date_fin' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
         'description' => ['type' => \DB\SQL\Schema::DT_TEXT, 'nullable' => false, 'index' => true],
         'textedeloi' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'liendeclaration' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
@@ -136,15 +136,15 @@ class Evenement extends Cortex
 
     public function isDate()
     {
-        return ($this->end || $this->start);
+        return ($this->date_fin || $this->date_debut);
     }
 
     public function getDuree()
     {
-        if (!$this->start || !$this->end) return null;
-        $start = new DateTime($this->start);
-        $end = new DateTime($this->end);
-        $interval = $start->diff($end);
+        if (!$this->date_debut || !$this->date_fin) return null;
+        $dateDebut = new DateTime($this->date_debut);
+        $dateFin = new DateTime($this->date_fin);
+        $interval = $dateDebut->diff($dateFin);
         return $interval->days;
     }
 
@@ -167,43 +167,43 @@ class Evenement extends Cortex
             if (!$evenement->isActive()) continue;
             $isDate = $evenement->isDate(); // à une date de début ou de fin ?
 
-            if (!$evenement->end) {
-                $evenement->end = $stop->format('Y-m-d');
+            if (!$evenement->date_fin) {
+                $evenement->date_fin = $stop->format('Y-m-d');
             }
 
-            if (!$evenement->start) {
-                $evenement->start = $today->modify('first day of january')->format('Y-m-d');
+            if (!$evenement->date_debut) {
+                $evenement->date_debut = $today->modify('first day of january')->format('Y-m-d');
             }
 
             $evts = [];
-            $start = new \DateTime($evenement->start);
-            $end = new \DateTime($evenement->end);
+            $dateDebut = new \DateTime($evenement->date_debut);
+            $dateFin = new \DateTime($evenement->date_fin);
 
             if(in_array($evenement->rrule, array('mensuel', 'trimestriel', 'semestriel', 'annuel'))) {
-                while($end <= $stop || $start <= $stop) {
-                   if ($end->format('Y') >= $today->format('Y')) {
-                       $evts[] = ['start' => $start->format('Y-m-d'), 'end' => $end->format('Y-m-d'), 'nom' => $evenement->nom, 'id' => $evenement->id, 'isDate' => $isDate];
+                while($dateFin <= $stop || $dateDebut <= $stop) {
+                   if ($dateFin->format('Y') >= $today->format('Y')) {
+                       $evts[] = ['date_debut' => $dateDebut->format('Y-m-d'), 'date_fin' => $dateFin->format('Y-m-d'), 'nom' => $evenement->nom, 'id' => $evenement->id, 'isDate' => $isDate];
                    }
                    if ($evenement->rrule == 'mensuel') {
-                        $start->modify('+1 month');
-                        $end->modify('+1 month');
+                        $dateDebut->modify('+1 month');
+                        $dateFin->modify('+1 month');
                    }
                    if ($evenement->rrule == 'trimestriel') {
-                       $start->modify('+3 months');
-                       $end->modify('+3 months');
+                       $dateDebut->modify('+3 months');
+                       $dateFin->modify('+3 months');
                    }
                    if ($evenement->rrule == 'semestriel') {
-                       $start->modify('+6 months');
-                       $end->modify('+6 months');
+                       $dateDebut->modify('+6 months');
+                       $dateFin->modify('+6 months');
                    }
                    if ($evenement->rrule == 'annuel') {
-                       $start->modify('+1 year');
-                       $end->modify('+1 year');
+                       $dateDebut->modify('+1 year');
+                       $dateFin->modify('+1 year');
                    }
                  }
             } else {
-                if ($end->format('Y') >= $today->format('Y')) {
-                    $evts[] = ['start' => $evenement->start, 'end' => $evenement->end, 'nom' => $evenement->nom, 'id' => $evenement->id, 'isDate' => $isDate];
+                if ($dateFin->format('Y') >= $today->format('Y')) {
+                    $evts[] = ['date_debut' => $evenement->date_debut, 'date_fin' => $evenement->date_fin, 'nom' => $evenement->nom, 'id' => $evenement->id, 'isDate' => $isDate];
                 }
             }
             if (!$evts) continue;
