@@ -21,7 +21,6 @@ class Organisme extends Cortex
         'contact' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
         'telephone' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
         'email' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
-        'couleur' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
         'logo' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
         'site' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
         'visible_filtre' => ['type' => \DB\SQL\Schema::DT_BOOL, 'nullable' => false, 'default' => 0],

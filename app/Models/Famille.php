@@ -16,7 +16,6 @@ class Famille extends Cortex
     protected $fieldConf = [
         'nom' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => false],
         'description' => ['type' => \DB\SQL\Schema::DT_LONGTEXT, 'nullable' => true],
-        'couleur' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
 
         // Relations
         'evenements' => [
