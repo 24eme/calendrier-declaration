@@ -32,8 +32,8 @@ class Evenement extends Cortex
         'liendeclaration' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'actif' => ['type' => \DB\SQL\Schema::DT_BOOL],
         'rrule' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
-        'created_at' => ['type' => \DB\SQL\Schema::DT_DATETIME],
-        'updated_at' => ['type' => \DB\SQL\Schema::DT_DATETIME],
+        'date_creation' => ['type' => \DB\SQL\Schema::DT_DATETIME],
+        'date_modification' => ['type' => \DB\SQL\Schema::DT_DATETIME],
 
         // Relations
         'type_id' => ['belongs-to-one' => Type::class, 'index' => true],
@@ -49,12 +49,12 @@ class Evenement extends Cortex
     public function __construct()
     {
         $this->beforeupdate(function ($self) {
-            $self->touch('updated_at');
+            $self->touch('date_modification');
         });
 
         $this->beforeinsert(function ($self) {
-            $self->touch('created_at');
-            $self->touch('updated_at');
+            $self->touch('date_creation');
+            $self->touch('date_modification');
         });
 
         parent::__construct();
