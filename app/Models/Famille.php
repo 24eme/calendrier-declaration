@@ -17,7 +17,6 @@ class Famille extends Cortex
         'nom' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => false],
         'description' => ['type' => \DB\SQL\Schema::DT_LONGTEXT, 'nullable' => true],
         'couleur' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
-        'slug' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => false],
 
         // Relations
         'evenements' => [
@@ -26,9 +25,4 @@ class Famille extends Cortex
             ]
         ],
     ];
-
-    public function set_slug($slug)
-    {
-        return \Web::instance()->slug($slug);
-    }
 }

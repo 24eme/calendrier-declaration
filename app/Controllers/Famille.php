@@ -41,7 +41,6 @@ class Famille extends Controller
         }
 
         $this->famille->copyfrom('POST', $this->famille->fillable);
-        $this->famille->slug = $this->famille->nom;
         $this->famille->save();
 
         return $f3->reroute(['familleedit', ['famille' => $this->famille->id]]);
@@ -59,7 +58,6 @@ class Famille extends Controller
     public function update($f3, $params)
     {
         $this->famille->copyfrom('POST', $this->famille->fillable);
-        $this->famille->slug = $this->famille->nom;
         $this->famille->save();
 
         return $f3->reroute('@familleedit');

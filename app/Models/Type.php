@@ -16,7 +16,6 @@ class Type extends Cortex
     protected $fieldConf = [
         'name' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'unique' => true],
         'couleur' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
-        'slug' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'unique' => true],
 
         // Relations
         'evenements' => [

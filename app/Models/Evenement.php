@@ -120,7 +120,6 @@ class Evenement extends Cortex
 
             if ($tagModel->dry()) {
                 $tagModel->nom = $tag;
-                $tagModel->slug = $tag;
                 $tagModel->save();
             }
 
