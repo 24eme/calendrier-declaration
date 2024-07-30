@@ -14,10 +14,9 @@
 <body>
   <header class="py-2">
     <div class="container">
-        <h1 class="row fw-bold text-center">
+        <h1 class="fw-bold">
           <a href="/">
-            <img class="float-start" src="/images/logos/logo-P.svg" alt="logo" />
-            <span class="h-100 align-middle pt-3 d-inline-block">Déclarations viti/vinicoles</span>
+            <img src="/images/logos/logo-P.svg" alt="logo" /> Déclarations viti/vinicoles
           </a>
         </h1>
     </div>
