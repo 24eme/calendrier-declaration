@@ -14,6 +14,7 @@ class Calendrier extends Controller
         $evenements = $evenement->getPourCalendrier($today, $f3->get('filters'));
 
         $f3->push('mainCssClass', 'main-calendar');
+        $f3->set('displaySideNavigation', 'd-block');
 
         $f3->set('content', 'home.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements', 'today'));
