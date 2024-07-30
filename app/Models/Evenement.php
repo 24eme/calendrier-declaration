@@ -11,7 +11,7 @@ class Evenement extends Cortex
     protected $db = 'DB';
     protected $table = 'evenements';
 
-    public $fillable = ['type_id', 'organismes', 'familles', 'title', 'description', 'start', 'end', 'textedeloi', 'liendeclaration', 'active', 'rrule'];
+    public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'description', 'start', 'end', 'textedeloi', 'liendeclaration', 'active', 'rrule'];
 
     public static $displayMonths = 16;
 
@@ -24,7 +24,7 @@ class Evenement extends Cortex
     ];
 
     protected $fieldConf = [
-        'title' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => false, 'index' => true],
+        'nom' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => false, 'index' => true],
         'start' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
         'end' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
         'description' => ['type' => \DB\SQL\Schema::DT_TEXT, 'nullable' => false, 'index' => true],
@@ -182,7 +182,7 @@ class Evenement extends Cortex
             if(in_array($evenement->rrule, array('mensuel', 'trimestriel', 'semestriel', 'annuel'))) {
                 while($end <= $stop || $start <= $stop) {
                    if ($end->format('Y') >= $today->format('Y')) {
-                       $evts[] = ['start' => $start->format('Y-m-d'), 'end' => $end->format('Y-m-d'), 'title' => $evenement->title, 'id' => $evenement->id, 'isDate' => $isDate];
+                       $evts[] = ['start' => $start->format('Y-m-d'), 'end' => $end->format('Y-m-d'), 'nom' => $evenement->nom, 'id' => $evenement->id, 'isDate' => $isDate];
                    }
                    if ($evenement->rrule == 'mensuel') {
                         $start->modify('+1 month');
@@ -203,14 +203,14 @@ class Evenement extends Cortex
                  }
             } else {
                 if ($end->format('Y') >= $today->format('Y')) {
-                    $evts[] = ['start' => $evenement->start, 'end' => $evenement->end, 'title' => $evenement->title, 'id' => $evenement->id, 'isDate' => $isDate];
+                    $evts[] = ['start' => $evenement->start, 'end' => $evenement->end, 'nom' => $evenement->nom, 'id' => $evenement->id, 'isDate' => $isDate];
                 }
             }
             if (!$evts) continue;
             if ($isDate) {
-                $evenementsDates[$evenement->title] = $evts;
+                $evenementsDates[$evenement->nom] = $evts;
             } else {
-                $evenementsNonDates[$evenement->title] = $evts;
+                $evenementsNonDates[$evenement->nom] = $evts;
             }
         }
         ksort($evenementsDates);

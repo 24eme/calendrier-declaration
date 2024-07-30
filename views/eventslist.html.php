@@ -10,7 +10,7 @@
   <tbody>
     <?php foreach ($evenements as $evenement): ?>
     <tr>
-      <td><?php echo $evenement->title ?></td>
+      <td><?php echo $evenement->nom ?></td>
       <td><?php echo \Views\MonthTimeline::renderDatelines($evenement); ?></td>
     </tr>
     <?php endforeach; ?>

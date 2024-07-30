@@ -30,7 +30,7 @@ class Evenement extends Controller
         $events = new Event();
         echo '<ul>';
         foreach ($events->find() as $event) {
-            echo '<li>'.$event->title.': '.PHP_EOL;
+            echo '<li>'.$event->nom.': '.PHP_EOL;
             $t = $event->tags ?: [];
             foreach ($t as $tag) {
                 echo "\t tag: $tag->nom";

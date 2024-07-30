@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row sticky-top bg-white pt-2">
     <div class="col">
-      <h2 class="h2"><?php echo $event->title ?>
+      <h2 class="h2"><?php echo $event->nom ?>
         <small><a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $event->id]) ?>"><i class="bi bi-pencil-square"></i></a></small>
         <?php if ($event->liendeclaration): ?>
         <a href="<?php echo $event->liendeclaration ?>" class="btn btn-danger float-end">

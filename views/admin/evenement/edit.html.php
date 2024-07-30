@@ -42,9 +42,9 @@
       </div>
 
       <div class="row mb-3">
-        <label for="title" class="col-2 col-form-label">Titre</label>
+        <label for="nom" class="col-2 col-form-label">Nom</label>
         <div class="col-4">
-          <input type="text" class="form-control " name="title" value="<?php echo $event->title ?>" />
+          <input type="text" class="form-control " name="nom" value="<?php echo $event->nom ?>" />
         </div>
       </div>
 

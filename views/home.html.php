@@ -17,10 +17,10 @@
       </div>
     </div>
     <div class="cal-events">
-      <?php foreach ($evenements as $titre => $evts): ?>
+      <?php foreach ($evenements as $nom => $evts): ?>
       <div class="cal-ligne">
-        <div class="cal-titre" title="<?php echo $titre ?>">
-          <a href="<?php echo Base::instance()->alias('event', ['evenement' => current($evts)['id']]) ?>"><?php echo $titre ?></a>
+        <div class="cal-titre" title="<?php echo $nom ?>">
+          <a href="<?php echo Base::instance()->alias('event', ['evenement' => current($evts)['id']]) ?>"><?php echo $nom ?></a>
         </div>
         <?php
           $date = DateTime::createFromImmutable($today);
