@@ -12,17 +12,16 @@
     <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
-  <div class="w-100">
-    <div class="d-flex align-items-center">
-      <a href="/"><img src="/images/logos/logo-P.svg" alt="logo" /></a>
-      <a href="/">
-        <i class="bi bi-caret-right-fill"></i>
-        <span class="fw-bold">déclarations viti/vinicoles</span><br />
-        <small class="ps-3 ms-1" title="Conseil Interprofessionnel des Vins de Provence">mises à disposition par le CIVP</small><br  />
-        <small class="ps-3 ms-1">à titre indicatif*</small>
-      </a>
+  <header class="py-2">
+    <div class="container">
+        <h1 class="row fw-bold text-center">
+          <a href="/">
+            <img class="float-start" src="/images/logos/logo-P.svg" alt="logo" />
+            <span class="h-100 align-middle pt-3 d-inline-block">Déclarations viti/vinicoles</span>
+          </a>
+        </h1>
     </div>
-  </div>
+  </header>
 
   <div class="container-fluid">
     <div class="row">
