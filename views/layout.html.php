@@ -12,28 +12,21 @@
     <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
-  <header class="py-2">
-    <div class="container">
-        <h1 class="fw-bold">
-          <a href="/">
-            <img src="/images/logos/logo-P.svg" alt="logo" /> Déclarations viti/vinicoles
-          </a>
-        </h1>
-    </div>
-  </header>
 
   <div class="container-fluid">
+
+    <header class=" text-center">
+      <a href="/"><img src="/images/logos/logo-P.svg" alt="logo" /></a>
+      <span>déclarations viti/vinicoles</span>
+    </header>
+
     <div class="row">
-      <div class="offcanvas-lg col-2 <?php echo Base::instance()->get('displaySideNavigation') ?>" tabindex="-1" id="offcanvas-sidebar" aria-labelledby="offcanvas sidebar">
-        <div id="sideNavigation" class="bg-light h-100 border-end border-2 p-1">
-          <?php Views\Sidebar::instance()->render(); ?>
-        </div>
+
+      <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary <?php echo Base::instance()->get('displaySideNavigation') ?>">
+        <?php Views\Sidebar::instance()->render(); ?>
       </div>
 
       <div id="main" class="<?php echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
-        <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-sidebar" aria-controls="offcanvas-sidebar">
-          <i class="bi bi-filter"></i> Ouvrir les filtres
-        </button>
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
       </div>
     </div>
@@ -68,4 +61,3 @@
   <script src="/js/quill.js"></script>
 </body>
 </html>
-
