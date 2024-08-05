@@ -1,5 +1,3 @@
-<h3>Events list</h3>
-
 <table class="table table-striped table-hover">
   <thead>
     <tr>
