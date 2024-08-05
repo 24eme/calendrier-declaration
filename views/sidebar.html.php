@@ -33,12 +33,12 @@
   <button class="btn btn-primary btn-sm" type="button" id="show-more-tags">Voir plus</button>
 </div>
 
-<h4 class="h4 my-4">Recherche</h4>
+<h5 class="h5 my-3">Recherche</h5>
 
 <div class="row my-4">
   <div class="input-group">
     <input class="form-control input-search" type="text" placeholder="Termes de recherche..." autocomplete="off" name="filters[query]" onkeypress="return event.keyCode!=13" value="" />
-    <button class="btn btn-outline-danger" type="button"><i class="bi bi-search"></i></button>
+    <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
   </div>
 </div>
 
