@@ -4,8 +4,7 @@ header h1 {
 
 #main.main-calendar {
     overflow: scroll;
-    padding: 0;
-    height: calc(100vh - 102px);
+    height: calc(100vh - 8rem);
 }
 
 #calendar {
@@ -17,6 +16,10 @@ header h1 {
     --calendar-line-height: 30px;
     --calendar-day-width: 3px;
     width: max-content;
+}
+
+#sidebar {
+    width: 17rem;
 }
 
 .cal-header {
