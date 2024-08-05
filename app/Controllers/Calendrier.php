@@ -37,6 +37,7 @@ class Calendrier extends Controller
         $evenement = new Evenement();
         $evenements = $evenement->find(['actif = ?', 1], ['order' => 'nom ASC']);
         $f3->set('content', 'eventslist.html.php');
+        $f3->set('displaySideNavigation', 'd-block');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements'));
     }
 }
