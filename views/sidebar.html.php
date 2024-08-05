@@ -1,3 +1,9 @@
+<?php if(Base::instance()->get('URI') == '/'): ?>
+<a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('events') ?>" role="button"><i class="bi bi-list"></i> Vue liste</a>
+<?php else: ?>
+<a class="btn btn-outline-primary mb-3" href="/" role="button"><i class="bi bi-calendar-week"></i> Vue calendrier</a>
+<?php endif; ?>
+
 <h4 class="h4 mb-4">Filtrer par</h4>
 
 <form action="/" method="get" id="filter-form">
