@@ -8,9 +8,9 @@
   <tbody>
     <?php foreach ($evenements as $evenement): ?>
     <tr>
-      <td><?php echo $evenement->nom ?></td>
+      <td><a href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id]) ?>?from=event"><?php echo $evenement->nom ?></a></td>
       <td><?php echo \Views\MonthTimeline::renderDatelines($evenement); ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>
-</table
+</table>
