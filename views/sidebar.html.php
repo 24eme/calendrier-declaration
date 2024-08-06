@@ -18,9 +18,21 @@
 </div>
 <?php endforeach ?>
 
-<h5 class="h5 my-3">Mots-clés liés à une déclaration</h5>
+<h5 class="my-3">Organismes destinataires</h5>
 
-<div id="sidebar-list-tags" class="fs-6 border-bottom" style="max-height:30vh; overflow-y:auto">
+<div id="sidebar-list-organismes">
+<?php foreach ($organismes->find() as $organisme): ?>
+<div class="me-1 mb-1 d-inline-block">
+  <input name="filters[organismes][]" value="<?php echo $organisme->id ?>" type="checkbox" class="btn-check" id="btn-check-organismes-<?php echo $organisme->id ?>" autocomplete="off"
+      <?php echo isset($filters['organismes']) && in_array($organisme->id, $filters['organismes']) ? 'checked' : null ?> >
+  <label class="btn btn-outline-primary btn-sm" for="btn-check-organismes-<?php echo $organisme->id ?>"><img src="/images/logos/organismes/<?php echo $organisme->logo ?>" class="img-fluid" style="height: 30px;" title="<?php echo $organisme->nom ?>"></label>
+</div>
+<?php endforeach ?>
+</div>
+
+<h5 class="my-3">Mots-clés liés à une déclaration</h5>
+
+<div id="sidebar-list-tags" class="fs-6 border-bottom" style="max-height:25vh; overflow-y:auto">
 <?php foreach (\Views\Sidebar::instance()->displayTags($filters) as $tag): ?>
 <div class="me-1 mb-1 d-inline-block">
   <input name="filters[tags][<?php echo $tag->id ?>]" type="checkbox" class="btn-check" id="btn-check-<?php echo $tag->id ?>" autocomplete="off"
