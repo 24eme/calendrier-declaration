@@ -148,29 +148,28 @@ class Evenement extends Cortex
         return $interval->days;
     }
 
+    public function addFilters($filters = []) {
+        if (empty($filters) === false) {
+            foreach ($filters as $type => $filter) {
+                if ($type === "query") { continue; }
+                $this->has($type, ['id IN ?', $filter]);
+            }
+        }
+    }
+
     public function getPourCalendrier(\DateTimeInterface $today, $filters = [])
     {
         $evenementsDates = [];
         $evenementsNonDates = [];
         $stop = $today->modify('last day of '.(self::$displayMonths - 2).' months');
-
-        if (empty($filters) === false) {
-            foreach ($filters as $type => $filter) {
-                if ($type === "query") { continue; }
-                if ($type === "tags") { $filter = array_keys($filter); }
-                $this->has($type, ['id IN ?', $filter]);
-            }
-        }
-
-        $evenements = $this->find();
+        $this->addFilters($filters);
+        $evenements = $this->find(['actif = ?', 1]);
         foreach ($evenements as $evenement) {
-            if (!$evenement->isActif()) continue;
             $isDate = $evenement->isDate(); // à une date de début ou de fin ?
 
             if (!$evenement->date_fin) {
                 $evenement->date_fin = $stop->format('Y-m-d');
             }
-
             if (!$evenement->date_debut) {
                 $evenement->date_debut = $today->modify('first day of january')->format('Y-m-d');
             }

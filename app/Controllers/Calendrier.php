@@ -35,7 +35,8 @@ class Calendrier extends Controller
     public function eventsList(Base $f3)
     {
         $evenement = new Evenement();
-        $evenements = $evenement->find(['actif = ?', 1], ['order' => 'nom ASC']);
+        $evenement->addFilters($f3->get('filters'));
+        $evenements = $evenement->find(['actif = ?', 1], ['order' => 'evenements.nom ASC']);
         $f3->set('content', 'eventslist.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements'));
     }
