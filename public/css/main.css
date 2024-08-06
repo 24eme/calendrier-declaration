@@ -36,15 +36,20 @@ header h1 {
 .cal-titre {
     height: var(--calendar-line-height);
     width: 400px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     border-right: var(--calendar-day-width) solid white;
     background: var(--calendar-bg-header-color);
     line-height: var(--calendar-line-height);
     padding-left: .25rem;
     position: sticky;
     left: 0;
+}
+
+.cal-titre-txt {
+    width:360px;
+    display:inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .cal-month[data-nbdays="28"] { --calendar-nb-days: 28; }
