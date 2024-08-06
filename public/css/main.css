@@ -8,8 +8,8 @@ header h1 {
 }
 
 #calendar {
-    --calendar-bg-header-color: #ececec;
-    --calendar-bg-day-color: #f6f6f6;
+    --calendar-bg-header-color: #f2f2f2;
+    --calendar-bg-day-color: #f8f9fa;
     --calendar-bg-day-event-color: #d1e7dd;
     --calendar-bg-day-event-end-color:#75b798;
     --calendar-bg-day-current-color: #6c757d;
@@ -58,7 +58,7 @@ header h1 {
 
 .cal-month {
     border-right: var(--calendar-day-width) solid white;
-    background: #ececec;
+    background: var(--calendar-bg-header-color);
     display: flex;
     justify-content: center;
     align-items: center;
