@@ -4,11 +4,11 @@
 <a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('home') ?>" role="button"><i class="bi bi-calendar-week"></i> Vue calendrier</a>
 <?php endif; ?>
 
-<h4 class="h4 mb-4">Filtrer par</h4>
+<h4 class="m-0">Filtrer par</h4>
 
 <form action="<?php echo Base::instance()->alias($route) ?>" method="get" id="filter-form">
 
-<h5 class="h5">Familles</h5>
+<h5 class="my-3">Familles</h5>
 
 <?php foreach ($familles->find() as $famille): ?>
 <div class="form-check form-switch m-1">
@@ -45,9 +45,9 @@
   <button class="btn btn-primary btn-sm" type="button" id="show-more-tags">Voir plus</button>
 </div>
 
-<h5 class="h5 my-3">Recherche</h5>
+<h5 class="my-3">Recherche</h5>
 
-<div class="row my-4">
+<div class="row my-3">
   <div class="input-group">
     <input class="form-control input-search" type="text" placeholder="Termes de recherche..." autocomplete="off" name="filters[query]" onkeypress="return event.keyCode!=13" value="" />
     <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
