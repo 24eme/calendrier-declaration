@@ -35,9 +35,9 @@
 <div id="sidebar-list-tags" class="fs-6 border-bottom" style="max-height:25vh; overflow-y:auto">
 <?php foreach (\Views\Sidebar::instance()->displayTags($filters) as $tag): ?>
 <div class="me-1 mb-1 d-inline-block">
-  <input name="filters[tags][<?php echo $tag->id ?>]" type="checkbox" class="btn-check" id="btn-check-<?php echo $tag->id ?>" autocomplete="off"
-      <?php echo isset($filters['tags']) && array_key_exists($tag->id, $filters['tags']) ? 'checked' : null ?> >
-  <label class="btn btn-outline-primary btn-sm" for="btn-check-<?php echo $tag->id ?>"><?php echo $tag->nom ?></label>
+  <input name="filters[tags][]" value="<?php echo $tag->id ?>" type="checkbox" class="btn-check" id="btn-check-tags-<?php echo $tag->id ?>" autocomplete="off"
+      <?php echo isset($filters['tags']) && in_array($tag->id, $filters['tags']) ? 'checked' : null ?> >
+  <label class="btn btn-outline-primary btn-sm" for="btn-check-tags-<?php echo $tag->id ?>"><?php echo $tag->nom ?></label>
 </div>
 <?php endforeach ?>
 </div>
