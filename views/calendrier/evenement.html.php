@@ -39,7 +39,7 @@
           <?php foreach ($event->organismes as $organisme): ?>
             <div class="organisme-card p-2">
               <div class="pb-2">
-                <img src="/images/logos/organismes/<?php echo $organisme->logo ?>" class="img-fluid" height="20px">
+                <img src="/images/logos/organismes/<?php echo $organisme->logo ?>" class="img-fluid" style="height: 25px">
                 <strong><?php echo $organisme->nom ?></strong>
               </div>
               <div>
