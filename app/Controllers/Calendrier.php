@@ -14,7 +14,6 @@ class Calendrier extends Controller
         $evenements = $evenement->getPourCalendrier($today, $f3->get('filters'));
 
         $f3->push('mainCssClass', 'main-calendar');
-        $f3->set('displaySideNavigation', 'd-block');
 
         $f3->set('content', 'home.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements', 'today'));
@@ -37,7 +36,6 @@ class Calendrier extends Controller
         $evenement = new Evenement();
         $evenements = $evenement->find(['actif = ?', 1], ['order' => 'nom ASC']);
         $f3->set('content', 'eventslist.html.php');
-        $f3->set('displaySideNavigation', 'd-block');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements'));
     }
 }

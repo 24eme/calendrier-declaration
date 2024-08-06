@@ -9,7 +9,6 @@ abstract class Controller
     public function __construct(Base $f3)
     {
         $f3->set('mainCssClass', ['col']);
-        $f3->set('displaySideNavigation', 'd-none');
     }
 
     public function beforeroute(Base $f3, $params)
