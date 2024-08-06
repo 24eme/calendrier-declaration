@@ -9,7 +9,7 @@
               <i class="bi bi-x-circle"></i>
             </a>
             <?php if ($event->liendeclaration): ?>
-            <a href="<?php echo $event->liendeclaration ?>" class="btn btn-danger float-end">
+            <a href="<?php echo $event->liendeclaration ?>" class="btn btn-warning float-end">
               Accéder à la déclaration <i class="d-inline-flex bi bi-box-arrow-up-right"></i>
             </a>
             <?php endif ?>
