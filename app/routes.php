@@ -7,7 +7,7 @@ use Controllers\Organisme;
 
 $f3 = \Base::instance();
 
-$f3->route('GET /', Calendrier::class.'->home');
+$f3->route('GET      @home:        /', Calendrier::class.'->home');
 
 $f3->route('GET      @events:       /evenements', Calendrier::class.'->eventsList');
 $f3->route('GET      @event:       /evenement/show/@evenement', Calendrier::class.'->show');

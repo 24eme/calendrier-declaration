@@ -1,12 +1,12 @@
-<?php if(Base::instance()->get('URI') == '/'): ?>
+<?php if ($route == 'home'): ?>
 <a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('events') ?>" role="button"><i class="bi bi-list"></i> Vue liste</a>
 <?php else: ?>
-<a class="btn btn-outline-primary mb-3" href="/" role="button"><i class="bi bi-calendar-week"></i> Vue calendrier</a>
+<a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('home') ?>" role="button"><i class="bi bi-calendar-week"></i> Vue calendrier</a>
 <?php endif; ?>
 
 <h4 class="h4 mb-4">Filtrer par</h4>
 
-<form action="/" method="get" id="filter-form">
+<form action="<?php echo Base::instance()->alias($route) ?>" method="get" id="filter-form">
 
 <h5 class="h5">Familles</h5>
 
@@ -45,7 +45,7 @@
 </form>
 
 <p class="primary-link text-end">
-  <a href="/">[x] Voir toutes les déclarations</a>
+  <a href="<?php echo Base::instance()->alias($route) ?>">[x] Voir toutes les déclarations</a>
 </p>
 
 <script>

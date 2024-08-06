@@ -19,6 +19,11 @@ class Sidebar extends Prefab
     public function render()
     {
         Base::instance()->mset($this->data);
+        $route = 'home';
+        if (strpos(Base::instance()->get('URI'), '/evenements') !== false) {
+            $route = 'events';
+        }
+        Base::instance()->set('route', $route);
         echo View::instance()->render('sidebar.html.php');
     }
 
