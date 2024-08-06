@@ -22,13 +22,14 @@ class Calendrier extends Controller
     public function show(Base $f3)
     {
         $evenementID = $f3->get('PARAMS.evenement');
+        $referer = $f3->get('GET.referer');
         $event = new Evenement();
         if ($event->load(['_id = ?', $evenementID]) === false) {
             return $f3->error(404, "L'évènement n'existe pas");
         }
 
         $f3->set('content', 'calendrier/evenement.html.php');
-        echo \View::instance()->render('layout.html.php', 'text/html', compact('event'));
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('event', 'referer'));
     }
 
     public function eventsList(Base $f3)

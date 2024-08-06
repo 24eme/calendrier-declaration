@@ -5,7 +5,7 @@
         <div class="col">
           <h2 class="h2"><?php echo $event->nom ?>
             <small><a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $event->id]) ?>"><i class="bi bi-pencil-square"></i></a></small>
-            <a href="/" class="ms-3 float-end">
+            <a href="<?php if ($referer && $referer == 'event'): ?><?php echo Base::instance()->alias('events') ?><?php else: ?>/<?php endif; ?>" class="ms-3 float-end">
               <i class="bi bi-x-circle"></i>
             </a>
             <?php if ($event->liendeclaration): ?>
@@ -63,7 +63,8 @@
                 <?php echo $tag->nom ?>
               </a>
             <?php endforeach ?>
-            <a href="/" class="btn btn-secondary float-end">Fermer</a>
+            <?php endif; ?>
+            <a href="<?php if ($referer && $referer == 'event'): ?><?php echo Base::instance()->alias('events') ?><?php else: ?>/<?php endif; ?>" class="btn btn-secondary float-end">Fermer</a>
         </p>
       </div>
     </div>
