@@ -17,7 +17,7 @@
 
     <header class=" text-center">
       <a href="/"><img src="/images/logos/logo-P.svg" alt="logo" /></a>
-      <span>déclarations viti/vinicoles</span>
+      <strong class="text-uppercase align-middle">déclarations viti/vinicoles</strong>
     </header>
 
     <div class="row">
