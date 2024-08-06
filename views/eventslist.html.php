@@ -1,7 +1,7 @@
 <table class="table table-striped table-hover table-sm">
   <thead>
     <tr>
-      <th>Déclaration</th>
+      <th>Déclarations</th>
       <th>Échéances</th>
     </tr>
   </thead>
