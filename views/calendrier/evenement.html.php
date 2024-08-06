@@ -59,6 +59,7 @@
 
       <div class="row">
         <p>
+            <?php if($event->tags): ?>
             <b class="text-decoration-underline me-3">Mots-clés :</b>
             <?php foreach ($event->tags as $tag): ?>
               <a href="/?<?php echo http_build_query(['filters' => ['tags' => [$tag->id => 'on']]]) ?>" class="btn btn-sm btn-outline-primary">
