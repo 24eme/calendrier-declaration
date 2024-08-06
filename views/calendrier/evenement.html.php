@@ -69,5 +69,4 @@
     </div>
   </div>
 </div>
-
-<div class="modal-backdrop" style="opacity: 90%;"></div>
+<div class="modal-backdrop" style="opacity: 85%;"></div>
