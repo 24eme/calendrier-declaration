@@ -20,7 +20,7 @@ class MonthTimeline
         $monthEnd = $monthStart->modify('last day of');
 
         $events = array_filter($evenements, function ($e) use ($monthStart) {
-            if ($monthStart >= new DateTimeImmutable($e['date_debut']) && $monthStart <= new DateTimeImmutable($e['date_fin'])) {
+            if ($monthStart >= new DateTimeImmutable($e->date_debut) && $monthStart <= new DateTimeImmutable($e->date_fin)) {
                 return true;
             }
 
@@ -47,10 +47,10 @@ class MonthTimeline
         }
 
         foreach ($events as $event) {
-            if ($currentDate >= new DateTime($event['date_debut']) && $currentDate <= new DateTime($event['date_fin'])) {
+            if ($currentDate >= new DateTime($event->date_debut) && $currentDate <= new DateTime($event->date_fin)) {
                 $class[] = 'active';
             }
-            if ($currentDate == new DateTime($event['date_fin']) && $event['isDate']) {
+            if ($currentDate == new DateTime($event->date_fin) && $event->isDate()) {
                 $class[] = 'jourfin';
             }
         }

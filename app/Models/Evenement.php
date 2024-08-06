@@ -181,7 +181,10 @@ class Evenement extends Cortex
             if(in_array($evenement->recurrence, array('mensuel', 'trimestriel', 'semestriel', 'annuel'))) {
                 while($dateFin <= $stop || $dateDebut <= $stop) {
                    if ($dateFin->format('Y') >= $today->format('Y')) {
-                       $evts[] = ['date_debut' => $dateDebut->format('Y-m-d'), 'date_fin' => $dateFin->format('Y-m-d'), 'nom' => $evenement->nom, 'id' => $evenement->id, 'isDate' => $isDate];
+                       $e = clone $evenement;
+                       $e->date_debut = $dateDebut->format('Y-m-d');
+                       $e->date_fin = $dateFin->format('Y-m-d');
+                       $evts[] = $e;
                    }
                    if ($evenement->recurrence == 'mensuel') {
                         $dateDebut->modify('+1 month');
@@ -202,7 +205,7 @@ class Evenement extends Cortex
                  }
             } else {
                 if ($dateFin->format('Y') >= $today->format('Y')) {
-                    $evts[] = ['date_debut' => $evenement->date_debut, 'date_fin' => $evenement->date_fin, 'nom' => $evenement->nom, 'id' => $evenement->id, 'isDate' => $isDate];
+                    $evts[] = $evenement;
                 }
             }
             if (!$evts) continue;
