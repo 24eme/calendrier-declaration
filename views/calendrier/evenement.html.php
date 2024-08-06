@@ -17,7 +17,9 @@
           </h2>
           <p class="tags-header">
             <span><i class="bi bi-bookmark me-1"></i> <?php echo $event->type_id->nom ?></span>
-            <span><i class="bi bi-person-rolodex me-1"></i> <?php echo implode(', ', $event->familles->getAll('nom')) ?></span>
+            <?php if ($event->familles): ?>
+            <span><i class="bi bi-person-square me-1"></i> <?php echo implode(', ', $event->familles->getAll('nom')) ?></span>
+            <?php endif; ?>
             <?php if($event->recurrence): ?>
             <span><i class="bi bi-calendar-range me-1"></i> Déclaration <?php echo $event->recurrence ?>le</span>
             <?php endif; ?>
