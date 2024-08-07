@@ -30,7 +30,7 @@ class Sidebar extends Prefab
         echo View::instance()->render('sidebar.html.php');
     }
 
-    public function displayTags($filtres) {
+    public function getTags($filtres) {
         if (! isset($filtres['tags']) || empty($filtres['tags'])) {
             foreach ($this->data['tags']->find() as $all) {
                 yield $all;
