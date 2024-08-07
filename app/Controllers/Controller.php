@@ -15,6 +15,7 @@ abstract class Controller
     {
         $filters = $f3->get('GET.filters') ?? [];
         $f3->set('filters', $filters);
+        $f3->set('activefiltersparams', http_build_query(array('filters' => $filters)));
     }
 
     public function afterroute($f3, $params) {}

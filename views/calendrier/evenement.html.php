@@ -1,11 +1,22 @@
-<div class="modal-xl modal show d-block">
+<?php
+
+  $lienfermer = "/";
+
+  if ($referer && $referer == 'event') {
+    $lienfermer = Base::instance()->alias('events');
+  }
+  if (Base::instance()->get('activefiltersparams')) {
+    $lienfermer .= '?'.Base::instance()->get('activefiltersparams');
+  }
+
+?><div class="modal-xl modal show d-block">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content p-3">
       <div class="row sticky-top bg-white pt-2">
         <div class="col">
           <h2 class="h2"><?php echo $event->nom ?>
             <small><a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $event->id]) ?>"><i class="bi bi-pencil-square"></i></a></small>
-            <a href="<?php if ($referer && $referer == 'event'): ?><?php echo Base::instance()->alias('events') ?><?php else: ?>/<?php endif; ?>" class="ms-3 float-end">
+            <a href="<?php echo $lienfermer; ?>" class="ms-3 float-end">
               <i class="bi bi-x-circle"></i>
             </a>
             <?php if ($event->liendeclaration): ?>
@@ -67,7 +78,7 @@
               </a>
             <?php endforeach ?>
             <?php endif; ?>
-            <a href="<?php if ($referer && $referer == 'event'): ?><?php echo Base::instance()->alias('events') ?><?php else: ?>/<?php endif; ?>" class="btn btn-secondary float-end">Fermer</a>
+            <a href="<?php echo $lienfermer; ?>" class="btn btn-secondary float-end">Fermer</a>
         </p>
       </div>
     </div>

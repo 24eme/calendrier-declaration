@@ -1,7 +1,7 @@
 <?php if ($route == 'home'): ?>
-<a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('events') ?>" role="button"><i class="bi bi-list"></i> Vue liste</a>
+<a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('events') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-list"></i> Vue liste</a>
 <?php else: ?>
-<a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('home') ?>" role="button"><i class="bi bi-calendar-week"></i> Vue calendrier</a>
+<a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-calendar-week"></i> Vue calendrier</a>
 <?php endif; ?>
 
 <h4 class="m-0">Filtrer par</h4>
