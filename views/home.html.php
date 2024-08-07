@@ -33,7 +33,7 @@
         for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
       ?>
       <div class="cal-month">
-        <?php echo \Views\MonthTimeline::render($date, $today, $evts); ?>
+        <?php echo \Helpers\MonthTimeline::render($date, $today, $evts); ?>
       </div>
       <?php
         $date->modify('next month');

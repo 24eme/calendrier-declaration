@@ -8,7 +8,7 @@ use Models\Organisme;
 use Models\Tag;
 use Models\Type;
 
-class Evenement extends Controller
+class AdminEvenement extends Controller
 {
     private $event;
 

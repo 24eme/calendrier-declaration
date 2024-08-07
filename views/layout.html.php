@@ -23,7 +23,7 @@
     <div class="row">
 
       <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
-        <?php Views\Sidebar::instance()->render(); ?>
+        <?php \Helpers\Sidebar::instance()->render(); ?>
       </div>
 
       <div id="main" class="<?php echo implode(" ", Base::instance()->get('mainCssClass')) ?>">

@@ -1,6 +1,6 @@
 <?php
 
-namespace Views;
+namespace Helpers;
 
 use Prefab, View, Base;
 use Models\{Organisme, Famille, Tag};

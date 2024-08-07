@@ -33,7 +33,7 @@
 <h5 class="my-3">Mots-clés liés à une déclaration</h5>
 
 <div id="sidebar-list-tags" class="fs-6 border-bottom" style="max-height:25vh; overflow-y:auto">
-<?php foreach (\Views\Sidebar::instance()->displayTags($filters) as $tag): ?>
+<?php foreach (\Helpers\Sidebar::instance()->displayTags($filters) as $tag): ?>
 <div class="me-1 mb-1 d-inline-block">
   <input name="filters[tags][]" value="<?php echo $tag->id ?>" type="checkbox" class="btn-check" id="btn-check-tags-<?php echo $tag->id ?>" autocomplete="off"
       <?php echo isset($filters['tags']) && in_array($tag->id, $filters['tags']) ? 'checked' : null ?> >

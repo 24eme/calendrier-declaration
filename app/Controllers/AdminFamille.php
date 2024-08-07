@@ -6,7 +6,7 @@ use Base;
 use View;
 use Models\Famille as F;
 
-class Famille extends Controller
+class AdminFamille extends Controller
 {
     private $famille;
 

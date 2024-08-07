@@ -16,7 +16,7 @@
         </a>
         <?php endif ?>
       </td>
-      <td><?php echo \Views\MonthTimeline::renderDatelines($evenement); ?></td>
+      <td><?php echo \Helpers\MonthTimeline::renderDatelines($evenement); ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>

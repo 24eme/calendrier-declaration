@@ -1,6 +1,6 @@
 <?php
 
-namespace Views;
+namespace Helpers;
 
 use View;
 use DateTime;
