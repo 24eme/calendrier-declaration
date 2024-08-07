@@ -13,7 +13,10 @@ class Sidebar extends Prefab
     {
         $this->data['familles'] = new Famille();
         $this->data['organismes'] = new Organisme();
+        $this->data['organismes'] = $this->data['organismes']->has('evenements', array('actif'));
         $this->data['tags'] = new Tag();
+        $this->data['tags'] = $this->data['tags']->has('evenements', array('actif'));
+
     }
 
     public function render()
