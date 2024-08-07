@@ -4,7 +4,22 @@
 
   <div class="mainContent clearfix">
   <form method="post" action="<?php echo $formurl ?>" id="event-form">
+
     <div class="row mb-3">
+      <label for="nom" class="col-2 col-form-label"><strong>Nom</strong></label>
+      <div class="col-4">
+        <input type="text" class="form-control " name="nom" value="<?php echo $event->nom ?>" style="font-weight: bold;" />
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="description" class="col-2 col-form-label">Description</label>
+      <div class="col-4">
+        <div id="editor" class="form-control" name="description"><?php echo $event->description ?></div>
+      </div>
+    </div>
+
+    <div class="row mt-4 mb-3">
       <label for="type_id" class="col-2 col-form-label">Type de déclaration</label>
         <div class="col-4">
           <select class="form-control " name="type_id">
@@ -39,20 +54,6 @@
         <div class="col-4">
           <input type="date" min="2000-01-01" max="2100-12-31" class="form-control " name="date_fin" value="<?php echo $event->date_fin ?>" />
          </div>
-      </div>
-
-      <div class="row mb-3">
-        <label for="nom" class="col-2 col-form-label">Nom</label>
-        <div class="col-4">
-          <input type="text" class="form-control " name="nom" value="<?php echo $event->nom ?>" />
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label for="description" class="col-2 col-form-label">Description</label>
-        <div class="col-4">
-          <div id="editor" class="form-control" name="description"><?php echo $event->description ?></div>
-        </div>
       </div>
 
       <div class="row mb-3">
