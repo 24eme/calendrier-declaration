@@ -49,7 +49,7 @@
 
 <div class="row my-3">
   <div class="input-group">
-      <input class="form-control input-search" type="text" placeholder="Termes de recherche..." autocomplete="off" name="filters[query]" value="<?php echo $filters['query'];?>" />
+      <input class="form-control input-search" type="text" placeholder="Termes de recherche..." autocomplete="off" name="filters[query]" value="<?php echo $filters['query'] ?? '';?>" />
       <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
   </div>
 </div>
