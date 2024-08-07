@@ -43,3 +43,13 @@
     <?php endforeach; ?>
   </div>
 </div>
+<script>
+    const jours = document.querySelectorAll(".active");
+    for (let i = 0, j = 0; i < jours.length; i++) {
+      function processJourClick(event) {
+        console.log(['active click', event, this.parentElement.parentElement.childNodes[1].childNodes[1]]);
+        this.parentElement.parentElement.childNodes[1].childNodes[1].click();
+      }
+      jours[i].addEventListener("click", processJourClick);
+    }
+</script>
