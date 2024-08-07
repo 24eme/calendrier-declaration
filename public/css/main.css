@@ -110,3 +110,13 @@ p.tags-header > span:not(:last-child) {
 .ql-container {
     height: unset;
 }
+
+#sidebar-list-organismes label {
+opacity: 0.6;
+}
+.btn.btn-outline-primary.btn-sm {
+}
+
+.btn-check:checked + .btn {
+opacity: 1 !important;
+}
