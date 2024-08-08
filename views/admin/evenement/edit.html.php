@@ -68,7 +68,7 @@
         <label for="organismes" class="col-2 col-form-label">Organismes destinataires</label>
         <fieldset class="col-4">
           <?php foreach ($organismes->find() as $organisme): ?>
-            <div class="form-check form-check-inline">
+            <div class="form-check form-check">
               <input name="organismes[]" <?php if ($event->hasOrganisme($organisme->id)): ?>checked<?php endif ?> class="form-check-input " id="organisme-<?php echo $organisme->id ?>" type="checkbox" value="<?php echo $organisme->id ?>">
               <label class="form-check-label" for="organisme-<?php echo $organisme->id ?>"><?php echo $organisme->nom ?></label>
             </div>
