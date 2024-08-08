@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Déclarations</th>
+      <th>Déclencheur</th>
       <th>Échéances</th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
         </a>
         <?php endif ?>
       </td>
+      <td><?php echo $evenement->element_declencheur; ?></td>
       <td><?php echo \Helpers\MonthTimeline::renderDatelines($evenement); ?></td>
     </tr>
     <?php endforeach; ?>
