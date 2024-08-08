@@ -11,7 +11,7 @@ class Evenement extends Cortex
     protected $db = 'DB';
     protected $table = 'evenements';
 
-    public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'description', 'date_debut', 'date_fin', 'textedeloi', 'liendeclaration', 'actif', 'recurrence'];
+    public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'description', 'date_debut', 'date_fin', 'element_declencheur', 'textedeloi', 'liendeclaration', 'actif', 'recurrence'];
 
     public static $displayMonths = 16;
 
@@ -27,6 +27,7 @@ class Evenement extends Cortex
         'nom' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => false, 'index' => true],
         'date_debut' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
         'date_fin' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
+        'element_declencheur' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'description' => ['type' => \DB\SQL\Schema::DT_TEXT, 'nullable' => false, 'index' => true],
         'textedeloi' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'liendeclaration' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
