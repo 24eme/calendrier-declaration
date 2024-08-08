@@ -54,7 +54,14 @@
         <div class="col-4">
           <input type="date" min="2000-01-01" max="2100-12-31" class="form-control " name="date_fin" value="<?php echo $event->date_fin ?>" />
          </div>
-      </div>
+       </div>
+
+       <div class="row mb-3">
+         <label for="element_declencheur" class="col-2 col-form-label">Élément déclencheur</label>
+         <div class="col-4">
+           <input type="text" class="form-control " name="element_declencheur" value="<?php echo $event->element_declencheur ?>" />
+          </div>
+       </div>
 
       <div class="row mb-3">
         <label for="organismes" class="col-2 col-form-label">Organismes destinataires</label>
