@@ -49,6 +49,7 @@
           <input type="date" min="2000-01-01" max="2100-12-31" class="form-control " name="date_debut" value="<?php echo $event->date_debut ?>" />
         </div>
       </div>
+
       <div class="row mb-3">
         <label for="date_fin" class="col-2 col-form-label">Date de fin</label>
         <div class="col-4">
