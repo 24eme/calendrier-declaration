@@ -112,6 +112,7 @@
       </div>
 
       <div class="row mb-3">
+        <label class="col-2 col-form-label">&nbsp;</label>
         <div class="col-4">
           <div class="form-check form-check-inline">
             <input type="checkbox" class="form-check-input " name="actif" id="actif" value="1" <?php echo $event->actif ? 'checked' : '' ?>/>
