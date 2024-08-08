@@ -12,41 +12,44 @@
 ?><div class="modal-xl modal show d-block">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content p-3">
-      <div class="row sticky-top bg-white pt-2">
+      <div class="row sticky-md-top bg-white pt-2">
         <div class="col">
           <h2 class="h2"><?php echo $event->nom ?>
-            <small><a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $event->id]) ?>"><i class="bi bi-pencil-square"></i></a></small>
-            <a href="<?php echo $lienfermer; ?>" class="ms-3 float-end">
+            <small class="d-none d-md-inline"><a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $event->id]) ?>"><i class="bi bi-pencil-square"></i></a></small>
+            <a href="<?php echo $lienfermer; ?>" class="ms-3 float-end d-none d-md-inline">
               <i class="bi bi-x-circle"></i>
             </a>
             <?php if ($event->liendeclaration): ?>
             <a href="<?php echo $event->liendeclaration ?>" class="btn btn-warning float-end">
-              Accéder à la déclaration <i class="d-inline-flex bi bi-box-arrow-up-right"></i>
+              <span class="d-none d-md-inline">Accéder à la déclaration </span><i class="d-inline-flex bi bi-box-arrow-up-right"></i>
             </a>
             <?php endif ?>
             <a href="/evenement/export/<?php echo $event->id ?>" class="btn btn-primary float-end mx-2" title="Exporter la déclaration dans mon calendrier personnel"><i class="bi bi-calendar-plus"></i></a>
           </h2>
           <p class="tags-header">
-            <span><i class="bi bi-bookmark me-1"></i> <?php echo $event->type_id->nom ?></span>
+            <span><i class="bi bi-bookmark me-1"></i>&nbsp;<?php echo $event->type_id->nom ?></span>
             <?php if ($event->familles): ?>
-            <span><i class="bi bi-person-square me-1"></i> <?php echo implode(', ', $event->familles->getAll('nom')) ?></span>
+            <span class="d-md-none"><br /></span>
+            <span><i class="bi bi-person-square me-1"></i>&nbsp;<?php echo implode(', ', $event->familles->getAll('nom')) ?></span>
             <?php endif; ?>
             <?php if($event->recurrence): ?>
-            <span><i class="bi bi-calendar-range me-1"></i> Déclaration <?php echo $event->recurrence ?>le</span>
+            <span class="d-md-none"><br /></span>
+            <span><i class="bi bi-calendar-range me-1"></i>&nbsp;Déclaration <?php echo $event->recurrence ?>le</span>
             <?php endif; ?>
           </p>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-7">
+        <div class="col-12 col-md-7">
           <h3 class="h3">Information</h3>
           <p class="mt-4 mb-0">
             <?php echo $event->description ?>
           </p>
         </div>
 
-        <div class="col-5">
+        <div class="col-12 col-md-5">
+          <h3>Organismes destinataires</h3>
           <?php foreach ($event->organismes as $organisme): ?>
             <div class="organisme-card p-2">
               <div class="pb-2">
@@ -78,6 +81,7 @@
               </a>
             <?php endforeach ?>
             <?php endif; ?>
+            <span class="d-md-none"><br /></span>
             <a href="<?php echo $lienfermer; ?>" class="btn btn-secondary float-end">Fermer</a>
         </p>
       </div>
