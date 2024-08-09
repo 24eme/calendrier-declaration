@@ -20,6 +20,7 @@ header h1 {
 
 #sidebar {
     width: 17rem;
+    min-height: 60vh;
 }
 
 .cal-header {
