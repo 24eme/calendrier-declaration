@@ -8,4 +8,6 @@ $f3->config(__DIR__.'/../app/config.ini');
 
 $f3->set('DB', DBManager::init($f3->get('db.dsn')));
 
+new Session();
+
 $f3->run();
