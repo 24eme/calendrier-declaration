@@ -13,7 +13,7 @@
   <tbody>
     <?php foreach ($organismes as $organisme): ?>
     <tr>
-      <td><img class="img-fluid" height="20px" src="/images/logos/organismes/<?php echo $organisme->logo ?>"></td>
+      <td><img class="img-fluid" style="height: 30px;" src="/images/logos/organismes/<?php echo $organisme->logo ?>"></td>
       <td><?php echo $organisme->nom ?></td>
       <td><?php echo nl2br("$organisme->adresse \n $organisme->code_postal $organisme->ville") ?></td>
       <td>
