@@ -4,6 +4,7 @@ use Controllers\Calendrier;
 use Controllers\AdminEvenement;
 use Controllers\AdminFamille;
 use Controllers\AdminOrganisme;
+use Controllers\AdminAuth;
 
 $f3 = \Base::instance();
 
@@ -29,3 +30,7 @@ $f3->route('GET|POST @famillecreate: /admin/familles/create', AdminFamille::clas
 $f3->route('GET      @familleedit:   /admin/familles/edit/@famille', AdminFamille::class.'->edit');
 $f3->route('POST     @familleupdate: /admin/familles/update/@famille', AdminFamille::class.'->update');
 $f3->route('GET      @familledelete: /admin/familles/delete/@famille', AdminFamille::class.'->delete');
+
+$f3->route('GET      @login: /admin', AdminAuth::class.'->index');
+$f3->route('GET      @logout: /admin/logout', AdminAuth::class.'->logout');
+$f3->route('POST     @auth: /admin/auth', AdminAuth::class.'->authenticate');
