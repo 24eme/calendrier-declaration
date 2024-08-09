@@ -29,7 +29,7 @@
       </div>
       <?php endif; ?>
 
-      <div id="main" class="<?php echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
+      <div id="main" class="<?php if (Base::instance()->get('mainCssClass')) echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
       </div>
     </div>
