@@ -1,3 +1,16 @@
+<?php if(Base::instance()->get('SESSION.user')): ?>
+<h4 class="m-0">Administration</h4>
+
+<div class="list-group my-3">
+  <a href="<?php echo Base::instance()->alias('eventcreate') ?>" class="list-group-item list-group-item-action"><i class="bi bi-calendar-plus"></i> Créer une déclaration</a>
+  <a href="<?php echo Base::instance()->alias('famillelist') ?>" class="list-group-item list-group-item-action"><i class="bi bi-people-fill"></i> Familles viti/vinicoles</a>
+  <a href="<?php echo Base::instance()->alias('organismelist') ?>" class="list-group-item list-group-item-action"><i class="bi bi-grid-3x3-gap-fill"></i> Organismes destinataires</a>
+  <a href="<?php echo Base::instance()->alias('logout') ?>" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-left"></i> Déconnexion</a>
+</div>
+<?php endif; ?>
+
+<?php if (strpos(Base::instance()->get('URI'), '/admin') === false): ?>
+
 <?php if ($route == 'home'): ?>
 <a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('events') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-list"></i> Vue liste</a>
 <?php else: ?>
@@ -59,6 +72,8 @@
 <p class="primary-link text-end">
   <a href="<?php echo Base::instance()->alias($route) ?>">[x] Voir toutes les déclarations</a>
 </p>
+
+<?php endif; ?>
 
 <script>
   const listtags = document.getElementById("sidebar-list-tags")
