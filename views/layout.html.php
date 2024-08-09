@@ -49,7 +49,7 @@
           <a class="nav-link" id="nav-link-mentions-legales" href="https://calendrier-vitivini.vinsdeprovence.com/mentions-legales">Mentions légales</a>
         </li>
         <li class="nav-item d-inline-block mx-2" id="nav-item-admin" role="menuitem">
-          <a class="nav-link" id="nav-link-admin" href="https://calendrier-vitivini.vinsdeprovence.com/admin"><i class="fas fa-user-lock"></i> Administration</a>
+          <a class="nav-link" id="nav-link-admin" href="<?php echo Base::instance()->alias('login') ?>"><i class="fas fa-user-lock"></i> Administration</a>
         </li>
       </ul>
     </div>
