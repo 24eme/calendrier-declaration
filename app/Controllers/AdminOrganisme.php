@@ -6,7 +6,7 @@ use Base;
 use View;
 use Models\Organisme as Org;
 
-class AdminOrganisme extends Controller
+class AdminOrganisme extends AdminController
 {
     private $organisme;
 
