@@ -15,7 +15,9 @@
       <div class="row sticky-md-top bg-white pt-2">
         <div class="col">
           <h2 class="h2"><?php echo $event->nom ?>
+            <?php if(Base::instance()->get('SESSION.user')): ?>
             <small class="d-none d-md-inline"><a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $event->id]) ?>"><i class="bi bi-pencil-square"></i></a></small>
+            <?php endif ?>
             <a href="<?php echo $lienfermer; ?>" class="ms-3 float-end d-none d-md-inline">
               <i class="bi bi-x-circle"></i>
             </a>
