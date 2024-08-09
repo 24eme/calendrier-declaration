@@ -23,9 +23,11 @@
 
     <div class="row">
 
+      <?php if (Base::instance()->get('URI') != '/admin'): ?>
       <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
         <?php \Helpers\Sidebar::instance()->render(); ?>
       </div>
+      <?php endif; ?>
 
       <div id="main" class="<?php echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
