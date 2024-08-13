@@ -44,12 +44,21 @@
   </div>
 </div>
 <script>
-    const jours = document.querySelectorAll(".active");
-    for (let i = 0, j = 0; i < jours.length; i++) {
-      function processJourClick(event) {
-        console.log(['active click', event, this.parentElement.parentElement.childNodes[1].childNodes[1]]);
-        this.parentElement.parentElement.childNodes[1].childNodes[1].click();
+  document.getElementById('calendar').addEventListener('click', function (e) {
+    if (e.target.classList.contains('active')) {
+      const ligne = e.target.closest('.cal-ligne')
+      if (! ligne) {
+        console.warn('Pas d\'entête...')
+        return false
       }
-      jours[i].addEventListener("click", processJourClick);
+
+      const link = ligne.querySelector('a.cal-titre-txt')
+      if (! link) {
+        console.warn('Pas de lien...')
+        return false
+      }
+
+      link.click()
     }
+  })
 </script>
