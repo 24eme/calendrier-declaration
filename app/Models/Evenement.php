@@ -47,7 +47,7 @@ class Evenement extends Cortex
         'familles' => ['has-many' => [Famille::class, 'evenements', 'evenement_famille', 'relField' => 'evenement_id']],
     ];
 
-    private $extra_filter;
+    private $extra_filter = [];
 
     public function __construct()
     {
@@ -59,8 +59,6 @@ class Evenement extends Cortex
             $self->touch('date_creation');
             $self->touch('date_modification');
         });
-
-        $this->extra_filter = [];
 
         parent::__construct();
     }
@@ -157,9 +155,7 @@ class Evenement extends Cortex
         if (empty($filters) === false) {
             foreach ($filters as $type => $filter) {
                 if ($type === "query") {
-                    if ($filter) {
-                        $this->extra_filter[] = ['description LIKE ? OR nom LIKE ?', '%'.$filter.'%', '%'.$filter.'%'];
-                    }
+                    $this->extra_filter[] = ['description LIKE ? OR nom LIKE ?', '%'.$filter.'%', '%'.$filter.'%'];
                     continue;
                 }
                 $this->has($type, ['id IN ?', $filter]);
@@ -167,24 +163,12 @@ class Evenement extends Cortex
         }
     }
 
-    public function find($filter=NULL,?array $options=NULL,$ttl=0) {
-        $f = [];
-        if ($filter) {
-            $f = $filter;
-        }
-        $f[0] = '('.$f[0].')';
-        foreach($this->extra_filter as $e) {
-            if (count($f)) {
-                $f[0] .= ' AND ';
-            }else{
-                $f[0] = '';
-            }
-            $f[0] .= '('.array_shift($e).')';
-            foreach( $e as $t) {
-                $f[] = $t;
-            }
-        }
-        return parent::find($f, $options, $ttl);
+    public function computeFilters($actif = 1)
+    {
+        return $this->mergeFilter([
+            ['actif = ?', $actif],
+            ...$this->extra_filter // ou array_slice si php < 7.4
+        ]);
     }
 
     public function getPourCalendrier(\DateTimeInterface $today, $filters = [])
@@ -193,7 +177,7 @@ class Evenement extends Cortex
         $evenementsNonDates = [];
         $stop = $today->modify('last day of '.(self::$displayMonths - 2).' months');
         $this->addFilters($filters);
-        $evenements = $this->find(['actif = ?', 1]);
+        $evenements = $this->find($this->computeFilters());
         if ($evenements) foreach ($evenements as $evenement) {
             $isDate = $evenement->isDate(); // à une date de début ou de fin ?
 
