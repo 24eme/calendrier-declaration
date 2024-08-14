@@ -47,11 +47,23 @@
       <ul class="timeline">
           <li class="timeline-item">
               <div class="timeline-body">
-                  <div class="timeline-meta">Aujourd'hui</div>
+                  <div class="timeline-meta">
+                      Aujourd'hui
+                      <span class="text-body-secondary"><?php echo $today->format('d m Y') ?></span>
+                  </div>
                   <div class="timeline-content">
                       <h6>Vous pouvez déclarer :</h6>
                       <ul>
-                        <li>Bla bla bla <i class="bi bi-box-arrow-up-right"></i></li>
+                        <?php foreach ($timeline['today'] as $nom => $lien): ?>
+                            <li>
+                                <?php echo $nom ?>
+                                <?php if ($lien): ?>
+                                    <a href="<?php echo $lien ?>">
+                                        <i class="bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
+                                    </a>
+                                <?php endif ?>
+                            </li>
+                        <?php endforeach ?>
                       </ul>
                   </div>
               </div>
