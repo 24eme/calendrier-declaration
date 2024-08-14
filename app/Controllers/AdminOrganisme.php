@@ -4,7 +4,7 @@ namespace Controllers;
 
 use Base;
 use View;
-use Models\Organisme as Org;
+use Models\Organisme;
 
 class AdminOrganisme extends AdminController
 {
@@ -15,7 +15,7 @@ class AdminOrganisme extends AdminController
         parent::beforeroute($f3, $params);
 
         if ($organismeID = $f3->get('PARAMS.organisme')) {
-            $this->organisme = new Org();
+            $this->organisme = new Organisme();
             if ($this->organisme->load(['_id = ?', $organismeID]) === false) {
                 return $f3->error(404, "L'organisme n'existe pas");
             }
@@ -24,7 +24,7 @@ class AdminOrganisme extends AdminController
 
     public function index(Base $f3, $params)
     {
-        $organisme = new Org();
+        $organisme = new Organisme();
         $organismes = $organisme->find();
 
         $f3->set('content', 'admin/organisme/list.html.php');
@@ -33,7 +33,7 @@ class AdminOrganisme extends AdminController
 
     public function new($f3, $params)
     {
-        $this->organisme = new Org();
+        $this->organisme = new Organisme();
 
         if ($f3->get('VERB') === 'GET') {
             return $this->edit($f3, $params);

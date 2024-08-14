@@ -4,7 +4,7 @@ namespace Controllers;
 
 use Base;
 use View;
-use Models\Famille as F;
+use Models\Famille;
 
 class AdminFamille extends AdminController
 {
@@ -15,7 +15,7 @@ class AdminFamille extends AdminController
         parent::beforeroute($f3, $params);
 
         if ($familleID = $f3->get('PARAMS.famille')) {
-            $this->famille = new F();
+            $this->famille = new Famille();
             if ($this->famille->load(['_id = ?', $familleID]) === false) {
                 return $f3->error(404, "La famille n'existe pas");
             }
@@ -24,7 +24,7 @@ class AdminFamille extends AdminController
 
     public function index(Base $f3, $params)
     {
-        $famille = new F();
+        $famille = new Famille();
         $familles = $famille->find();
 
         $f3->set('content', 'admin/famille/list.html.php');
@@ -33,7 +33,7 @@ class AdminFamille extends AdminController
 
     public function new($f3, $params)
     {
-        $this->famille = new F();
+        $this->famille = new Famille();
 
         if ($f3->get('VERB') === 'GET') {
             $f3->set('formurl', $f3->alias('famillecreate'));

@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-use Models\Evenement as Event;
+use Models\Evenement;
 use Models\Famille;
 use Models\Organisme;
 use Models\Tag;
@@ -17,7 +17,7 @@ class AdminEvenement extends AdminController
         parent::beforeroute($f3, $params);
 
         if ($evenementID = $f3->get('PARAMS.evenement')) {
-            $this->event = new Event();
+            $this->event = new Evenement();
             $this->event->countRel('tags');
             if ($this->event->load(['_id = ?', $evenementID]) === false) {
                 return $f3->error(404, "L'évènement n'existe pas");
@@ -27,7 +27,7 @@ class AdminEvenement extends AdminController
 
     public function index()
     {
-        $events = new Event();
+        $events = new Evenement();
         echo '<ul>';
         foreach ($events->find() as $event) {
             echo '<li>'.$event->nom.': '.PHP_EOL;
@@ -43,7 +43,7 @@ class AdminEvenement extends AdminController
 
     public function new($f3, $params)
     {
-        $this->event = new Event();
+        $this->event = new Evenement();
 
         if ($f3->get('VERB') === 'GET') {
             $f3->set('formurl', $f3->alias('eventcreate'));
