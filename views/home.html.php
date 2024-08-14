@@ -68,6 +68,27 @@
                   </div>
               </div>
           </li>
+          <?php foreach ($timeline['events'] as $date => $events): ?>
+          <li class="timeline-item">
+              <div class="timeline-body">
+                  <div class="timeline-meta"><?php echo DateTime::createFromFormat('Y-m-d', $date)->format("d M Y") ?></div>
+                  <div class="timeline-content">
+                      <?php foreach ($events as $e): ?>
+                        <?php if ($e->date_debut === $date): ?>
+                            <div class="opacity-50 pb-3">
+                                Ouverture de : <?php echo $e->nom ?>
+                            </div>
+                        <?php else: ?>
+                            <div class="pb-3">
+                                Fermeture de : <?php echo $e->nom ?><br/>
+                                <span class="opacity-50">Ouvert depuis le : <?php echo DateTime::createFromFormat('Y-m-d', $e->date_debut)->format("d F Y") ?></span>
+                            </div>
+                        <?php endif ?>
+                      <?php endforeach ?>
+                  </div>
+              </div>
+          </li>
+          <?php endforeach ?>
       </ul>
   </div>
 </div>
