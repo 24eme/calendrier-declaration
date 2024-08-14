@@ -42,7 +42,24 @@
     </div>
     <?php endforeach; ?>
   </div>
+
+  <div id="timeline" class="mt-5" style="padding-bottom: 100px">
+      <ul class="timeline">
+          <li class="timeline-item">
+              <div class="timeline-body">
+                  <div class="timeline-meta">Aujourd'hui</div>
+                  <div class="timeline-content">
+                      <h6>Vous pouvez déclarer :</h6>
+                      <ul>
+                        <li>Bla bla bla <i class="bi bi-box-arrow-up-right"></i></li>
+                      </ul>
+                  </div>
+              </div>
+          </li>
+      </ul>
+  </div>
 </div>
+
 <script>
   document.getElementById('calendar').addEventListener('click', function (e) {
     if (e.target.classList.contains('active')) {
