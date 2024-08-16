@@ -54,12 +54,14 @@
                   <div class="timeline-content">
                       <h6>Vous pouvez déclarer :</h6>
                       <ul>
-                        <?php foreach ($timeline['today'] as $nom => $lien): ?>
+                        <?php foreach ($timeline['today'] as $nom => $event): ?>
                             <li>
-                                <?php echo $nom ?>
-                                <?php if ($lien): ?>
-                                    <a href="<?php echo $lien ?>">
-                                        <i class="bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
+                                <a href="<?php echo Base::instance()->alias('event', ['evenement' => $event->id], Base::instance()->get('activefiltersparams')) ?>">
+                                    <?php echo $nom ?>
+                                </a>
+                                <?php if ($event->liendeclaration): ?>
+                                    <a href="<?php echo $event->liendeclaration ?>">
+                                        <i class="ms-1 bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
                                     </a>
                                 <?php endif ?>
                             </li>

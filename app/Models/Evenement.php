@@ -240,7 +240,7 @@ class Evenement extends Cortex
         foreach ($evenements as $nom => $events) {
             foreach ($events as $evenement) {
                 if ($evenement->date_debut <= $today->format('Y-m-d') && $evenement->date_fin >= $today->format('Y-m-d')) {
-                    $timeline['today'][$nom] = $evenement->liendeclaration;
+                    $timeline['today'][$nom] = $evenement;
                 }
             }
         }
