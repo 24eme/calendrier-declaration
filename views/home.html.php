@@ -67,6 +67,18 @@
                             </li>
                         <?php endforeach ?>
                       </ul>
+                      <?php if (isset($timeline['nondate'])): ?>
+                        <details>
+                            <summary class="mt-2">
+                                Ainsi que <?php echo count($timeline['nondate']) ?> déclaration(s) sans date butoir :
+                            </summary>
+                            <ul>
+                                <?php foreach ($timeline['nondate'] as $event): ?>
+                                    <li>kkkw</li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </details>
+                      <?php endif ?>
                   </div>
               </div>
           </li>

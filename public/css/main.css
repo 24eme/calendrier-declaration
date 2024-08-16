@@ -207,6 +207,23 @@ opacity: 1 !important;
     }
 }
 
+summary {
+    display: block;
+}
+
+summary::after {
+    margin-left: 1ch;
+    display: inline-block;
+    font-family: bootstrap-icons !important;
+    content: "\F231";
+    transition: 0.2s;
+    font-size: 10px;
+}
+
+details[open] > summary::after {
+    transform: rotate(90deg);
+}
+
 /* Admin */
 
 .form-signin {

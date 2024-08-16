@@ -137,8 +137,11 @@ class Evenement extends Cortex
         return $this->actif;
     }
 
-    public function isDate()
+    public function isDate($initial = false)
     {
+        if ($initial) {
+            return $this->initial('date_fin') || $this->initial('date_debut');
+        }
         return ($this->date_fin || $this->date_debut);
     }
 
@@ -239,6 +242,11 @@ class Evenement extends Cortex
         $timeline = [];
         foreach ($evenements as $nom => $events) {
             foreach ($events as $evenement) {
+                if (! $evenement->isDate(true)) {
+                    $timeline['nondate'][$nom] = $evenement;
+                    continue;
+                }
+
                 if ($evenement->date_debut <= $today->format('Y-m-d') && $evenement->date_fin >= $today->format('Y-m-d')) {
                     $timeline['today'][$nom] = $evenement;
                 }
