@@ -168,10 +168,6 @@ opacity: 1 !important;
 }
 
 .timeline > .timeline-item .timeline-meta {
-    padding: 0 0 1rem 2rem;
-}
-
-.timeline > .timeline-item:first-child .timeline-meta {
     padding: 2rem 0 1rem 2rem;
 }
 
