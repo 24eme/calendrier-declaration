@@ -257,6 +257,10 @@ class Evenement extends Cortex
 
         foreach ($evenements as $nom => $events) {
             foreach ($events as $evenement) {
+                if (! $evenement->isDate(true)) {
+                    continue;
+                }
+
                 if ($evenement->date_fin < $today->format('Y-m-d')) {
                     continue;
                 }
