@@ -73,8 +73,17 @@
                                 Ainsi que <?php echo count($timeline['nondate']) ?> déclaration(s) sans date butoir :
                             </summary>
                             <ul>
-                                <?php foreach ($timeline['nondate'] as $event): ?>
-                                    <li>kkkw</li>
+                                <?php foreach ($timeline['nondate'] as $nom => $event): ?>
+                                <li>
+                                    <a href="<?php echo Base::instance()->alias('event', ['evenement' => $event->id], Base::instance()->get('activefiltersparams')) ?>">
+                                        <?php echo $nom ?>
+                                    </a>
+                                    <?php if ($event->liendeclaration): ?>
+                                        <a href="<?php echo $event->liendeclaration ?>">
+                                            <i class="ms-1 bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
+                                        </a>
+                                    <?php endif ?>
+                                </li>
                                 <?php endforeach; ?>
                             </ul>
                         </details>
