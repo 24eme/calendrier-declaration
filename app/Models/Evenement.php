@@ -264,6 +264,10 @@ class Evenement extends Cortex
                     continue;
                 }
 
+                if ($evenement->date_fin >= $dateFin->format('Y-m-d')) {
+                    continue;
+                }
+
                 if ($evenement->date_debut > $today->format('Y-m-d')) {
                     $timeline['events'][$evenement->date_debut][] = $evenement;
                 }
