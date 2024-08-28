@@ -8,6 +8,9 @@ $f3->config(__DIR__.'/../app/config.ini');
 
 $f3->set('DB', DBManager::init($f3->get('db.dsn')));
 
+$f3->set('THEME', implode(DIRECTORY_SEPARATOR, [$f3->get('ROOT'), "themes" , $f3->get("theme")]));
+
+
 new Session();
 
 $f3->run();

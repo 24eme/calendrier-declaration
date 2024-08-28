@@ -10,15 +10,16 @@
     <link rel="stylesheet" href="/css/bootstrap-icons.min.css">
     <link href="/css/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css" />
+    <?php include(Base::instance()->get('THEME').'/css.php'); ?>
 </head>
 <body>
-
   <div class="container-fluid">
 
-    <header class=" text-center">
-      <a href="/"><img src="/images/logos/logo-P.svg" alt="logo" /></a>
-      <span class="d-md-none"><br /></span>
-      <strong class="text-uppercase align-middle">déclarations viti/vinicoles</strong>
+    <header class="d-flex">
+      <a href="/" class="text-start"><?php include(Base::instance()->get('THEME').'/header.php'); ?></a>
+      <div class="m-auto">
+        <strong class="text-uppercase align-middle">déclarations viti/vinicoles</strong>
+      </div>
     </header>
 
     <div class="row">
