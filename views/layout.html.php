@@ -10,13 +10,18 @@
     <link rel="stylesheet" href="/css/bootstrap-icons.min.css">
     <link href="/css/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css" />
-    <?php include(Base::instance()->get('THEME').'/css.php'); ?>
+    <?php
+      $themePath = Base::instance()->get('THEME');
+      if ($themePath) {
+        include($themePath.'/css.php');
+      }
+    ?>
 </head>
 <body>
   <div class="container-fluid">
 
     <header class="d-flex">
-      <a href="/" class="text-start"><?php include(Base::instance()->get('THEME').'/header.php'); ?></a>
+      <a href="/" class="text-start <?php if (! $themePath): ?>mt-5 pt-5<?php endif; ?>"><?php if ($themePath) {$themePath.'/header.php';} ?></a>
       <div class="m-auto">
         <strong class="text-uppercase align-middle">déclarations viti/vinicoles</strong>
       </div>
