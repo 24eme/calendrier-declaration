@@ -17,6 +17,7 @@ class Calendrier extends Controller
         $f3->push('mainCssClass', 'main-calendar');
 
         $f3->set('content', 'home.html.php');
+        $f3->set('timeline', 'timeline.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements', 'today', 'timeline'));
     }
 
