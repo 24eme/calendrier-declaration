@@ -54,7 +54,7 @@
       <div id="main" class="d-none d-lg-block <?php if (Base::instance()->get('mainCssClass')) echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
       </div>
-      <div id="timeline" class="d-flex justify-content-center mt-2" style="padding-bottom: 100px">
+      <div id="timeline" class="d-flex justify-content-center mt-3 ms-1" style="padding-bottom: 100px">
         <?php include __DIR__.'/'.Base::instance()->get('timeline') ?>
       </div>
     </div>
