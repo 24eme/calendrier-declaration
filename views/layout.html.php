@@ -38,7 +38,7 @@
       <div class="d-lg-none">
         <div class="d-flex justify-content-center">
           <button class="btn btn-primary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNav" aria-expanded="false" aria-controls="collapseNav">
-            Dérouler les options
+            Voir les filtres
           </button>
         </div>
         <div class="collapse" id="collapseNav">
@@ -52,6 +52,19 @@
       <?php endif; ?>
 
       <div id="main" class="d-none d-lg-block <?php if (Base::instance()->get('mainCssClass')) echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
+        <?php
+          $route = 'home';
+          if (strpos(Base::instance()->get('URI'), '/evenements') !== false) {
+              $route = 'events';
+          }
+        ?>
+        <div class="ms-3">
+          <?php if ($route == 'home'): ?>
+            <a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('events') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-list"></i> Vue liste</a>
+          <?php else: ?>
+            <a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-calendar-week"></i> Vue calendrier</a>
+          <?php endif; ?>
+        </div>
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
       </div>
       <div id="timeline" class="d-flex justify-content-center mt-3 ms-1" style="padding-bottom: 100px">

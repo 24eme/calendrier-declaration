@@ -11,12 +11,6 @@
 
 <?php if (strpos(Base::instance()->get('URI'), '/admin') === false): ?>
 
-<?php if ($route == 'home'): ?>
-<a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('events') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-list"></i> Vue liste</a>
-<?php else: ?>
-<a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-calendar-week"></i> Vue calendrier</a>
-<?php endif; ?>
-
 <h4 class="m-0">Filtrer par</h4>
 
 <form action="<?php echo Base::instance()->alias($route) ?>" method="get" id="filter-form">
