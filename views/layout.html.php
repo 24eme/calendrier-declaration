@@ -21,7 +21,9 @@
   <div class="container-fluid">
 
     <header class="d-flex">
-      <a href="/" class="text-start <?php if (! $themePath): ?>mt-5 pt-5<?php endif; ?>"><?php if ($themePath) {$themePath.'/header.php';} ?></a>
+      <a href="/" class="text-start <?php if (! $themePath): ?>mt-5 pt-5<?php endif; ?>">
+        <?php if ($themePath) {include($themePath.'/header.php');} ?>
+      </a>
       <div class="m-auto">
         <strong class="text-uppercase align-middle">déclarations viti/vinicoles</strong>
       </div>
@@ -30,8 +32,22 @@
     <div class="row">
 
       <?php if (Base::instance()->get('URI') != '/admin'): ?>
-      <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
+      <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary d-none d-lg-block">
         <?php \Helpers\Sidebar::instance()->render(); ?>
+      </div>
+      <div class="d-lg-none">
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-primary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNav" aria-expanded="false" aria-controls="collapseNav">
+            Dérouler les options
+          </button>
+        </div>
+        <div class="collapse" id="collapseNav">
+          <div class="card card-body">
+            <nav id="sidenav-1" data-mdb-sidenav-init class="sidenav d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" data-mdb-hidden="false">
+              <?php \Helpers\Sidebar::instance()->render(); ?>
+            </nav>
+          </div>
+        </div>
       </div>
       <?php endif; ?>
 
@@ -42,7 +58,7 @@
   </div>
 
   <footer id="footer" class="text-center" style="color: #fff; background-color: #18142f">
-    <a href="/"><img src="https://calendrier-vitivini.vinsdeprovence.com/images/logos/civp.png" height=200  alt=""></a>
+    <a href="/" class="text-start <?php if (! $themePath): ?>mt-5 pt-5<?php endif; ?>"><?php if ($themePath) {include($themePath.'/footer.php');} ?></a>
     <div class="footer-links container">
       <ul class="footer-nav list-unstyled mx-2" role="menubar">
         <li class="nav-item d-inline-block" id="nav-item-civp" role="menuitem">
@@ -68,5 +84,6 @@
   </footer>
 
   <script src="/js/quill.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

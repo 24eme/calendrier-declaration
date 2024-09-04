@@ -20,6 +20,22 @@
       --bs-btn-border-color: #c80064;
       --bs-btn-disabled-bg: #c80064;
       --bs-btn-disabled-border-color: #c80064;
+      --bs-btn-color: #fff;
+      --bs-btn-hover-color: #fff;
+      --bs-btn-hover-bg: #c80064;
+      --bs-btn-hover-border-color: #c80064;
+      --bs-btn-focus-shadow-rgb: 49,132,253;
+      --bs-btn-active-color: #fff;
+      --bs-btn-active-bg: #c80064;
+      --bs-btn-active-border-color: #c80064;
+      --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+      --bs-btn-disabled-color: #fff;
+    }
+
+    .btn:hover {
+      color: var(--bs-btn-hover-color);
+      background-color: var(--bs-btn-hover-bg);
+      border-color: var(--bs-btn-hover-border-color);
     }
 
     .form-check-input:checked {
