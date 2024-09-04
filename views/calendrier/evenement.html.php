@@ -26,7 +26,7 @@
               <span class="d-none d-md-inline">Accéder à la déclaration </span><i class="d-inline-flex bi bi-box-arrow-up-right"></i>
             </a>
             <?php endif ?>
-            <a href="/evenement/export/<?php echo $event->id ?>" class="btn btn-primary float-end mx-2" title="Exporter la déclaration dans mon calendrier personnel"><i class="bi bi-calendar-plus"></i></a>
+            <a href="/evenement/export/<?php echo $event->id ?>" class="btn btn-light float-end mx-2" title="Exporter la déclaration dans mon calendrier personnel"><i class="bi bi-calendar-plus"></i></a>
           </h2>
           <p class="tags-header">
             <span><i class="bi bi-bookmark me-1"></i>&nbsp;<?php echo $event->type_id->nom ?></span>
