@@ -58,45 +58,33 @@
               $route = 'events';
           }
         ?>
-        <div class="ms-3">
+        <div>
           <?php if ($route == 'home'): ?>
             <a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('events') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-list"></i> Vue liste</a>
+            <?php $titre = "Calendrier"; ?>
           <?php else: ?>
             <a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-calendar-week"></i> Vue calendrier</a>
+            <?php $titre = "Liste des évènements"; ?>
           <?php endif; ?>
+        </div>
+        <div class="d-flex justify-content-center mb-3">
+          <h2><?php echo $titre; ?></h2>
         </div>
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
       </div>
-      <div id="timeline" class="d-flex justify-content-center mt-3 ms-1" style="padding-bottom: 100px">
-        <?php include __DIR__.'/'.Base::instance()->get('timeline') ?>
-      </div>
+      <?php if ($route == 'home'): ?>
+        <div class="d-flex justify-content-center mb-3">
+          <h2>Chronologie</h2>
+        </div>
+        <div id="timeline" class="d-flex justify-content-center mt-3 ms-1" style="padding-bottom: 100px">
+          <?php include __DIR__.'/'.Base::instance()->get('timeline') ?>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 
   <footer id="footer" class="text-center" style="color: #fff; background-color: #18142f">
-    <a href="/" class="text-start <?php if (! $themePath): ?>mt-5 pt-5<?php endif; ?>"><?php if ($themePath) {include($themePath.'/footer.php');} ?></a>
-    <div class="footer-links container">
-      <ul class="footer-nav list-unstyled mx-2" role="menubar">
-        <li class="nav-item d-inline-block" id="nav-item-civp" role="menuitem">
-          <a class="nav-link" id="nav-link-civp" href="https://www.vinsdeprovence.com/civp">CIVP</a>
-        </li>
-        <li class="nav-item d-inline-block mx-2" id="nav-item-contact" role="menuitem">
-          <a class="nav-link" id="nav-link-contact" href="https://www.vinsdeprovence.com/contact">Contact</a>
-        </li>
-        <li class="nav-item d-inline-block mx-2" id="nav-item-mentions-legales" role="menuitem">
-          <a class="nav-link" id="nav-link-mentions-legales" href="https://calendrier-vitivini.vinsdeprovence.com/mentions-legales">Mentions légales</a>
-        </li>
-        <li class="nav-item d-inline-block mx-2" id="nav-item-admin" role="menuitem">
-          <a class="nav-link" id="nav-link-admin" href="<?php echo Base::instance()->alias('login') ?>"><i class="fas fa-user-lock"></i> Administration</a>
-        </li>
-      </ul>
-    </div>
-    <hr>
-    <div class="footer-disclaimer">
-      <div class="container">
-        <a href="https://www.vinsdeprovence.com" class="text-light" target="_blank">www.vinsdeprovence.com</a>
-      </div>
-    </div>
+      <?php if ($themePath) {include($themePath.'/footer.php');} ?>
   </footer>
 
   <script src="/js/quill.js"></script>
