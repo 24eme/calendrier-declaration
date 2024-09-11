@@ -18,7 +18,7 @@
     ?>
 </head>
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid" style="height: 100%;">
 
     <header class="d-flex">
       <a href="/" class="text-start <?php if (! $themePath): ?>mt-5 pt-5<?php endif; ?>">
@@ -29,10 +29,10 @@
       </div>
     </header>
 
-    <div class="row">
+    <div class="row" style="height: 100%;">
 
       <?php if (Base::instance()->get('URI') != '/admin'): ?>
-      <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary d-none d-lg-block">
+      <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary d-none d-lg-block" style="height: 100%;">
         <?php \Helpers\Sidebar::instance()->render(); ?>
       </div>
       <div class="d-lg-none">
