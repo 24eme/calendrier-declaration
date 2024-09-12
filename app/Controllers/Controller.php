@@ -14,6 +14,9 @@ abstract class Controller
     public function beforeroute(Base $f3, $params)
     {
         $filters = [];
+        if ($f3->get('GET.resetfilters')) {
+            $f3->set('COOKIE.filters', null);
+        }
         if ($f3->get('GET.filters')) {
             $filters = $f3->get('GET.filters');
             $f3->set('COOKIE.filters', http_build_query($filters));
