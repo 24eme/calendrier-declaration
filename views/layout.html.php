@@ -61,6 +61,7 @@
               $route = 'chronologie';
           }
         ?>
+        <?php if (Base::instance()->get('URI') != '/admin'): ?>
         <ul class="nav nav-tabs justify-content-center mb-4">
           <li class="nav-item">
             <a class="fs-5 nav-link<?php if($route == 'home'): ?> active<?php endif ?>" aria-current="page" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>"><i class="bi bi-calendar2"></i> Calendrier</a>
@@ -72,6 +73,7 @@
             <a class="fs-5 nav-link<?php if($route == 'events'): ?> active<?php endif ?>" href="<?php echo Base::instance()->alias('events') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>"><i class="bi bi-list"></i> Liste</a>
           </li>
         </ul>
+        <?php endif; ?>
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
       </div>
       <div id="timeline" class="d-lg-none d-flex justify-content-center mt-3 ms-1" style="padding-bottom: 100px">
