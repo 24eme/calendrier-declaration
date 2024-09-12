@@ -55,21 +55,23 @@
         <?php
           $route = 'home';
           if (strpos(Base::instance()->get('URI'), '/evenements') !== false) {
-              $route = 'events';
+            $route = 'events';
+          }
+          if (strpos(Base::instance()->get('URI'), '/chronologie') !== false) {
+              $route = 'chronologie';
           }
         ?>
-        <div>
-          <?php if ($route == 'home'): ?>
-            <a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('events') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-list"></i> Vue liste</a>
-            <?php $titre = "Calendrier"; ?>
-          <?php else: ?>
-            <a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-calendar-week"></i> Vue calendrier</a>
-            <?php $titre = "Liste des évènements"; ?>
-          <?php endif; ?>
-        </div>
-        <div class="d-flex justify-content-center mb-3">
-          <h2><?php echo $titre; ?></h2>
-        </div>
+        <ul class="nav nav-tabs justify-content-center mb-4">
+          <li class="nav-item">
+            <a class="nav-link<?php if($route == 'home'): ?> active<?php endif ?>" aria-current="page" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>">Calendrier</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link<?php if($route == 'chronologie'): ?> active<?php endif ?>" href="#">Chronologie</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link<?php if($route == 'events'): ?> active<?php endif ?>" href="<?php echo Base::instance()->alias('events') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>">Liste</a>
+          </li>
+        </ul>
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
       </div>
       <?php if ($route == 'home'): ?>
