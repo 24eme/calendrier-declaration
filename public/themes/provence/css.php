@@ -43,7 +43,7 @@
       border-color: #c80064;
     }
 
-    a {
+    .nav-link, .nav-link:hover, a {
         color: #c80064;
     }
 </style>
