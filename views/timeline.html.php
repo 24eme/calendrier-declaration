@@ -9,8 +9,12 @@
                 <h6>Vous pouvez déclarer :</h6>
                 <ul>
                     <?php foreach ($timeline['today'] as $nom => $event): ?>
-                        <li>
+                      <li>
+                            <?php if (strpos(Base::instance()->get('URI'), '/chronologie') !== false): ?>
+                            <a href="<?php echo Base::instance()->alias('event', ['evenement' => $event->id]) ?>?referer=chronologie&<?php echo Base::instance()->get('activefiltersparams'); ?>">
+                            <?php else: ?>
                             <a href="<?php echo Base::instance()->alias('event', ['evenement' => $event->id], Base::instance()->get('activefiltersparams')) ?>">
+                            <?php endif; ?>
                                 <?php echo $nom ?>
                             </a>
                             <?php if ($event->liendeclaration): ?>
@@ -29,9 +33,13 @@
                         <ul>
                             <?php foreach ($timeline['nondate'] as $nom => $event): ?>
                                 <li>
-                                    <a href="<?php echo Base::instance()->alias('event', ['evenement' => $event->id], Base::instance()->get('activefiltersparams')) ?>">
-                                        <?php echo $nom ?>
-                                    </a>
+                                  <?php if (strpos(Base::instance()->get('URI'), '/chronologie') !== false): ?>
+                                  <a href="<?php echo Base::instance()->alias('event', ['evenement' => $event->id]) ?>?referer=chronologie&<?php echo Base::instance()->get('activefiltersparams'); ?>">
+                                  <?php else: ?>
+                                  <a href="<?php echo Base::instance()->alias('event', ['evenement' => $event->id], Base::instance()->get('activefiltersparams')) ?>">
+                                  <?php endif; ?>
+                                    <?php echo $nom ?>
+                                  </a>
                                     <?php if ($event->liendeclaration): ?>
                                         <a href="<?php echo $event->liendeclaration ?>">
                                             <i class="ms-1 bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
