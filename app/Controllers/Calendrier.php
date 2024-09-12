@@ -42,4 +42,13 @@ class Calendrier extends Controller
         $f3->set('content', 'eventslist.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements'));
     }
+
+    public function timeline(Base $f3)
+    {
+        $evenement = new Evenement();
+        $today = new \DateTimeImmutable();
+        $timeline = $evenement->getPourTimeline($evenement->getPourCalendrier($today, $f3->get('filters')), $today);
+        $f3->set('content', 'timeline.html.php');
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('timeline', 'today'));
+    }
 }

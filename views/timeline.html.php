@@ -3,7 +3,7 @@
         <div class="timeline-body">
             <div class="timeline-meta">
                 Aujourd'hui
-                <span class="text-body-secondary"><?php echo $today->format('d m Y') ?></span>
+                <span class="text-body-secondary small"><?php echo $today->format('d M Y') ?></span>
             </div>
             <div class="timeline-content">
                 <h6>Vous pouvez déclarer :</h6>

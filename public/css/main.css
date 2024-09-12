@@ -177,12 +177,12 @@ opacity: 1 !important;
 
 @media (min-width: 768px) {
     .timeline:after {
-        left: 33%;
+        left: 15%;
     }
 
     .timeline > .timeline-item {
-        left: 33%;
-        width: 67%;
+        left: 15%;
+        width: 85%;
     }
 
     .timeline > .timeline-item .timeline-meta {

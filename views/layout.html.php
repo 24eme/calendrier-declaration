@@ -66,7 +66,7 @@
             <a class="fs-5 nav-link<?php if($route == 'home'): ?> active<?php endif ?>" aria-current="page" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>"><i class="bi bi-calendar2"></i> Calendrier</a>
           </li>
           <li class="nav-item">
-            <a class="fs-5 nav-link<?php if($route == 'chronologie'): ?> active<?php endif ?>" href="#"><i class="bi bi-three-dots-vertical"></i> Chronologie</a>
+            <a class="fs-5 nav-link<?php if($route == 'chronologie'): ?> active<?php endif ?>" href="<?php echo Base::instance()->alias('timeline') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>"><i class="bi bi-three-dots-vertical"></i> Chronologie</a>
           </li>
           <li class="nav-item">
             <a class="fs-5 nav-link<?php if($route == 'events'): ?> active<?php endif ?>" href="<?php echo Base::instance()->alias('events') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>"><i class="bi bi-list"></i> Liste</a>
