@@ -224,6 +224,10 @@ details[open] > summary::after {
     transform: rotate(90deg);
 }
 
+.form-check-label {
+    cursor: pointer;
+}
+
 /* Admin */
 
 .form-signin {
