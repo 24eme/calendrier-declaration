@@ -195,7 +195,7 @@ opacity: 1 !important;
         position: absolute;
         top: 2rem;
         width: 100%;
-        z-index: 1;
+        z-index: -1;
     }
 
     .timeline > .timeline-item:first-child .timeline-meta {
