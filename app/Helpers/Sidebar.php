@@ -26,6 +26,9 @@ class Sidebar extends Prefab
         if (strpos(Base::instance()->get('URI'), '/evenements') !== false) {
             $route = 'events';
         }
+        if (strpos(Base::instance()->get('URI'), '/chronologie') !== false) {
+            $route = 'timeline';
+        }
         Base::instance()->set('route', $route);
         echo View::instance()->render('sidebar.html.php');
     }
