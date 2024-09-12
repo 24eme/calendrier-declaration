@@ -11,8 +11,8 @@
     <link href="/css/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css" />
     <?php
-      $themePath = Base::instance()->get('THEME');
-      if ($themePath) {
+      if (Base::instance()->get('theme')) {
+        $themePath = implode(DIRECTORY_SEPARATOR, [Base::instance()->get('ROOT'), 'themes', Base::instance()->get('theme')]);
         include($themePath.'/css.php');
       }
     ?>
@@ -21,8 +21,8 @@
   <div class="container-fluid" style="height: 100%;">
 
     <header class="d-flex">
-      <a href="/" class="text-start <?php if (! $themePath): ?>mt-5 pt-5<?php endif; ?>">
-        <?php if ($themePath) {include($themePath.'/header.php');} ?>
+      <a href="/" class="text-start <?php if (! isset($themePath)): ?>mt-5 pt-5<?php endif; ?>">
+        <?php if (isset($themePath)) {include($themePath.'/header.php');} ?>
       </a>
       <div class="m-auto">
         <strong class="text-uppercase align-middle">déclarations viti/vinicoles</strong>
