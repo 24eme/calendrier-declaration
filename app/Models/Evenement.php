@@ -277,8 +277,9 @@ class Evenement extends Cortex
                 }
             }
         }
-
-        ksort($timeline['events']);
+        if (isset($timeline['events']) && is_array($timeline['events']) && count($timeline['events']) > 0) {
+            ksort($timeline['events']);
+        }
         return $timeline;
     }
 }

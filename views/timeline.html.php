@@ -8,7 +8,7 @@
             <div class="timeline-content">
                 <h6>Vous pouvez déclarer :</h6>
                 <ul>
-                    <?php foreach ($timeline['today'] as $nom => $event): ?>
+                    <?php if (isset($timeline['today'])): foreach ($timeline['today'] as $nom => $event): ?>
                       <li>
                             <?php if (strpos(Base::instance()->get('URI'), '/chronologie') !== false): ?>
                             <a href="<?php echo Base::instance()->alias('event', ['evenement' => $event->id]) ?>?referer=chronologie&<?php echo Base::instance()->get('activefiltersparams'); ?>">
@@ -23,7 +23,7 @@
                                 </a>
                             <?php endif ?>
                         </li>
-                    <?php endforeach ?>
+                    <?php endforeach; endif; ?>
                 </ul>
                 <?php if (isset($timeline['nondate'])): ?>
                     <details>
@@ -53,7 +53,7 @@
             </div>
         </div>
     </li>
-    <?php foreach ($timeline['events'] as $date => $events): ?>
+    <?php if (isset($timeline['events'])): foreach ($timeline['events'] as $date => $events): ?>
         <li class="timeline-item">
             <div class="timeline-body">
                 <div class="timeline-meta"><?php echo DateTime::createFromFormat('Y-m-d', $date)->format("d M Y") ?></div>
@@ -73,5 +73,5 @@
                 </div>
             </div>
         </li>
-    <?php endforeach ?>
+    <?php endforeach; endif; ?>
 </ul>
