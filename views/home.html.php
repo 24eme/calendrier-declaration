@@ -10,7 +10,7 @@
           $date->modify('first day of previous month');
           for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
         ?>
-        <div class="cal-month d-none d-lg-block" data-nbdays="<?php echo ($date->format('t')); ?>">
+        <div class="cal-month text-center d-none d-lg-block" data-nbdays="<?php echo ($date->format('t')); ?>">
           <?php echo $date->format('M Y'); ?>
         </div>
         <?php
