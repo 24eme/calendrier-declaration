@@ -1,5 +1,5 @@
 <a href="/" class="text-start <?php if (! $themePath): ?>mt-5 pt-5<?php endif; ?>">
-    <img class="my-4" src="https://declaration.syndicat-cotesdeprovence.com/images/logo_provence.png" height="100px" alt="logo"/>
+    <img src="/images/logos/civp.png" height="150px" alt="logo"/>
 </a>
 <div class="footer-links container">
   <ul class="footer-nav list-unstyled mx-2" role="menubar">

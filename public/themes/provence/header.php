@@ -1,1 +1,1 @@
-<img class="my-4" src="https://declaration.syndicat-cotesdeprovence.com/images/logo_provence.png" height="70px" alt="logo"/>
+<img class="ms-5 ps-3" src="/images/logos/logo-P.svg" height="100px" alt="logo"/>
