@@ -177,12 +177,12 @@ opacity: 1 !important;
 
 @media (min-width: 768px) {
     .timeline:after {
-        left: 33%;
+        left: 15%;
     }
 
     .timeline > .timeline-item {
-        left: 33%;
-        width: 67%;
+        left: 15%;
+        width: 85%;
     }
 
     .timeline > .timeline-item .timeline-meta {
@@ -195,7 +195,7 @@ opacity: 1 !important;
         position: absolute;
         top: 2rem;
         width: 100%;
-        z-index: 1;
+        z-index: -1;
     }
 
     .timeline > .timeline-item:first-child .timeline-meta {
@@ -222,6 +222,10 @@ summary::after {
 
 details[open] > summary::after {
     transform: rotate(90deg);
+}
+
+.form-check-label {
+    cursor: pointer;
 }
 
 /* Admin */

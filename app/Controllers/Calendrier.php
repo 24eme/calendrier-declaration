@@ -13,12 +13,9 @@ class Calendrier extends Controller
         $today = new \DateTimeImmutable();
         $evenements = $evenement->getPourCalendrier($today, $f3->get('filters'));
         $timeline = $evenement->getPourTimeline($evenements, $today);
-
         $f3->push('mainCssClass', 'main-calendar');
-
         $f3->set('content', 'home.html.php');
-        $f3->set('timeline', 'timeline.html.php');
-        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements', 'today', 'timeline'));
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements', 'timeline', 'today'));
     }
 
     public function show(Base $f3)
@@ -41,5 +38,14 @@ class Calendrier extends Controller
         $evenements = $evenement->find($evenement->computeFilters(), ['order' => 'evenements.nom ASC']);
         $f3->set('content', 'eventslist.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements'));
+    }
+
+    public function timeline(Base $f3)
+    {
+        $evenement = new Evenement();
+        $today = new \DateTimeImmutable();
+        $timeline = $evenement->getPourTimeline($evenement->getPourCalendrier($today, $f3->get('filters')), $today);
+        $f3->set('content', 'timeline.html.php');
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('timeline', 'today'));
     }
 }

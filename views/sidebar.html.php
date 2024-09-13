@@ -64,7 +64,7 @@
 </form>
 
 <p class="primary-link text-end">
-  <a href="<?php echo Base::instance()->alias($route) ?>">[x] Voir toutes les déclarations</a>
+  <a href="<?php echo Base::instance()->alias($route) ?>?resetfilters=true">[x] Voir toutes les déclarations</a>
 </p>
 
 <?php endif; ?>

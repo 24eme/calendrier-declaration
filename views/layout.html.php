@@ -55,31 +55,30 @@
         <?php
           $route = 'home';
           if (strpos(Base::instance()->get('URI'), '/evenements') !== false) {
-              $route = 'events';
+            $route = 'events';
+          }
+          if (strpos(Base::instance()->get('URI'), '/chronologie') !== false) {
+              $route = 'chronologie';
           }
         ?>
-        <div>
-          <?php if ($route == 'home'): ?>
-            <a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('events') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-list"></i> Vue liste</a>
-            <?php $titre = "Calendrier"; ?>
-          <?php else: ?>
-            <a class="btn btn-outline-primary mb-3" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>" role="button"><i class="bi bi-calendar-week"></i> Vue calendrier</a>
-            <?php $titre = "Liste des évènements"; ?>
-          <?php endif; ?>
-        </div>
-        <div class="d-flex justify-content-center mb-3">
-          <h2><?php echo $titre; ?></h2>
-        </div>
+        <?php if (Base::instance()->get('URI') != '/admin'): ?>
+        <ul class="nav nav-tabs justify-content-center mb-4">
+          <li class="nav-item">
+            <a class="fs-5 nav-link<?php if($route == 'home'): ?> active<?php endif ?>" aria-current="page" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>"><i class="bi bi-calendar2"></i> Calendrier</a>
+          </li>
+          <li class="nav-item">
+            <a class="fs-5 nav-link<?php if($route == 'chronologie'): ?> active<?php endif ?>" href="<?php echo Base::instance()->alias('timeline') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>"><i class="bi bi-three-dots-vertical"></i> Chronologie</a>
+          </li>
+          <li class="nav-item">
+            <a class="fs-5 nav-link<?php if($route == 'events'): ?> active<?php endif ?>" href="<?php echo Base::instance()->alias('events') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>"><i class="bi bi-list"></i> Liste</a>
+          </li>
+        </ul>
+        <?php endif; ?>
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
       </div>
-      <?php if ($route == 'home'): ?>
-        <div class="d-flex justify-content-center mb-3">
-          <h2>Chronologie</h2>
-        </div>
-        <div id="timeline" class="d-flex justify-content-center mt-3 ms-1" style="padding-bottom: 100px">
-          <?php include __DIR__.'/'.Base::instance()->get('timeline') ?>
-        </div>
-      <?php endif; ?>
+      <div id="timeline" class="d-lg-none d-flex justify-content-center mt-3 ms-1" style="padding-bottom: 100px">
+        <?php include __DIR__.'/timeline.html.php' ?>
+      </div>
     </div>
   </div>
 

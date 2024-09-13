@@ -4,6 +4,8 @@
 
   if ($referer && $referer == 'event') {
     $lienfermer = Base::instance()->alias('events');
+  } elseif ($referer && $referer == 'chronologie') {
+    $lienfermer = Base::instance()->alias('timeline');
   }
   if (Base::instance()->get('activefiltersparams')) {
     $lienfermer .= '?'.Base::instance()->get('activefiltersparams');
