@@ -76,9 +76,11 @@
         <?php endif; ?>
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
       </div>
+      <?php if (strpos(Base::instance()->get('URI'), '/admin') === false): ?>
       <div id="timeline" class="d-lg-none d-flex justify-content-center mt-3 ms-1" style="padding-bottom: 100px">
         <?php include __DIR__.'/timeline.html.php' ?>
       </div>
+      <?php endif; ?>
     </div>
   </div>
 
