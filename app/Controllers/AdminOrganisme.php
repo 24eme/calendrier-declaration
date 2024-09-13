@@ -36,6 +36,7 @@ class AdminOrganisme extends AdminController
         $this->organisme = new Organisme();
 
         if ($f3->get('VERB') === 'GET') {
+            $f3->set('formurl', $f3->alias('organismecreate'));
             return $this->edit($f3, $params);
         }
 
