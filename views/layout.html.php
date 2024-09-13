@@ -32,7 +32,7 @@
     <div class="row" style="height: 100%;">
 
       <?php if (Base::instance()->get('URI') != '/admin'): ?>
-      <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary d-none d-lg-block" style="height: 100%;">
+      <div id="sidebar" class="d-flex flex-column flex-shrink-0 border-end d-none d-lg-block" style="height: 100%;">
         <?php \Helpers\Sidebar::instance()->render(); ?>
       </div>
       <div class="d-lg-none">
