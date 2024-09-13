@@ -1,9 +1,7 @@
 <div class="ms-xs-5 ms-sm-3" id="calendar">
   <div class="row">
-    <div class="ps-3 cal-titre cal-titre-header mb-1" style="background-color: transparent;">
-        <strong>Déclarations avec date butoir</strong>
-    </div>
     <div class="col cal-header">
+      <div class="cal-titre cal-titre-header"></div>
       <div class="cal-ligne cal-ligne-head shadow-sm">
         <?php
           $date = DateTime::createFromImmutable($today);
@@ -21,12 +19,19 @@
     </div>
   </div>
   <div class="cal-events d-none d-lg-block">
+    <div class="cal-ligne">
+      <div class="cal-titre bg-white">
+        <span>
+          <strong>Déclarations avec date butoir</strong>
+        </span>
+      </div>
+    </div>
     <?php $hasTitre = false; ?>
     <?php foreach ($evenements as $nom => $evts): $evenement = current($evts); ?>
       <?php $stop = $today->modify('last day of '.(Models\Evenement::$displayMonths - 2).' months');
         if ($evenement->date_fin == $stop->format('Y-m-d') && $hasTitre == false): ?>
         <div class="cal-ligne">
-          <div class="my-1">
+          <div class="cal-titre bg-white">
             <span>
               <strong>Déclarations sans date butoir</strong>
             </span>
