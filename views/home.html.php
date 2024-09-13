@@ -1,23 +1,23 @@
 <div class="ms-xs-5 ms-sm-3" id="calendar">
-  <div class="cal-header">
-    <div class="cal-titre cal-titre-header mb-1">
-      <span>
+  <div class="row">
+    <div class="ps-3 cal-titre cal-titre-header mb-1" style="background-color: transparent;">
         <strong>Déclarations avec date butoir</strong>
-      </span>
     </div>
-    <div class="cal-ligne cal-ligne-head shadow-sm">
-      <?php
-        $date = DateTime::createFromImmutable($today);
-        $date->modify('first day of previous month');
-        for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
-      ?>
-      <div class="cal-month d-none d-lg-block" data-nbdays="<?php echo ($date->format('t')); ?>">
-        <?php echo $date->format('M Y'); ?>
+    <div class="col cal-header">
+      <div class="cal-ligne cal-ligne-head shadow-sm">
+        <?php
+          $date = DateTime::createFromImmutable($today);
+          $date->modify('first day of previous month');
+          for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
+        ?>
+        <div class="cal-month d-none d-lg-block" data-nbdays="<?php echo ($date->format('t')); ?>">
+          <?php echo $date->format('M Y'); ?>
+        </div>
+        <?php
+          $date->modify('next month');
+          endfor;
+        ?>
       </div>
-      <?php
-        $date->modify('next month');
-        endfor;
-      ?>
     </div>
   </div>
   <div class="cal-events d-none d-lg-block">
