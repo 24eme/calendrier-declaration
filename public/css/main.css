@@ -8,12 +8,12 @@ header h1 {
 }
 
 #calendar {
-    --calendar-bg-header-color: #f2f2f2;
+    --calendar-bg-header-color: #f8f9fa;
     --calendar-bg-day-color: #f8f9fa;
     --calendar-bg-day-event-color: #d1e7dd;
     --calendar-bg-day-event-end-color:#75b798;
     --calendar-bg-day-current-color: #6c757d;
-    --calendar-line-height: 30px;
+    --calendar-line-height: 40px;
     --calendar-day-width: 3px;
     width: max-content;
 }
@@ -40,7 +40,7 @@ header h1 {
     border-right: var(--calendar-day-width) solid white;
     background: var(--calendar-bg-header-color);
     line-height: var(--calendar-line-height);
-    padding-left: .25rem;
+    padding-left: 0.75rem;
     position: sticky;
     left: 0;
 }
@@ -51,6 +51,7 @@ header h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .cal-month[data-nbdays="28"] { --calendar-nb-days: 28; }
