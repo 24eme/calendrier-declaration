@@ -28,7 +28,7 @@
                 <?php if (isset($timeline['nondate'])): ?>
                     <details>
                         <summary class="mt-2">
-                            Ainsi que <?php echo count($timeline['nondate']) ?> déclaration(s) sans date butoir :
+                            + <?php echo count($timeline['nondate']) ?> déclaration(s) sans date butoir : voir
                         </summary>
                         <ul>
                             <?php foreach ($timeline['nondate'] as $nom => $event): ?>
