@@ -46,4 +46,8 @@
     .nav-link, .nav-link:hover, a {
         color: #c80064;
     }
+
+    .icon-link {
+        text-decoration-color: #c80064;
+    }
 </style>

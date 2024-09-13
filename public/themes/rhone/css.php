@@ -43,7 +43,11 @@
       border-color: #80002d;
     }
 
-    a {
+    .nav-link, .nav-link:hover, a {
         color: #80002d;
+    }
+
+    .icon-link {
+        text-decoration-color: #80002d;
     }
 </style>
