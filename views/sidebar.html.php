@@ -11,7 +11,7 @@
 
 <?php if (strpos(Base::instance()->get('URI'), '/admin') === false): ?>
 
-<h4 class="m-0">Filtrer par</h4>
+<h4 class="m-0"><i class="bi bi-filter-circle"></i> Filtrer par</h4>
 
 <form action="<?php echo Base::instance()->alias($route) ?>" method="get" id="filter-form">
 
@@ -49,7 +49,7 @@
 <?php endforeach ?>
 </div>
 <div class="d-grid gap-2 mx-auto mt-2">
-  <button class="btn btn-primary btn-sm" type="button" id="show-more-tags">Voir plus</button>
+  <button class="btn btn-outline-secondary btn-sm" type="button" id="show-more-tags">Voir plus</button>
 </div>
 
 <h5 class="my-3">Recherche</h5>
