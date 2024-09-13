@@ -21,9 +21,7 @@
   <div class="cal-events d-none d-lg-block">
     <div class="cal-ligne">
       <div class="cal-titre bg-white">
-        <span>
           <strong>Déclarations avec date butoir</strong>
-        </span>
       </div>
     </div>
     <?php $hasTitre = false; ?>
@@ -32,9 +30,7 @@
         if ($evenement->date_fin == $stop->format('Y-m-d') && $hasTitre == false): ?>
         <div class="cal-ligne">
           <div class="cal-titre bg-white">
-            <span>
               <strong>Déclarations sans date butoir</strong>
-            </span>
           </div>
         </div>
         <?php
