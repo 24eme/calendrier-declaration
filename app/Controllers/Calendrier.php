@@ -34,10 +34,11 @@ class Calendrier extends Controller
     public function eventsList(Base $f3)
     {
         $evenement = new Evenement();
+        $today = new \DateTimeImmutable();
         $evenement->addFilters($f3->get('filters'));
         $evenements = $evenement->find($evenement->computeFilters(), ['order' => 'evenements.nom ASC']);
         $f3->set('content', 'eventslist.html.php');
-        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements'));
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements', 'today'));
     }
 
     public function timeline(Base $f3)
