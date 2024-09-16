@@ -55,7 +55,7 @@
         <div class="col-12 col-md-5">
           <h3>Organismes destinataires</h3>
           <?php foreach ($event->organismes as $organisme): ?>
-            <div class="organisme-card p-2">
+            <div class="organisme-card p-3 rounded">
               <div class="pb-2">
                 <img src="/images/logos/organismes/<?php echo $organisme->logo ?>" class="img-fluid" style="height: 25px">
                 <strong><?php echo $organisme->nom ?></strong>
@@ -76,7 +76,7 @@
       <hr class="w-50 mx-auto"/>
 
       <div class="row">
-        <p>
+        <div class="col">
             <?php if($event->tags): ?>
             <b class="text-decoration-underline me-3">Mots-clés :</b>
             <?php foreach ($event->tags as $tag): ?>
@@ -86,8 +86,8 @@
             <?php endforeach ?>
             <?php endif; ?>
             <span class="d-md-none"><br /></span>
-            <a href="<?php echo $lienfermer; ?>" class="btn btn-secondary float-end">Fermer</a>
-        </p>
+            <a href="<?php echo $lienfermer; ?>" class="btn btn-outline-secondary float-end">Fermer</a>
+          </div>
       </div>
     </div>
   </div>

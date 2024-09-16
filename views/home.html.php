@@ -41,7 +41,7 @@
       <div class="cal-titre" title="<?php echo $nom ?>">
         <a class="cal-titre-txt" href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id], Base::instance()->get('activefiltersparams')) ?>"><?php echo $nom ?></a>
         <?php if ($evenement->liendeclaration): ?>
-        <a href="<?php echo $evenement->liendeclaration ?>" class="btn btn-sm btn-warning px-1 py-0 mt-1 float-end">
+        <a href="<?php echo $evenement->liendeclaration ?>" class="btn btn-sm btn-warning px-1 py-0 mt-2 float-end">
           <i class="d-inline-flex bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
         </a>
         <?php endif ?>

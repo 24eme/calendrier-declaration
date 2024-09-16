@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 header h1 {
   letter-spacing: -0.1em;
 }
@@ -51,7 +55,6 @@ header h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    text-decoration: none;
 }
 
 .cal-month[data-nbdays="28"] { --calendar-nb-days: 28; }
@@ -97,7 +100,7 @@ header h1 {
 }
 
 .organisme-card {
-    background-color: #ddd;
+    background-color: #f2f2f2;
     margin-bottom: 1rem;
 }
 

@@ -2,6 +2,7 @@
 
     :root {
         --bs-primary: #c80064;
+        --bs-primary-rgb: 200, 0, 100;
     }
 
     .btn-outline-primary {
