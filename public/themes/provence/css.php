@@ -51,4 +51,12 @@
     .icon-link {
         text-decoration-color: #c80064;
     }
+
+    #footer {
+        color: #fff;
+        background-color: #18142f
+    }
+    #footer a {
+        color: #ecc5ac;
+    }
 </style>
