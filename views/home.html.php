@@ -1,4 +1,4 @@
-<div class="ms-xs-5 ms-sm-3" id="calendar">
+<div class="ms-xs-5 ms-sm-3 d-none d-sm-block" id="calendar">
     <div class="cal-header">
       <div class="cal-titre cal-titre-header"></div>
       <div class="cal-ligne cal-ligne-head">
@@ -59,6 +59,10 @@
     </div>
     <?php endforeach; ?>
   </div>
+</div>
+
+<div class="d-sm-none">
+  <?php include __DIR__.'/timeline.html.php' ?>
 </div>
 
 <script>

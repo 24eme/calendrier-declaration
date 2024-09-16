@@ -60,7 +60,7 @@
         ?>
         <?php if ((strpos(Base::instance()->get('URI'), '/admin') === false)&&(strpos(Base::instance()->get('URI'), '/pages') === false)): ?>
         <ul class="nav nav-tabs justify-content-center mb-4">
-          <li class="nav-item">
+          <li class="nav-item d-none d-sm-block">
             <a class="fs-5 nav-link<?php if($route == 'home'): ?> active<?php endif ?>" aria-current="page" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>"><i class="bi bi-calendar2"></i> Calendrier</a>
           </li>
           <li class="nav-item">
