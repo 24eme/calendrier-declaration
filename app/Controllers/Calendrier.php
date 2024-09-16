@@ -49,4 +49,11 @@ class Calendrier extends Controller
         $f3->set('content', 'timeline.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('timeline', 'today'));
     }
+
+    public function statics(Base $f3)
+    {
+        $page = $f3->get('PARAMS.page');
+        $f3->set('content', 'statics.html.php');
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('page'));
+    }
 }
