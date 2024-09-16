@@ -1,9 +1,8 @@
 <style>
     :root {
-
         --primary-color: #ca5658;
         --bs-primary: var(--primary-color);
-        --bs-primary-rgb: 200, 0, 100;
+        --bs-primary-rgb: 202, 86, 88;
     }
 
     .btn-outline-primary {
