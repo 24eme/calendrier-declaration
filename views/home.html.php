@@ -1,6 +1,5 @@
 <div class="ms-xs-5 ms-sm-3" id="calendar">
-  <div class="row">
-    <div class="col cal-header">
+    <div class="cal-header">
       <div class="cal-titre cal-titre-header"></div>
       <div class="cal-ligne cal-ligne-head shadow-sm">
         <?php
@@ -15,7 +14,6 @@
           $date->modify('next month');
           endfor;
         ?>
-      </div>
     </div>
   </div>
   <div class="cal-events d-none d-lg-block">
