@@ -22,19 +22,13 @@
 <body>
   <div class="container-fluid" style="height: 100%;">
 
-    <header class="d-flex">
-      <a href="/" class="text-start <?php if (! isset($themePath)): ?>mt-5 pt-5<?php endif; ?>">
-        <?php if (isset($themePath)) {include($themePath.'/header.php');} ?>
-      </a>
-      <div class="m-auto">
-        <strong class="text-uppercase align-middle">déclarations viti/vinicoles</strong>
-      </div>
-    </header>
-
     <div class="row" style="height: 100%;">
 
       <?php if (Base::instance()->get('URI') != '/admin'): ?>
       <div id="sidebar" class="d-flex flex-column flex-shrink-0 border-end d-none d-lg-block" style="height: 100%;">
+        <header>
+          <?php if (isset($themePath)) {include($themePath.'/header.php');} ?>
+        </header>
         <?php \Helpers\Sidebar::instance()->render(); ?>
       </div>
       <div class="d-lg-none">
@@ -53,7 +47,7 @@
       </div>
       <?php endif; ?>
 
-      <div id="main" class="d-none d-lg-block <?php if (Base::instance()->get('mainCssClass')) echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
+      <div id="main" class="d-none d-lg-block mt-4 <?php if (Base::instance()->get('mainCssClass')) echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
         <?php
           $route = 'home';
           if (strpos(Base::instance()->get('URI'), '/evenements') !== false) {
