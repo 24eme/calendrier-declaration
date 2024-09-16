@@ -29,7 +29,7 @@
         </header>
         <?php \Helpers\Sidebar::instance()->render(); ?>
       </div>
-      <div class="">
+      <div class="d-lg-none">
         <div class="d-flex justify-content-center">
           <button class="btn btn-primary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNav" aria-expanded="false" aria-controls="collapseNav">
             Voir les filtres
@@ -45,7 +45,7 @@
       </div>
       <?php endif; ?>
 
-      <div id="main" class="<?php if (Base::instance()->get('mainCssClass')) echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
+      <div id="main" class="mt-4 <?php if (Base::instance()->get('mainCssClass')) echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
         <?php
           $route = 'home';
           if (strpos(Base::instance()->get('URI'), '/evenements') !== false) {
