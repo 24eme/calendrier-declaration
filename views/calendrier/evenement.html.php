@@ -64,8 +64,8 @@
                 <?php echo nl2br($organisme->adresse . PHP_EOL . $organisme->code_postal . " " . $organisme->ville) ?>
               </div>
               <div>
-                <i class="bi bi-telephone-fill"></i> <?php echo $organisme->telephone ?> <br/>
-                <i class="bi bi-envelope"></i> <?php echo $organisme->email ?> <br/>
+                <i class="bi bi-telephone-fill"></i> <a href="tel:<?php echo $organisme->telephone ?>"><?php echo $organisme->telephone ?></a> <br/>
+                <i class="bi bi-envelope"></i> <a href="mailto:<?php echo $organisme->email ?>"><?php echo $organisme->email ?></a> <br/>
                 <i class="bi bi-globe"></i> <a href="<?php echo $organisme->site ?>"><?php echo $organisme->site ?></a>
               </div>
             </div>
