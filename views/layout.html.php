@@ -14,6 +14,8 @@
       if (Base::instance()->get('theme')) {
         $themePath = implode(DIRECTORY_SEPARATOR, [Base::instance()->get('ROOT'), 'themes', Base::instance()->get('theme')]);
         include($themePath.'/css.php');
+      } else {
+        $themePath = null;
       }
     ?>
 </head>
