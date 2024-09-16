@@ -1,4 +1,5 @@
-<ul class="timeline">
+<div class="d-flex justify-content-center mt-3 ms-1">
+  <ul class="timeline">
     <li class="timeline-item">
         <div class="timeline-body">
             <div class="timeline-meta">
@@ -74,4 +75,5 @@
             </div>
         </li>
     <?php endforeach; endif; ?>
-</ul>
+  </ul>
+</div>
