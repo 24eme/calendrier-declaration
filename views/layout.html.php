@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="/css/main.css" />
     <?php
       if (Base::instance()->get('theme')) {
-        $themePath = implode(DIRECTORY_SEPARATOR, [Base::instance()->get('ROOT'), 'themes', Base::instance()->get('theme')]);
-        include($themePath.'/css.php');
+        $themePath = implode(DIRECTORY_SEPARATOR, [Base::instance()->get('ROOT'), 'themes', Base::instance()->get('theme')]).'/';
+        include($themePath.'css.php');
       } else {
         $themePath = null;
       }
@@ -21,20 +21,12 @@
 </head>
 <body>
   <div class="container-fluid" style="height: 100%;">
-
-    <header class="d-flex">
-      <a href="/" class="text-start <?php if (! isset($themePath)): ?>mt-5 pt-5<?php endif; ?>">
-        <?php if (isset($themePath)) {include($themePath.'/header.php');} ?>
-      </a>
-      <div class="m-auto">
-        <strong class="text-uppercase align-middle">déclarations viti/vinicoles</strong>
-      </div>
-    </header>
-
     <div class="row" style="height: 100%;">
-
-      <?php if (Base::instance()->get('URI') != '/admin'): ?>
+      <?php if ((strpos(Base::instance()->get('URI'), '/admin') === false)&&(strpos(Base::instance()->get('URI'), '/pages') === false)): ?>
       <div id="sidebar" class="d-flex flex-column flex-shrink-0 border-end d-none d-lg-block" style="height: 100%;">
+        <header>
+          <?php if (isset($themePath)) {include($themePath.'/header.php');} ?>
+        </header>
         <?php \Helpers\Sidebar::instance()->render(); ?>
       </div>
       <div class="">
@@ -63,7 +55,7 @@
               $route = 'chronologie';
           }
         ?>
-        <?php if (Base::instance()->get('URI') != '/admin'): ?>
+        <?php if ((strpos(Base::instance()->get('URI'), '/admin') === false)&&(strpos(Base::instance()->get('URI'), '/pages') === false)): ?>
         <ul class="nav nav-tabs justify-content-center mb-4">
           <li class="nav-item">
             <a class="fs-5 nav-link<?php if($route == 'home'): ?> active<?php endif ?>" aria-current="page" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>"><i class="bi bi-calendar2"></i> Calendrier</a>
@@ -86,8 +78,8 @@
     </div>
   </div>
 
-  <footer id="footer" class="text-center" style="color: #fff; background-color: #18142f">
-      <?php if ($themePath) {include($themePath.'/footer.php');} ?>
+  <footer id="footer" class="text-center">
+      <?php if ($themePath) {include($themePath.'footer.php');} ?>
   </footer>
 
   <script src="/js/quill.js"></script>
