@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center mt-3 ms-1">
+<div class="d-flex justify-content-center mt-3 ms-3">
   <ul class="timeline">
     <li class="timeline-item">
         <div class="timeline-body">
