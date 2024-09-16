@@ -1,3 +1,8 @@
+:root {
+    --backgroud-grey: #f8f9fa;
+    --bs-primary-rgb: 200, 0, 100;
+}
+
 a {
     text-decoration: none;
 }
@@ -12,8 +17,8 @@ header h1 {
 }
 
 #calendar {
-    --calendar-bg-header-color: #f8f9fa;
-    --calendar-bg-day-color: #f8f9fa;
+    --calendar-bg-day-color: var(--backgroud-grey);
+    --calendar-bg-day-color-alt: #f5f6f7;
     --calendar-bg-day-event-color: #d1e7dd;
     --calendar-bg-day-event-end-color:#75b798;
     --calendar-bg-day-current-color: #6c757d;
@@ -32,9 +37,14 @@ header h1 {
     top: 0;
     display: flex;
     z-index: 101;
+    line-height: var(--calendar-line-height);
 }
 
 .cal-header .cal-titre-header {
+    background: #fff;
+}
+
+.cal-header .cal-month {
     background: #fff;
 }
 
@@ -42,7 +52,7 @@ header h1 {
     height: var(--calendar-line-height);
     width: 400px;
     border-right: var(--calendar-day-width) solid white;
-    background: var(--calendar-bg-header-color);
+    background: var(--calendar-bg-day-color);
     line-height: var(--calendar-line-height);
     padding-left: 0.75rem;
     position: sticky;
@@ -68,10 +78,18 @@ header h1 {
 
 .cal-month {
     border-right: var(--calendar-day-width) solid white;
-    background: var(--calendar-bg-header-color);
+    background: var(--calendar-bg-day-color);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.cal-ligne:nth-child(odd) .cal-titre {
+    background: var(--calendar-bg-day-color-alt);
+}
+
+.cal-ligne:nth-child(odd) .cal-month .jour {
+    background: var(--calendar-bg-day-color-alt);
 }
 
 .cal-ligne {
@@ -100,7 +118,7 @@ header h1 {
 }
 
 .organisme-card {
-    background-color: #f2f2f2;
+    background-color: var(--backgroud-grey);
     margin-bottom: 1rem;
 }
 
