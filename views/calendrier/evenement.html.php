@@ -44,14 +44,14 @@
       </div>
 
       <div class="row">
-        <div class="col-12 col-md-7">
+        <div class="col-12 col-lg-7">
           <h3 class="h3">Information</h3>
           <p class="mt-4 mb-0">
             <?php echo $event->description ?>
           </p>
         </div>
 
-        <div class="col-12 col-md-5">
+        <div class="col-12 col-lg-5">
           <h3>Organismes destinataires</h3>
           <?php foreach ($event->organismes as $organisme): ?>
             <div class="organisme-card p-3 rounded">

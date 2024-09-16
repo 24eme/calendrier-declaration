@@ -8,7 +8,7 @@
           for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
         ?>
         <div class="cal-month text-center shadow-sm" data-nbdays="<?php echo ($date->format('t')); ?>">
-          <strong><?php echo $date->format('M Y'); ?></strong>
+          <?php echo $date->format('M Y'); ?>
         </div>
         <?php
           $date->modify('next month');

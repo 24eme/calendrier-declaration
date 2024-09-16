@@ -24,17 +24,20 @@
     <div class="row" style="height: 100%;">
       <?php if ((strpos(Base::instance()->get('URI'), '/admin') === false)&&(strpos(Base::instance()->get('URI'), '/pages') === false)): ?>
       <div id="sidebar" class="d-flex flex-column flex-shrink-0 border-end d-none d-lg-block" style="height: 100%;">
-        <header>
+        <header class="text-center mb-5">
           <?php if (isset($themePath)) {include($themePath.'/header.php');} ?>
         </header>
         <?php \Helpers\Sidebar::instance()->render(); ?>
       </div>
       <div class="d-lg-none">
-        <div class="d-flex justify-content-center">
-          <button class="btn btn-primary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNav" aria-expanded="false" aria-controls="collapseNav">
-            Voir les filtres
+          <header class="text-center">
+          <?php if (isset($themePath)) {include($themePath.'/header.php');} ?>
+          </header>
+          <div class="position-absolute top-0 end-0">
+          <button class="btn btn-light m-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNav" aria-expanded="false" aria-controls="collapseNav">
+            <i class="bi bi-filter-circle"></i> Voir les filtres
           </button>
-        </div>
+          </div>
         <div class="collapse" id="collapseNav">
           <div class="card card-body">
             <nav id="sidenav-1" data-mdb-sidenav-init class="sidenav d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" data-mdb-hidden="false">
