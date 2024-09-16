@@ -1,4 +1,4 @@
-<a href="/" class="text-start <?php if (! $themePath): ?>mt-5 pt-5<?php endif; ?>">
+<a href="/" class="text-start mt-5 pt-5">
     <img class="my-4" src="https://declaration.syndicat-cotesdurhone.com/images/logo_odgrhone.png" height="100px" alt="logo"/>
 </a>
 <div class="footer-links container">

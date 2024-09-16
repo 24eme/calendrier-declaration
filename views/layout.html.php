@@ -85,7 +85,7 @@
     </div>
   </div>
 
-  <footer id="footer" class="text-center" style="color: #fff; background-color: #18142f">
+  <footer id="footer" class="text-center">
       <?php if ($themePath) {include($themePath.'footer.php');} ?>
   </footer>
 
