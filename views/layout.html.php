@@ -37,7 +37,7 @@
       <div id="sidebar" class="d-flex flex-column flex-shrink-0 border-end d-none d-lg-block" style="height: 100%;">
         <?php \Helpers\Sidebar::instance()->render(); ?>
       </div>
-      <div class="d-lg-none">
+      <div class="">
         <div class="d-flex justify-content-center">
           <button class="btn btn-primary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNav" aria-expanded="false" aria-controls="collapseNav">
             Voir les filtres
@@ -53,7 +53,7 @@
       </div>
       <?php endif; ?>
 
-      <div id="main" class="d-none d-lg-block <?php if (Base::instance()->get('mainCssClass')) echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
+      <div id="main" class="<?php if (Base::instance()->get('mainCssClass')) echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
         <?php
           $route = 'home';
           if (strpos(Base::instance()->get('URI'), '/evenements') !== false) {
@@ -79,7 +79,7 @@
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
       </div>
       <?php if (strpos(Base::instance()->get('URI'), '/admin') === false): ?>
-      <div id="timeline" class="d-lg-none d-flex justify-content-center mt-3 ms-1" style="padding-bottom: 100px">
+      <div id="timeline" class="d-flex justify-content-center mt-3 ms-1" style="padding-bottom: 100px">
         <?php include __DIR__.'/timeline.html.php' ?>
       </div>
       <?php endif; ?>
