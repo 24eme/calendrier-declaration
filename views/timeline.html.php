@@ -62,11 +62,11 @@
                     <?php foreach ($events as $e): ?>
                         <?php if ($e->date_debut === $date): ?>
                             <div class="opacity-50 pb-3">
-                                Ouverture de : <?php echo $e->nom ?>
+                                Ouverture de : <a href="<?php echo Base::instance()->alias('event', ['evenement' => $e->id], Base::instance()->get('activefiltersparams')) ?>"><?php echo $e->nom ?></a>
                             </div>
                         <?php else: ?>
                             <div class="pb-3">
-                                Fermeture de : <?php echo $e->nom ?><br/>
+                                Fermeture de : <a href="<?php echo Base::instance()->alias('event', ['evenement' => $e->id], Base::instance()->get('activefiltersparams')) ?>"><?php echo $e->nom ?></a><br/>
                                 <span class="opacity-50">Ouvert depuis le : <?php echo DateTime::createFromFormat('Y-m-d', $e->date_debut)->format("d F Y") ?></span>
                             </div>
                         <?php endif ?>
