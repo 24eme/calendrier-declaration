@@ -20,7 +20,7 @@
     ?>
 </head>
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid" style="min-height: 80vh;">
     <div class="row">
       <?php if ((strpos(Base::instance()->get('URI'), '/admin') === false)&&(strpos(Base::instance()->get('URI'), '/pages') === false)): ?>
       <div id="sidebar" class="d-flex flex-column flex-shrink-0 border-end d-none d-lg-block">
