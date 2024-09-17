@@ -58,6 +58,19 @@
        </div>
 
        <div class="row mb-3">
+         <label for="recurrence" class="col-2 col-form-label">Récurrence <small>(sur 1 année glissante)</small></label>
+         <div class="col-4">
+           <select class="form-control " name="recurrence">
+             <?php foreach ($event::$recurrences as $recurrence => $desc): ?>
+               <option value="<?php echo $recurrence ?>"<?php echo (($event->recurrence === $recurrence)||(!$event->id && $recurrence == 'annuel')) ? ' selected' : '' ?>>
+                 <?php echo $desc ?>
+               </option>
+             <?php endforeach ?>
+           </select>
+         </div>
+       </div>
+
+       <div class="row mb-3">
          <label for="element_declencheur" class="col-2 col-form-label">Élément déclencheur</label>
          <div class="col-4">
            <input type="text" class="form-control " name="element_declencheur" value="<?php echo $event->element_declencheur ?>" />
@@ -96,19 +109,6 @@
         <div class="col-4">
             <input type="text" class="form-control " name="tags" value="<?php echo $event->getTags() ?>" />
          </div>
-      </div>
-
-      <div class="row mb-3">
-        <label for="recurrence" class="col-2 col-form-label">Récurrence <small>(sur 1 année glissante)</small></label>
-        <div class="col-4">
-          <select class="form-control " name="recurrence">
-            <?php foreach ($event::$recurrences as $recurrence => $desc): ?>
-              <option value="<?php echo $recurrence ?>"<?php echo $event->recurrence === $recurrence ? ' selected' : '' ?>>
-                <?php echo $desc ?>
-              </option>
-            <?php endforeach ?>
-          </select>
-        </div>
       </div>
 
       <div class="row mb-3">
