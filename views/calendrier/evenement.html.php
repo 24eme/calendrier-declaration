@@ -20,7 +20,7 @@
             <?php if(Base::instance()->get('SESSION.user')): ?>
             <small class="d-none d-md-inline"><a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $event->id]) ?>"><i class="bi bi-pencil-square"></i></a></small>
             <?php endif ?>
-            <a href="<?php echo $lienfermer; ?>" class="ms-3 float-end d-none d-md-inline">
+            <a href="<?php echo $lienfermer; ?>" class="ms-3 float-end">
               <i class="bi bi-x-circle"></i>
             </a>
             <?php if ($event->liendeclaration): ?>
