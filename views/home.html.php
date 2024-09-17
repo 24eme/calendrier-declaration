@@ -9,7 +9,7 @@
           for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
         ?>
         <div class="cal-month text-center" data-nbdays="<?php echo ($date->format('t')); ?>">
-          <?php echo $date->format('F'); ?>
+            <?php echo substr(Base::instance()->get('mois')[$date->format('M')], 0, 4).' '.$date->format('Y'); ?>
         </div>
         <?php
           $date->modify('next month');
