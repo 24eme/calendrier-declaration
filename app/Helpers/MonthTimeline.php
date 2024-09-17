@@ -42,6 +42,10 @@ class MonthTimeline
     {
         $class = ['jour'];
 
+        if ($today->format('Ymd') > $currentDate->format('Ymd')) {
+            $class[] = 'passe';
+        }
+
         if ($today->format('Ymd') == $currentDate->format('Ymd')) {
             $class[] = 'jourcourant';
         }
@@ -52,6 +56,9 @@ class MonthTimeline
             }
             if ($currentDate == new DateTime($event->date_fin) && $event->isDate()) {
                 $class[] = 'jourfin';
+            }
+            if ($currentDate == new DateTime($event->date_debut) && $event->isDate()) {
+                $class[] = 'jourdebut';
             }
         }
 

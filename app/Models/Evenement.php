@@ -13,7 +13,7 @@ class Evenement extends Cortex
 
     public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'description', 'date_debut', 'date_fin', 'element_declencheur', 'textedeloi', 'liendeclaration', 'actif', 'recurrence'];
 
-    public static $displayMonths = 16;
+    public static $displayMonths = 12;
 
     public static $recurrences = [
         '' => 'Aucune',
@@ -234,21 +234,23 @@ class Evenement extends Cortex
         }
         ksort($evenementsDates);
         ksort($evenementsNonDates);
-        return $evenementsDates + $evenementsNonDates;
+        return ["Avec date butoir" => $evenementsDates, "Sans date butoir" => $evenementsNonDates];
     }
 
-    public function getPourTimeline(array $evenements, \DateTimeInterface $today, $limit = 3)
+    public function getPourTimeline(array $evenementsByType, \DateTimeInterface $today, $limit = 3)
     {
         $timeline = [];
-        foreach ($evenements as $nom => $events) {
-            foreach ($events as $evenement) {
-                if (! $evenement->isDate(true)) {
-                    $timeline['nondate'][$nom] = $evenement;
-                    continue;
-                }
+        foreach ($evenementsByType as $type => $evenements) {
+            foreach ($evenements as $nom => $events) {
+                foreach ($events as $evenement) {
+                    if (! $evenement->isDate(true)) {
+                        $timeline['nondate'][$nom] = $evenement;
+                        continue;
+                    }
 
-                if ($evenement->date_debut <= $today->format('Y-m-d') && $evenement->date_fin >= $today->format('Y-m-d')) {
-                    $timeline['today'][$nom] = $evenement;
+                    if ($evenement->date_debut <= $today->format('Y-m-d') && $evenement->date_fin >= $today->format('Y-m-d')) {
+                        $timeline['today'][$nom] = $evenement;
+                    }
                 }
             }
         }

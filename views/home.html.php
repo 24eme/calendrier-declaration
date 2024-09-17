@@ -1,14 +1,15 @@
-<div class="ms-xs-5 ms-sm-3 d-none d-sm-block" id="calendar">
-    <div class="cal-header">
-      <div class="cal-titre cal-titre-header"></div>
+<div class="ms-2 d-none d-sm-block" id="calendar">
+  <?php foreach($evenementsByTpe as $type => $evenements): ?>
+  <div class="mb-4">
+  <div class="cal-header">
+      <div class="cal-titre cal-titre-header h5"><?php echo $type ?> <span class=""><a href="" class="opacity-25"><small class="bi bi-chevron-left small"></small></a> <small class="bi bi-calendar"></small> 2024 <a href="" class="opacity-25"><small class="bi bi-chevron-right small"></small></a></span></div>
       <div class="cal-ligne cal-ligne-head">
         <?php
-          $date = DateTime::createFromImmutable($today);
-          $date->modify('first day of previous month');
+          $date = new DateTime("2024-01-01");
           for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
         ?>
-        <div class="cal-month text-center shadow-sm" data-nbdays="<?php echo ($date->format('t')); ?>">
-          <?php echo $date->format('M Y'); ?>
+        <div class="cal-month text-center" data-nbdays="<?php echo ($date->format('t')); ?>">
+          <?php echo $date->format('F'); ?>
         </div>
         <?php
           $date->modify('next month');
@@ -17,36 +18,19 @@
     </div>
   </div>
   <div class="cal-events">
-    <div class="cal-ligne" style=" margin-bottom: 0; border-bottom: 3px solid #ececec;" >
-      <div class="cal-titre bg-white">
-          <strong>Déclarations avec date butoir</strong>
-        </div>
-    </div>
     <?php $hasTitre = false; ?>
     <?php foreach ($evenements as $nom => $evts): $evenement = current($evts); ?>
-      <?php $stop = $today->modify('last day of '.(Models\Evenement::$displayMonths - 2).' months');
-        if ($evenement->date_fin == $stop->format('Y-m-d') && $hasTitre == false): ?>
-        <div class="cal-ligne"  style="margin-bottom: 0; border-bottom: 3px solid #ececec;">
-          <div class="cal-titre bg-white" style="margin-top: 10px;">
-              <strong>Déclarations sans date butoir</strong>
-          </div>
-        </div>
-        <?php
-          $hasTitre = true;
-        endif;
-      ?>
       <div class="cal-ligne">
       <div class="cal-titre" title="<?php echo $nom ?>">
         <a class="cal-titre-txt" href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id], Base::instance()->get('activefiltersparams')) ?>"><?php echo $nom ?></a>
         <?php if ($evenement->liendeclaration): ?>
-        <a href="<?php echo $evenement->liendeclaration ?>" class="btn btn-sm btn-warning px-1 py-0 mt-2 float-end">
+        <a href="<?php echo $evenement->liendeclaration ?>" class="btn btn-sm btn-warning px-1 py-0 me-2 mt-2 float-end">
           <i class="d-inline-flex bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
         </a>
         <?php endif ?>
       </div>
       <?php
-        $date = DateTime::createFromImmutable($today);
-        $date->modify('first day of previous month');
+        $date = new DateTime("2024-01-01");
         for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
       ?>
       <div class="cal-month">
@@ -59,6 +43,8 @@
     </div>
     <?php endforeach; ?>
   </div>
+  </div>
+  <?php endforeach; ?>
 </div>
 
 <div class="d-sm-none">

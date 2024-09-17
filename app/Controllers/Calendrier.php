@@ -11,11 +11,12 @@ class Calendrier extends Controller
     {
         $evenement = new Evenement();
         $today = new \DateTimeImmutable();
-        $evenements = $evenement->getPourCalendrier($today, $f3->get('filters'));
-        $timeline = $evenement->getPourTimeline($evenements, $today);
+        $stop = $today->modify('last day of '.(Evenement::$displayMonths - 2).' months');
+        $evenementsByTpe = $evenement->getPourCalendrier($today, $f3->get('filters'));
+        $timeline = $evenement->getPourTimeline($evenementsByTpe, $today);
         $f3->push('mainCssClass', 'main-calendar');
         $f3->set('content', 'home.html.php');
-        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements', 'timeline', 'today'));
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenementsByTpe', 'timeline', 'today'));
     }
 
     public function show(Base $f3)

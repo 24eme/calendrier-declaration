@@ -16,11 +16,9 @@ header h1 {
 }
 
 #calendar {
-    --calendar-bg-day-color: var(--backgroud-grey);
-    --calendar-bg-day-color-alt: #f5f6f7;
-    --calendar-bg-day-event-color: #d1e7dd;
-    --calendar-bg-day-event-end-color:#75b798;
-    --calendar-bg-day-current-color: #6c757d;
+    --calendar-bg-day-color: #fff;
+    --calendar-bg-day-event-color: #fbbabb; /* rose */
+    --calendar-bg-day-current-color: #666;
     --calendar-line-height: 40px;
     --calendar-day-width: 3px;
     width: max-content;
@@ -41,25 +39,46 @@ header h1 {
 
 .cal-header .cal-titre-header {
     background: #fff;
+    border: none;
 }
 
 .cal-header .cal-month {
     background: #fff;
+    border-top: 1px solid #dee2e6;
+}
+
+.cal-header .cal-month:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.cal-header .cal-month:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+
+.cal-ligne:first-child .cal-titre {
+    border-radius: 8px 0 0 0;
+}
+
+.cal-ligne:last-child .cal-titre {
+    border-radius: 0 0 0 8px;
+    border-bottom: 1px solid #dee2e6;
 }
 
 .cal-titre {
     height: var(--calendar-line-height);
-    width: 400px;
-    border-right: var(--calendar-day-width) solid white;
+    width: 280px;
     background: var(--calendar-bg-day-color);
     line-height: var(--calendar-line-height);
     padding-left: 0.75rem;
-    position: sticky;
+    /*position: sticky;*/
     left: 0;
+    border-left: 1px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
 }
 
 .cal-titre-txt {
-    width:360px;
+    width:235px;
     display:inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -72,28 +91,23 @@ header h1 {
 .cal-month[data-nbdays="31"] { --calendar-nb-days: 31; }
 
 .cal-month[data-nbdays] {
-    width: calc(var(--calendar-day-width) * (var(--calendar-nb-days) + 1));
+    width: calc((var(--calendar-day-width) * (var(--calendar-nb-days))) + 1px);
 }
 
 .cal-month {
-    border-right: var(--calendar-day-width) solid white;
+    border-left: 1px solid #dee2e6;
     background: var(--calendar-bg-day-color);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.cal-ligne:nth-child(odd) .cal-titre {
-    background: var(--calendar-bg-day-color-alt);
-}
-
-.cal-ligne:nth-child(odd) .cal-month .jour {
-    background: var(--calendar-bg-day-color-alt);
+.cal-ligne .cal-month:last-child {
+    border-right: 1px solid #dee2e6;
 }
 
 .cal-ligne {
     display: flex;
-    margin-bottom: var(--calendar-day-width);
 }
 
 .cal-month .jour {
@@ -103,17 +117,47 @@ header h1 {
     background-color: var(--calendar-bg-day-color);
     cursor: pointer;
     width: var(--calendar-day-width);
+    border-top: 1px solid #dee2e6;
 }
 
 .cal-month .active {
     background-color: var(--calendar-bg-day-event-color) !important;
 }
 .cal-month .jourfin {
-    background-color: var(--calendar-bg-day-event-end-color) !important;
+    filter: brightness(0.75);
 }
-.cal-month .jour:hover,
+
 .cal-month .jourcourant {
-    background-color: var(--calendar-bg-day-current-color) !important;
+    background: var(--calendar-bg-day-current-color) !important;
+    border-top: 1px solid transparent;
+}
+
+.cal-month .passe.active.jourfin {
+    filter: brightness(0.8) !important;
+}
+
+.cal-ligne:nth-child(odd) .cal-month  .passe.active.jourfin {
+    filter: brightness(0.75) !important;
+}
+
+.cal-month .passe  {
+    background: #fcfcfc !important;
+}
+
+.cal-month .passe.active  {
+    background: #d2d2d2 !important;
+}
+
+.cal-ligne:nth-child(odd) .cal-titre, .cal-ligne:nth-child(odd) .cal-month .jour {
+    filter: brightness(0.98);
+}
+
+.cal-ligne:nth-child(odd) .cal-month .jourfin {
+    filter: brightness(0.5) !important;
+}
+
+.cal-ligne:nth-child(odd) .cal-month .active {
+    filter: brightness(0.95);
 }
 
 .organisme-card {
@@ -134,7 +178,7 @@ p.tags-header > span:not(:last-child) {
 }
 
 #sidebar-list-organismes label {
-opacity: 0.6;
+    opacity: 0.6;
 }
 .btn.btn-outline-primary.btn-sm {
 }
