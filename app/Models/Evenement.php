@@ -257,25 +257,27 @@ class Evenement extends Cortex
 
         $dateFin = $today->modify('last day of '.$limit.' months');
 
-        foreach ($evenements as $nom => $events) {
-            foreach ($events as $evenement) {
-                if (! $evenement->isDate(true)) {
-                    continue;
-                }
+        foreach ($evenementsByType as $type => $evenements) {
+            foreach ($evenements as $nom => $events) {
+                foreach ($events as $evenement) {
+                    if (! $evenement->isDate(true)) {
+                        continue;
+                    }
 
-                if ($evenement->date_fin < $today->format('Y-m-d')) {
-                    continue;
-                }
-                if ($evenement->date_debut > $dateFin->format('Y-m-d')) {
-                    continue;
-                }
+                    if ($evenement->date_fin < $today->format('Y-m-d')) {
+                        continue;
+                    }
+                    if ($evenement->date_debut > $dateFin->format('Y-m-d')) {
+                        continue;
+                    }
 
-                if ($evenement->date_debut >= $today->format('Y-m-d')) {
-                    $timeline['events'][$evenement->date_debut][] = $evenement;
-                }
+                    if ($evenement->date_debut >= $today->format('Y-m-d')) {
+                        $timeline['events'][$evenement->date_debut][] = $evenement;
+                    }
 
-                if ($evenement->date_fin <= $dateFin->format('Y-m-d')) {
-                    $timeline['events'][$evenement->date_fin][] = $evenement;
+                    if ($evenement->date_fin <= $dateFin->format('Y-m-d')) {
+                        $timeline['events'][$evenement->date_fin][] = $evenement;
+                    }
                 }
             }
         }

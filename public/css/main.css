@@ -11,8 +11,7 @@ header h1 {
 }
 
 #main.main-calendar {
-    overflow: scroll;
-    height: calc(100vh - 2rem);
+
 }
 
 #calendar {
@@ -21,16 +20,14 @@ header h1 {
     --calendar-bg-day-current-color: #666;
     --calendar-line-height: 40px;
     --calendar-day-width: 3px;
-    width: max-content;
 }
 
 #sidebar {
     width: 17rem;
-    min-height: 60vh;
 }
 
 .cal-header {
-    position: sticky;
+    /*position: sticky;*/
     top: 0;
     display: flex;
     z-index: 101;
@@ -104,6 +101,10 @@ header h1 {
 
 .cal-ligne .cal-month:last-child {
     border-right: 1px solid #dee2e6;
+}
+
+.cal-ligne:last-child .cal-month .jour {
+    border-bottom: 1px solid #dee2e6;
 }
 
 .cal-ligne {

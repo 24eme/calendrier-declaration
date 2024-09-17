@@ -20,10 +20,10 @@
     ?>
 </head>
 <body>
-  <div class="container-fluid" style="height: 100%;">
-    <div class="row" style="height: 100%;">
+  <div class="container-fluid">
+    <div class="row">
       <?php if ((strpos(Base::instance()->get('URI'), '/admin') === false)&&(strpos(Base::instance()->get('URI'), '/pages') === false)): ?>
-      <div id="sidebar" class="d-flex flex-column flex-shrink-0 border-end d-none d-lg-block" style="height: 100%;">
+      <div id="sidebar" class="d-flex flex-column flex-shrink-0 border-end d-none d-lg-block">
         <header class="text-center mb-5">
           <?php if (isset($themePath)) {include($themePath.'/header.php');} ?>
         </header>
