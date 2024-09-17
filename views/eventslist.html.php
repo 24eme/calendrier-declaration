@@ -4,6 +4,7 @@
       <th>Déclarations</th>
       <th>Déclencheur</th>
       <th>Échéances</th>
+      <?php if(Base::instance()->get('SESSION.user')): ?><th></th><?php endif ?>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +20,11 @@
       </td>
       <td><?php echo $evenement->element_declencheur; ?></td>
       <td><?php echo \Helpers\MonthTimeline::renderDatelines($evenement); ?></td>
+      <?php if(Base::instance()->get('SESSION.user')): ?>
+        <td>
+          <a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $evenement->id]) ?>"><i class="bi bi-pencil-square"></i></a>
+        </td>
+      <?php endif ?>
     </tr>
     <?php endforeach; ?>
   </tbody>

@@ -123,7 +123,7 @@
 
       <div class="row mb-3">
         <div class="col-sm-2">
-          <a href="/" class="btn btn-secondary float-left">Retour</a>
+          <a href="<?php echo Base::instance()->alias('events') ?>" class="btn btn-secondary float-left">Liste des déclarations</a>
         </div>
         <div class="col-sm-2 text-center text-muted">
             <?php if ($event->id): ?>
