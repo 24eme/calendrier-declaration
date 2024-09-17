@@ -1,7 +1,8 @@
 <style>
 
     :root {
-        --bs-primary: #80002d;
+        --primary-color: #80002d;
+        --bs-primary: var(--primary-color);
     }
 
     .btn-outline-primary {
@@ -49,5 +50,10 @@
 
     .icon-link {
         text-decoration-color: #80002d;
+    }
+
+    .list-group-item.active {
+        border-color: var(--primary-color);
+        background-color: var(--primary-color);
     }
 </style>
