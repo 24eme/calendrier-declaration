@@ -31,7 +31,7 @@
           <i class="bi bi-list"></i> Voir les filtres
         </button>
 
-        <div class="px-2" id="collapseNav">
+        <div class="collapse px-2" id="collapseNav">
           <div class="card card-body bg-white">
             <nav id="sidenav-1" data-mdb-sidenav-init class="sidenav d-flex flex-column flex-shrink-0" data-mdb-hidden="false">
               <?php \Helpers\Sidebar::instance()->render(); ?>
