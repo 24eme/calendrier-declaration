@@ -20,10 +20,10 @@
     ?>
 </head>
 <body>
-  <div class="container-fluid" style="min-height: 80vh;">
-    <div class="row">
+  <div style="min-height: 80vh;">
+    <div class="d-flex">
       <?php if (strpos(Base::instance()->get('URI'), '/pages') === false): ?>
-      <div id="sidebar" class="d-flex flex-column flex-shrink-0 border-end d-none d-lg-block">
+      <div id="sidebar" class="d-flex flex-column flex-shrink-0 border-end d-none d-lg-block px-3">
         <header class="text-center mb-5">
           <?php if (isset($themePath)) {include($themePath.'/header.php');} ?>
         </header>
@@ -33,18 +33,18 @@
           <header class="text-center">
           <?php if (isset($themePath)) {include($themePath.'/header.php');} ?>
           </header>
-          <div class="position-absolute top-0 end-0">
-          <button class="btn btn-light m-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNav" aria-expanded="false" aria-controls="collapseNav">
-            <i class="bi bi-filter-circle"></i> Voir les filtres
+
+          <button class="btn btn-light mt-3 mb-2 d-block w-75 d-sm-none m-auto text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNav" aria-expanded="false" aria-controls="collapseNav">
+            <i class="bi bi-list"></i> Voir les filtres
           </button>
+
+          <div class="collapse" id="collapseNav">
+            <div class="card card-body">
+              <nav id="sidenav-1" data-mdb-sidenav-init class="sidenav d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" data-mdb-hidden="false">
+                <?php \Helpers\Sidebar::instance()->render(); ?>
+              </nav>
+            </div>
           </div>
-        <div class="collapse" id="collapseNav">
-          <div class="card card-body">
-            <nav id="sidenav-1" data-mdb-sidenav-init class="sidenav d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" data-mdb-hidden="false">
-              <?php \Helpers\Sidebar::instance()->render(); ?>
-            </nav>
-          </div>
-        </div>
       </div>
       <?php endif; ?>
 
@@ -59,8 +59,8 @@
           }
         ?>
         <?php if ((strpos(Base::instance()->get('URI'), '/admin') === false)&&(strpos(Base::instance()->get('URI'), '/pages') === false)): ?>
-        <ul class="nav nav-tabs justify-content-center mb-4">
-          <li class="nav-item d-none d-sm-block">
+        <ul class="nav nav-tabs justify-content-center mb-3 d-none d-sm-flex">
+          <li class="nav-item">
             <a class="fs-5 nav-link<?php if($route == 'home'): ?> active<?php endif ?>" aria-current="page" href="<?php echo Base::instance()->alias('home') ?>?<?php echo Base::instance()->get('activefiltersparams'); ?>"><i class="bi bi-calendar2"></i> Calendrier</a>
           </li>
           <li class="nav-item">
@@ -71,7 +71,12 @@
           </li>
         </ul>
         <?php endif; ?>
+        <h2 class="d-block d-sm-none mb-0">
+          <i class="bi bi-three-dots-vertical"></i>Chronologie
+        </h2>
+        <div class="px-3" style="overflow: scroll; width: calc(100vw - 17rem); ">
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
+        </div>
       </div>
       <?php if (strpos(Base::instance()->get('URI'), '/admin') === false): ?>
       <?php endif; ?>
