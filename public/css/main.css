@@ -244,11 +244,14 @@ opacity: 1 !important;
     padding: 0 0 2rem 2rem;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 991px) {
     #calendar {
-        width: inherit;
-        overflow: auto;
+        width: 100vw;
+        overflow: scroll;
     }
+}
+
+@media (min-width: 768px) {
     .timeline:after {
         left: 15%;
     }
