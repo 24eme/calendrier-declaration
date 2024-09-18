@@ -56,4 +56,11 @@
         border-color: var(--primary-color);
         background-color: var(--primary-color);
     }
+
+    #footer {
+        border-top: 1px solid #dee2e6;
+        padding-top: 15px;
+    }
+    #footer a {
+    }
 </style>
