@@ -1,5 +1,8 @@
 :root {
-    --backgroud-grey: #f8f9fa;
+}
+
+table {
+    --bs-table-striped-bg: #fafafa !important;
 }
 
 a {
@@ -242,6 +245,10 @@ opacity: 1 !important;
 }
 
 @media (min-width: 768px) {
+    #calendar {
+        width: inherit;
+        overflow: auto;
+    }
     .timeline:after {
         left: 15%;
     }

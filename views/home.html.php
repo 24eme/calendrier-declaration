@@ -47,7 +47,7 @@
   <?php endforeach; ?>
 </div>
 
-<div class="d-sm-none">
+<div class="d-sm-none ps-3 pe-2">
   <?php include __DIR__.'/timeline.html.php' ?>
 </div>
 

@@ -1,4 +1,5 @@
-<table class="table table-striped table-hover table-sm">
+<div class="px-3">
+<table class="table table-bordered table-striped table-hover table-sm">
   <thead>
     <tr>
       <th>Déclarations</th>
@@ -29,3 +30,4 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+</div>

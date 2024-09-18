@@ -31,9 +31,9 @@
           <i class="bi bi-list"></i> Voir les filtres
         </button>
 
-        <div class="collapse" id="collapseNav">
-          <div class="card card-body">
-            <nav id="sidenav-1" data-mdb-sidenav-init class="sidenav d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" data-mdb-hidden="false">
+        <div class="px-2" id="collapseNav">
+          <div class="card card-body bg-white">
+            <nav id="sidenav-1" data-mdb-sidenav-init class="sidenav d-flex flex-column flex-shrink-0" data-mdb-hidden="false">
               <?php \Helpers\Sidebar::instance()->render(); ?>
             </nav>
           </div>
@@ -73,7 +73,7 @@
           </li>
         </ul>
         <?php endif; ?>
-        <h2 class="d-block d-sm-none mb-0">
+        <h2 class="d-block d-sm-none mb-0 px-2 text-center">
           <i class="bi bi-three-dots-vertical"></i>Chronologie
         </h2>
 
