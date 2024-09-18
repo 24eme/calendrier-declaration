@@ -10,16 +10,15 @@ header h1 {
   letter-spacing: -0.1em;
 }
 
-#main.main-calendar {
-
-}
-
 #calendar {
     --calendar-bg-day-color: #fff;
     --calendar-bg-day-event-color: #fbbabb; /* rose */
     --calendar-bg-day-current-color: #666;
     --calendar-line-height: 40px;
     --calendar-day-width: 3px;
+
+    overflow: scroll;
+    width: calc(100vw - 17rem);
 }
 
 #sidebar {
