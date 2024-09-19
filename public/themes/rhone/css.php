@@ -63,4 +63,7 @@
     }
     #footer a {
     }
+    .cal-month .active {
+        background-color: #B56868 !important;
+    }
 </style>
