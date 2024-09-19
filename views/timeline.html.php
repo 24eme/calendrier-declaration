@@ -4,7 +4,7 @@
         <div class="timeline-body">
             <div class="timeline-meta">
                 Aujourd'hui
-                <span class="text-body-secondary small"><?php echo (isset($today))? $today->format('d M Y') : null; ?></span>
+                <span class="text-body-secondary small"><?php echo str_replace(array_keys(Models\Evenement::$months), array_values(Models\Evenement::$months), (isset($today))? $today->format('d M Y') : null); ?></span>
             </div>
             <div class="timeline-content">
                 <h6>Vous pouvez déclarer :</h6>
@@ -67,7 +67,7 @@
                         <?php else: ?>
                             <div class="pb-3">
                                 Fermeture de : <a href="<?php echo Base::instance()->alias('event', ['evenement' => $e->id], Base::instance()->get('activefiltersparams')) ?>"><?php echo $e->nom ?></a><br/>
-                                <span class="opacity-50">Ouvert depuis le : <?php echo DateTime::createFromFormat('Y-m-d', $e->date_debut)->format("d F Y") ?></span>
+                                <span class="opacity-50">Ouvert depuis le : <?php echo str_replace(array_keys(Models\Evenement::$months), array_values(Models\Evenement::$months),DateTime::createFromFormat('Y-m-d', $e->date_debut)->format("d F Y")); ?></span>
                             </div>
                         <?php endif ?>
                     <?php endforeach ?>
