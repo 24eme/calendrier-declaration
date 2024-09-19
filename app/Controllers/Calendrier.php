@@ -10,13 +10,17 @@ class Calendrier extends Controller
     public function home(Base $f3)
     {
         $evenement = new Evenement();
+        $year = $f3->get('GET.annee') ?:  date('Y');
         $today = new \DateTimeImmutable();
-        $stop = $today->modify('last day of '.(Evenement::$displayMonths - 2).' months');
-        $evenementsByTpe = $evenement->getPourCalendrier($today, $f3->get('filters'));
-        $timeline = $evenement->getPourTimeline($evenementsByTpe, $today);
+        $start = $today;
+        if ($year != date('Y')) {
+            $start = new \DateTimeImmutable("$year-01-01");
+        }
+        $evenementsByTpe = $evenement->getPourCalendrier($start, $f3->get('filters'));
+        $timeline = $evenement->getPourTimeline($evenementsByTpe, $start);
         $f3->push('mainCssClass', 'main-calendar');
         $f3->set('content', 'home.html.php');
-        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenementsByTpe', 'timeline', 'today'));
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenementsByTpe', 'timeline', 'today', 'year'));
     }
 
     public function show(Base $f3)

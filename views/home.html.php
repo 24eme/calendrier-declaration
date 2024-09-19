@@ -2,10 +2,17 @@
   <?php foreach($evenementsByTpe as $type => $evenements): ?>
   <div class="mb-3">
   <div class="cal-header">
-      <div class="cal-titre cal-titre-header h5"><?php echo $type ?> <span class=""><a href="" class="opacity-25"><small class="bi bi-chevron-left small"></small></a> <small class="bi bi-calendar"></small> 2024 <a href="" class="opacity-25"><small class="bi bi-chevron-right small"></small></a></span></div>
+      <div class="cal-titre cal-titre-header h5">
+        <?php echo $type ?>
+        <span class="">
+          <a href="<?php echo Base::instance()->alias('home') ?>?annee=<?php echo $year-1; ?>&<?php echo Base::instance()->get('activefiltersparams'); ?>" class="opacity-25"><small class="bi bi-chevron-left small"></small></a>
+          <small class="bi bi-calendar"></small> <?php echo $year ?>
+          <a href="<?php echo Base::instance()->alias('home') ?>?annee=<?php echo $year+1; ?>&<?php echo Base::instance()->get('activefiltersparams'); ?>" class="opacity-25"><small class="bi bi-chevron-right small"></small></a>
+        </span>
+      </div>
       <div class="cal-ligne cal-ligne-head">
         <?php
-          $date = new DateTime("2024-01-01");
+          $date = new DateTime("$year-01-01");
           for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
         ?>
         <div class="cal-month text-center" data-nbdays="<?php echo ($date->format('t')); ?>">
@@ -30,7 +37,7 @@
         <?php endif ?>
       </div>
       <?php
-        $date = new DateTime("2024-01-01");
+        $date = new DateTime("$year-01-01");
         for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
       ?>
       <div class="cal-month">

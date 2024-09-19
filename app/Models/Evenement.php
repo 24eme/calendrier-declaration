@@ -180,7 +180,7 @@ class Evenement extends Cortex
     {
         $evenementsDates = [];
         $evenementsNonDates = [];
-        $stop = $today->modify('last day of '.(self::$displayMonths - 2).' months');
+        $stop = $today->modify('last day of '.(self::$displayMonths).' months');
         $this->addFilters($filters);
         $evenements = $this->find($this->computeFilters());
         if ($evenements) foreach ($evenements as $evenement) {
