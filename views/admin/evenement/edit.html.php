@@ -13,6 +13,13 @@
     </div>
 
     <div class="row mb-3">
+      <label for="nom" class="col-2 col-form-label">Nom court</label>
+      <div class="col-4">
+        <input type="text" class="form-control " name="nom_court" value="<?php echo $event->nom_court ?>"/>
+      </div>
+    </div>
+
+    <div class="row mb-3">
       <label for="description" class="col-2 col-form-label">Description</label>
       <div class="col-4">
         <div id="editor" class="form-control" name="description"><?php echo $event->description ?></div>

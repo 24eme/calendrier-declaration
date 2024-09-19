@@ -11,7 +11,7 @@ class Evenement extends Cortex
     protected $db = 'DB';
     protected $table = 'evenements';
 
-    public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'description', 'date_debut', 'date_fin', 'element_declencheur', 'textedeloi', 'liendeclaration', 'actif', 'recurrence'];
+    public $fillable = ['type_id', 'organismes', 'familles', 'nom', 'nom_court', 'description', 'date_debut', 'date_fin', 'element_declencheur', 'textedeloi', 'liendeclaration', 'actif', 'recurrence'];
 
     public static $displayMonths = 12;
 
