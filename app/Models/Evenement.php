@@ -27,6 +27,7 @@ class Evenement extends Cortex
 
     protected $fieldConf = [
         'nom' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => false, 'index' => true],
+        'nom_court' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'date_debut' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
         'date_fin' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
         'element_declencheur' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
