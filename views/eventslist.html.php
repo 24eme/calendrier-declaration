@@ -19,7 +19,7 @@
         <?php endif ?>
       </td>
       <td><?php echo $evenement->element_declencheur; ?></td>
-      <td><?php echo \Helpers\MonthTimeline::renderDatelines($evenement); ?></td>
+      <td><?php echo str_replace(array_keys(Models\Evenement::$months), array_values(Models\Evenement::$months), \Helpers\MonthTimeline::renderDatelines($evenement));?></td>
       <?php if(Base::instance()->get('SESSION.user')): ?>
         <td>
           <a href="<?php echo Base::instance()->alias('eventedit', ['evenement' => $evenement->id]) ?>"><i class="bi bi-pencil-square"></i></a>

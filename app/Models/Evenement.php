@@ -15,7 +15,7 @@ class Evenement extends Cortex
 
     public static $displayMonths = 12;
 
-    public static $months = array('January' => "Janvier", 'February' => "Février", 'March' => 'Mars', 'April' => "Avril", 'May' => 'Mai', 'June' => 'Juin', 'July' => 'Juillet', 'August' => 'Aout', 'September' => 'Septembre', 'October' => 'Octobre', 'November' => 'Novembre', 'December' => 'Décembre');
+    public static $months = array('January' => "Janvier", 'February' => "Février", 'March' => 'Mars', 'April' => "Avril", 'May' => 'Mai', 'June' => 'Juin', 'July' => 'Juillet', 'August' => 'Aout', 'September' => 'Septembre', 'October' => 'Octobre', 'November' => 'Novembre', 'December' => 'Décembre', 'january' => "janvier", 'february' => "février", 'march' => 'mars', 'april' => "avril", 'may' => 'mai', 'june' => 'juin', 'july' => 'juillet', 'august' => 'aout', 'september' => 'septembre', 'october' => 'octobre', 'november' => 'novembre', 'december' => 'décembre');
 
     public static $recurrences = [
         '' => 'Aucune',
