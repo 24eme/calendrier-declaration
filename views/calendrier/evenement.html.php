@@ -51,25 +51,27 @@
           </p>
         </div>
 
+        <?php if ($event->organismes): ?>
         <div class="col-12 col-lg-5">
           <h3>Organismes destinataires</h3>
-          <?php foreach ($event->organismes as $organisme): ?>
-            <div class="organisme-card p-3 rounded">
-              <div class="pb-2">
-                <img src="/images/logos/organismes/<?php echo $organisme->logo ?>" class="img-fluid" style="height: 25px">
-                <strong><?php echo $organisme->nom ?></strong>
+            <?php foreach ($event->organismes as $organisme): ?>
+              <div class="organisme-card p-3 rounded">
+                <div class="pb-2">
+                  <img src="/images/logos/organismes/<?php echo $organisme->logo ?>" class="img-fluid" style="height: 25px">
+                  <strong><?php echo $organisme->nom ?></strong>
+                </div>
+                <div>
+                  <?php echo nl2br($organisme->adresse . PHP_EOL . $organisme->code_postal . " " . $organisme->ville) ?>
+                </div>
+                <div>
+                  <i class="bi bi-telephone-fill"></i> <a href="tel:<?php echo $organisme->telephone ?>"><?php echo $organisme->telephone ?></a> <br/>
+                  <i class="bi bi-envelope"></i> <a href="mailto:<?php echo $organisme->email ?>"><?php echo $organisme->email ?></a> <br/>
+                  <i class="bi bi-globe"></i> <a href="<?php echo $organisme->site ?>"><?php echo $organisme->site ?></a>
+                </div>
               </div>
-              <div>
-                <?php echo nl2br($organisme->adresse . PHP_EOL . $organisme->code_postal . " " . $organisme->ville) ?>
-              </div>
-              <div>
-                <i class="bi bi-telephone-fill"></i> <a href="tel:<?php echo $organisme->telephone ?>"><?php echo $organisme->telephone ?></a> <br/>
-                <i class="bi bi-envelope"></i> <a href="mailto:<?php echo $organisme->email ?>"><?php echo $organisme->email ?></a> <br/>
-                <i class="bi bi-globe"></i> <a href="<?php echo $organisme->site ?>"><?php echo $organisme->site ?></a>
-              </div>
-            </div>
-          <?php endforeach ?>
+            <?php endforeach ?>
         </div>
+      <?php endif; ?>
       </div>
 
       <hr class="w-50 mx-auto"/>

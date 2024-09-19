@@ -55,7 +55,7 @@ class AdminEvenement extends AdminController
         $this->event->tags = $f3->get('POST.tags');
         $this->event->save();
 
-        return $f3->reroute(['eventedit', ['evenement' => $this->event->id]]);
+        return $f3->reroute('@events');
     }
 
     public function edit($f3, $params)
@@ -78,12 +78,12 @@ class AdminEvenement extends AdminController
         $this->event->tags = $f3->get('POST.tags');
         $this->event->save();
 
-        return $f3->reroute('@eventedit');
+        return $f3->reroute('@events');
     }
 
     public function delete($f3, $params)
     {
         $this->event->erase();
-        return $f3->reroute('@eventlist');
+        return $f3->reroute('@events');
     }
 }

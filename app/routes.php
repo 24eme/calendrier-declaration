@@ -16,7 +16,6 @@ $f3->route('GET      @event:       /evenement/show/@evenement', Calendrier::clas
 
 $f3->route('GET      @statics:    /pages/@page', Calendrier::class.'->statics');
 
-$f3->route('GET      @eventlist:   /admin/evenements', AdminEvenement::class.'->index');
 $f3->route('GET|POST @eventcreate: /admin/evenement/create', AdminEvenement::class.'->new');
 $f3->route('GET      @eventedit:   /admin/evenement/edit/@evenement', AdminEvenement::class.'->edit');
 $f3->route('POST     @eventupdate: /admin/evenement/update/@evenement', AdminEvenement::class.'->update');
