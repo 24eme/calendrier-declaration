@@ -1,4 +1,3 @@
-<div class="px-3">
 <table class="table table-bordered table-striped table-hover table-sm">
   <thead>
     <tr>
@@ -30,4 +29,3 @@
     <?php endforeach; ?>
   </tbody>
 </table>
-</div>
