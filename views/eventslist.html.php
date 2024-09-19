@@ -1,3 +1,8 @@
+<?php if(Base::instance()->get('SESSION.user')): ?>
+  <div class="text-end mb-3">
+    <a type="button" class="btn btn-light" href="<?php echo Base::instance()->alias('eventcreate') ?>"><i class="bi bi-calendar-plus"></i> Créer une déclaration</a>
+  </div>
+<?php endif; ?>
 <table class="table table-bordered table-striped table-hover table-sm">
   <thead>
     <tr>
