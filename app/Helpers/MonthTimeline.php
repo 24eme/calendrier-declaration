@@ -96,17 +96,17 @@ class MonthTimeline
 
     private static function renderQuarterlyDatelines(Evenement $event)
     {
-        return 'Chaque trimestre '.strtolower(self::renderInterval($event, 'd M'));
+        return 'Chaque trimestre '.strtolower(self::renderInterval($event, 'd F'));
     }
 
     private static function renderHalfYearlyDatelines(Evenement $event)
     {
-        return 'Chaque semestre '.strtolower(self::renderInterval($event, 'd M'));
+        return 'Chaque semestre '.strtolower(self::renderInterval($event, 'd F'));
     }
 
     private static function renderYearlyDatelines(Evenement $event)
     {
-        return 'Chaque année '.strtolower(self::renderInterval($event, 'd M'));
+        return 'Chaque année '.strtolower(self::renderInterval($event, 'd F'));
     }
 
     private static function renderInterval(Evenement $event, $dateFormat = 'd/m/Y')
