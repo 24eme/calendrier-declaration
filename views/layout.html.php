@@ -76,8 +76,9 @@
         <h2 class="d-block d-sm-none mb-0 px-2 text-center">
           <i class="bi bi-three-dots-vertical"></i>Chronologie
         </h2>
-
+        <div class="px-4">
         <?php include __DIR__.'/'.Base::instance()->get('content') ?>
+        </div>
       </div>
       <?php if (strpos(Base::instance()->get('URI'), '/admin') === false): ?>
       <?php endif; ?>
