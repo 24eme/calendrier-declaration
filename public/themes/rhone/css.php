@@ -66,4 +66,8 @@
     .cal-month .active {
         background-color: #B56868 !important;
     }
+    .cal-month .jourcourant {
+      background: var(--calendar-bg-day-current-color) !important;
+      border-top: 1px solid transparent;
+    }
 </style>
