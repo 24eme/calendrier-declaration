@@ -61,13 +61,4 @@
         border-top: 1px solid #dee2e6;
         padding-top: 15px;
     }
-    #footer a {
-    }
-    .cal-month .active {
-        background-color: #B56868 !important;
-    }
-    .cal-month .jourcourant {
-      background: var(--calendar-bg-day-current-color) !important;
-      border-top: 1px solid transparent;
-    }
 </style>

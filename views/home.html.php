@@ -61,13 +61,13 @@
 <script>
   document.getElementById('calendar').addEventListener('click', function (e) {
     if (e.target.classList.contains('active')) {
-      const ligne = e.target.closest('.cal-ligne')
+      let ligne = e.target.closest('.cal-ligne')
       if (! ligne) {
         console.warn('Pas d\'entête...')
         return false
       }
 
-      const link = ligne.querySelector('a.cal-titre-txt')
+      link = ligne.querySelector('a.cal-titre-txt')
       if (! link) {
         console.warn('Pas de lien...')
         return false
