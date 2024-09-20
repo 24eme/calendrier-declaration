@@ -244,6 +244,12 @@ opacity: 1 !important;
     padding: 0 0 2rem 2rem;
 }
 
+@media (max-width: 575px) {
+    #sidebar {
+        width: 100%;
+    }
+}
+
 @media (max-width: 991px) {
     #calendar {
         width: 100vw;
