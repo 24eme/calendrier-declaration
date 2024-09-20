@@ -58,7 +58,7 @@ header h1 {
 
 .tooltip.tooltip-app {
     --bs-tooltip-max-width: 400px;
-    --bs-tooltip-opacity: 0.90;
+    --bs-tooltip-opacity: 0.9;
     --bs-tooltip-bg: #fff;
     --bs-tooltip-color: #000;
     --bs-tooltip-padding-x: 0.75rem;
@@ -250,8 +250,30 @@ p.tags-header > span:not(:last-child) {
 }
 
 #sidebar-list-organismes label {
-    opacity: 0.6;
+    opacity: 0.8;
+    height: 76px;
+    width: 76px;
 }
+#sidebar-list-organismes label span {
+    width: 74px;
+    height: 21px;
+    text-overflow: '';
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 0 0 var(--bs-btn-border-radius) var(--bs-btn-border-radius);
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+#sidebar-list-organismes label.active {
+    border-width: 2px;
+}
+
+#sidebar-list-organismes label.active span {
+    background: var(--primary-color) !important;
+    color: #fff !important;
+}
+
 .btn.btn-outline-primary.btn-sm {
 }
 
