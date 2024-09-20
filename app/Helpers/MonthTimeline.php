@@ -86,7 +86,7 @@ class MonthTimeline
                 $dateLines = self::renderInterval($event);
                 break;
         }
-        return $dateLines;
+        return str_replace(array_keys(Evenement::$months), array_values(Evenement::$months), $dateLines);
     }
 
     private static function renderMonthlyDatelines(Evenement $event)

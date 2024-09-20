@@ -13,6 +13,20 @@ header h1 {
   letter-spacing: -0.1em;
 }
 
+.tooltip.tooltip-app {
+    --bs-tooltip-max-width: 400px;
+    --bs-tooltip-opacity: 0.9;
+    --bs-tooltip-bg: #fff;
+    --bs-tooltip-color: #000;
+    --bs-tooltip-padding-x: 0.75rem;
+    --bs-tooltip-padding-y: 0.5rem;
+}
+
+.tooltip.tooltip-app div.tooltip-inner {
+    border: 1px solid #cecece;
+    text-align: left;
+}
+
 #calendar {
     --calendar-bg-day-color: #fff;
     --calendar-bg-day-event-color: #fbbabb; /* rose */
@@ -70,11 +84,18 @@ header h1 {
     background: var(--calendar-bg-day-color);
     line-height: var(--calendar-line-height);
     padding-left: 0.75rem;
-    /*position: sticky;*/
     left: 0;
     border-left: 1px solid #dee2e6;
     border-top: 1px solid #dee2e6;
     flex-shrink: 0;
+}
+
+.cal-ligne:hover .bi-file-earmark {
+    display: none !important;
+}
+
+.cal-ligne:hover .bi-eye {
+    display: inline !important;
 }
 
 .cal-titre-txt {
@@ -162,6 +183,10 @@ header h1 {
 
 .cal-ligne:nth-child(odd) .cal-month .active {
     filter: brightness(0.95);
+}
+
+.cal-ligne .cal-month .jour:hover {
+    filter: brightness(0.5) !important;
 }
 
 .organisme-card {
