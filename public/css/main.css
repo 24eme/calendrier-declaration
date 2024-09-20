@@ -128,7 +128,11 @@ header h1 {
     background-color: var(--calendar-bg-day-event-color) !important;
 }
 .cal-month .jourfin {
-    filter: brightness(0.75);
+    filter: brightness(0.55) !important;
+}
+
+.cal-ligne:nth-child(odd) .cal-month .jourfin {
+    filter: brightness(0.50) !important;
 }
 
 .cal-month .jourcourant {
@@ -154,10 +158,6 @@ header h1 {
 
 .cal-ligne:nth-child(odd) .cal-titre, .cal-ligne:nth-child(odd) .cal-month .jour {
     filter: brightness(0.98);
-}
-
-.cal-ligne:nth-child(odd) .cal-month .jourfin {
-    filter: brightness(0.5) !important;
 }
 
 .cal-ligne:nth-child(odd) .cal-month .active {
