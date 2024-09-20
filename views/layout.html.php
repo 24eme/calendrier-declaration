@@ -6,10 +6,10 @@
     <title>Calendrier des déclarations viti/vinicoles</title>
     <link rel="shortcut icon" href="/images/logos/logo-P.svg" >
 
-    <link href='/css/bootstrap.min.css' rel='stylesheet' />
-    <link rel="stylesheet" href="/css/bootstrap-icons.min.css">
-    <link href="/css/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/main.css" />
+    <link href="/css/bootstrap.min.css?v5.3.3" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/bootstrap-icons.min.css?v1.11.3">
+    <link href="/css/quill.snow.css?v2.0.2" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css?<?php echo Base::instance()->get('COMMIT') ?>" />
     <?php
       if (Base::instance()->get('theme')) {
         $themePath = implode(DIRECTORY_SEPARATOR, [Base::instance()->get('ROOT'), 'themes', Base::instance()->get('theme')]).'/';
@@ -80,8 +80,8 @@
   <footer id="footer" class="text-center">
       <?php if ($themePath) {include($themePath.'footer.php');} ?>
   </footer>
-  <script src="/js/quill.js"></script>
-  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/quill.js?v2.0.2"></script>
+  <script src="/js/bootstrap.bundle.min.js?v5.3.3"></script>
   <script>
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
