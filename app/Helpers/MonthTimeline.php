@@ -91,22 +91,22 @@ class MonthTimeline
 
     private static function renderMonthlyDatelines(Evenement $event)
     {
-        return 'Chaque mois '.strtolower(self::renderInterval($event, 'd'));
+        return 'Chaque mois '.strtolower(self::renderInterval($event, 'j'));
     }
 
     private static function renderQuarterlyDatelines(Evenement $event)
     {
-        return 'Chaque trimestre '.strtolower(self::renderInterval($event, 'd F'));
+        return 'Chaque trimestre '.strtolower(self::renderInterval($event, 'j F'));
     }
 
     private static function renderHalfYearlyDatelines(Evenement $event)
     {
-        return 'Chaque semestre '.strtolower(self::renderInterval($event, 'd F'));
+        return 'Chaque semestre '.strtolower(self::renderInterval($event, 'j F'));
     }
 
     private static function renderYearlyDatelines(Evenement $event)
     {
-        return 'Chaque année '.strtolower(self::renderInterval($event, 'd F'));
+        return 'Chaque année '.strtolower(self::renderInterval($event, 'j F'));
     }
 
     private static function renderInterval(Evenement $event, $dateFormat = 'd/m/Y')
