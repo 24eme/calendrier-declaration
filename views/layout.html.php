@@ -51,6 +51,7 @@
       <?php endif; ?>
 
       <div id="main" class="mt-4 <?php if (Base::instance()->get('mainCssClass')) echo implode(" ", Base::instance()->get('mainCssClass')) ?>">
+        <span class="ms-4"><i class="bi bi-calendar2-event"></i><?php echo str_repeat('&nbsp', 3).str_replace(array_keys(Models\Evenement::$months), array_values(Models\Evenement::$months), date('j F Y'));?></span>
         <?php
           $route = 'home';
           if (strpos(Base::instance()->get('URI'), '/evenements') !== false) {
