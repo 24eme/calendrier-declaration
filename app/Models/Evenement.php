@@ -26,11 +26,11 @@ class Evenement extends Cortex
     ];
 
     protected $fieldConf = [
+        'type_id' => ['belongs-to-one' => Type::class, 'index' => true],
         'nom' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => false, 'index' => true],
         'nom_court' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'date_debut' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
         'date_fin' => ['type' => \DB\SQL\Schema::DT_DATE, 'nullable' => true],
-        'element_declencheur' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'description' => ['type' => \DB\SQL\Schema::DT_TEXT, 'nullable' => false, 'index' => true],
         'textedeloi' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'liendeclaration' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
@@ -38,9 +38,9 @@ class Evenement extends Cortex
         'recurrence' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
         'date_creation' => ['type' => \DB\SQL\Schema::DT_DATETIME],
         'date_modification' => ['type' => \DB\SQL\Schema::DT_DATETIME],
+        'element_declencheur' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
 
         // Relations
-        'type_id' => ['belongs-to-one' => Type::class, 'index' => true],
         'organismes' => ['has-many' => [Organisme::class, 'evenements', 'evenement_organisme', 'relField' => 'evenement_id']],
         'tags' => [
             'has-many' => [Tag::class, 'evenements', 'evenement_tag',
@@ -92,6 +92,10 @@ class Evenement extends Cortex
         }
 
         return $noms;
+    }
+
+    public function getNomCourt() {
+        return $this->nom_court ?: $this->nom;
     }
 
     public function set_actif($actif)
