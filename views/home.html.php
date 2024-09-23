@@ -1,6 +1,6 @@
-<div class="d-none d-sm-block" id="calendar" style="">
+<div class="d-none d-sm-block" id="calendars">
   <?php foreach($evenementsByTpe as $type => $evenements): ?>
-  <div class="mb-3">
+  <div class="calendar">
   <div class="cal-header">
       <div class="cal-titre cal-titre-header h5">
         <?php echo $type ?>
