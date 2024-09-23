@@ -43,7 +43,7 @@ class AdminFamille extends AdminController
         $this->famille->copyfrom('POST', $this->famille->fillable);
         $this->famille->save();
 
-        return $f3->reroute(['familleedit', ['famille' => $this->famille->id]]);
+        return $f3->reroute('@famillelist');
     }
 
     public function edit($f3, $params)
@@ -60,7 +60,7 @@ class AdminFamille extends AdminController
         $this->famille->copyfrom('POST', $this->famille->fillable);
         $this->famille->save();
 
-        return $f3->reroute('@familleedit');
+        return $f3->reroute('@famillelist');
     }
 
     public function delete($f3, $params)

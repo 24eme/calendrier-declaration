@@ -42,7 +42,7 @@
                                     <?php echo $nom ?>
                                   </a>
                                     <?php if ($event->liendeclaration): ?>
-                                        <a href="<?php echo $event->liendeclaration ?>">
+                                        <a href="<?php echo $event->liendeclaration ?>" target="_blank">
                                             <i class="ms-1 bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
                                         </a>
                                     <?php endif ?>

@@ -24,7 +24,7 @@
               <i class="bi bi-x-circle"></i>
             </a>
             <?php if ($event->liendeclaration): ?>
-            <a href="<?php echo $event->liendeclaration ?>" class="btn btn-warning float-end">
+            <a href="<?php echo $event->liendeclaration ?>" class="btn btn-warning float-end" target="_blank">
               <span class="d-none d-md-inline">Accéder à la déclaration </span><i class="d-inline-flex bi bi-box-arrow-up-right"></i>
             </a>
             <?php endif ?>
