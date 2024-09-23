@@ -61,6 +61,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const calendars = document.getElementById('calendars');
+  let tooltip
 
   calendars.addEventListener('click', function (e) {
     if (e.target.classList.contains('active')) {
@@ -83,12 +84,41 @@ document.addEventListener('DOMContentLoaded', function () {
   calendars.addEventListener('mouseover', function (e) {
     const el = e.target
     if (el.classList.contains('jour')) {
+      document.querySelectorAll(".monthday").forEach(div => div.remove());
       addMonthDay(el)
+
+      if (el.classList.contains('active')) {
+        const tooltipOptionsDefaults = {'animation': false, 'delay': 1000, 'placement': 'auto'}
+        let tooltipOptions = tooltipOptionsDefaults
+        let fin
+        let month = el.closest('.cal-month')
+
+        while (month && ! (fin = month.querySelector('.jourfin'))) {
+          month = month.nextElementSibling
+        }
+
+        if (fin) {
+          tooltipOptions.title = "Fin : "+fin.title
+        }
+
+        tooltip = new bootstrap.Tooltip(el, tooltipOptions)
+        tooltip.show()
+      }
     }
   })
 
-  function addMonthDay(day) {
-    document.querySelectorAll(".monthday").forEach(div => div.remove());
+  calendars.addEventListener('mouseout', function (e) {
+    const el = e.target
+    if (el.classList.contains('jour')) {
+      document.querySelectorAll(".monthday").forEach(div => div.remove());
+
+      if (tooltip && tooltip.tip) {
+        tooltip.dispose()
+      }
+    }
+  })
+
+  function addMonthDay(day, classe = 'monthday') {
 
     const cal = day.closest('.calendar')
     const rect = day.getBoundingClientRect()
@@ -97,10 +127,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let message = document.createElement('div')
     message.innerHTML = day.title.split(' ')[0]
 
-    message.classList.add('monthday')
+    message.classList.add(classe)
     message.style.position = "absolute"
-    message.style.left = "calc(" + rect.left + "px - 8px)"
-    message.style.top = "calc(" + monthheader.getBoundingClientRect().bottom + "px - 1.2rem)"
+    message.style.left = "calc(" + (rect.left + window.scrollX) + "px - 8px)"
+    message.style.top = "calc(" + (monthheader.getBoundingClientRect().bottom + window.scrollY) + "px - 1.2rem)"
     message.style.fontSize = "0.9rem"
     message.style.width = "20px"
     message.style.textAlign = "center"
@@ -109,5 +139,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.append(message)
   }
 
+  calendars.querySelectorAll('.calendar').forEach(function (cal) {
+    addMonthDay(cal.querySelector('.jourcourant'), 'monthtoday')
+  })
 })
 </script>
