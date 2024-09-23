@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
     message.classList.add('monthday')
     message.style.position = "absolute"
     message.style.left = "calc(" + rect.left + "px - 8px)"
-    message.style.top = "calc(" + monthheader.getBoundingClientRect().bottom + "px - 1.2rem)"
+    message.style.top = "calc(" + (monthheader.getBoundingClientRect().bottom + window.scrollY) + "px - 1.2rem)"
     message.style.fontSize = "0.9rem"
     message.style.width = "20px"
     message.style.textAlign = "center"
