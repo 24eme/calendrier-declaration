@@ -61,6 +61,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const calendars = document.getElementById('calendars');
+  let tooltip
 
   calendars.addEventListener('click', function (e) {
     if (e.target.classList.contains('active')) {
@@ -85,6 +86,24 @@ document.addEventListener('DOMContentLoaded', function () {
     if (el.classList.contains('jour')) {
       document.querySelectorAll(".monthday").forEach(div => div.remove());
       addMonthDay(el)
+
+      if (el.classList.contains('active')) {
+        const tooltipOptionsDefaults = {'animation': false, 'delay': 1000, 'placement': 'auto'}
+        let tooltipOptions = tooltipOptionsDefaults
+        let fin
+        let month = el.closest('.cal-month')
+
+        while (month && ! (fin = month.querySelector('.jourfin'))) {
+          month = month.nextElementSibling
+        }
+
+        if (fin) {
+          tooltipOptions.title = "Fin : "+fin.title
+        }
+
+        tooltip = new bootstrap.Tooltip(el, tooltipOptions)
+        tooltip.show()
+      }
     }
   })
 
@@ -92,6 +111,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const el = e.target
     if (el.classList.contains('jour')) {
       document.querySelectorAll(".monthday").forEach(div => div.remove());
+
+      if (tooltip && tooltip.tip) {
+        tooltip.dispose()
+      }
     }
   })
 
