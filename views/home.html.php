@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })
 
-  function addMonthDay(day) {
+  function addMonthDay(day, classe = 'monthday') {
 
     const cal = day.closest('.calendar')
     const rect = day.getBoundingClientRect()
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let message = document.createElement('div')
     message.innerHTML = day.title.split(' ')[0]
 
-    message.classList.add('monthday')
+    message.classList.add(classe)
     message.style.position = "absolute"
     message.style.left = "calc(" + rect.left + "px - 8px)"
     message.style.top = "calc(" + (monthheader.getBoundingClientRect().bottom + window.scrollY) + "px - 1.2rem)"
@@ -116,5 +116,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.append(message)
   }
 
+  calendars.querySelectorAll('.calendar').forEach(function (cal) {
+    addMonthDay(cal.querySelector('.jourcourant'), 'monthtoday')
+  })
 })
 </script>
