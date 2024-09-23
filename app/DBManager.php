@@ -2,6 +2,8 @@
 
 class DBManager
 {
+    const DATASET_FILE = '../sql/dataset.sql';
+
     public static function init($dsn)
     {
         $db = null;
@@ -20,10 +22,10 @@ class DBManager
             \Models\Tag::setup();
             \Models\Famille::setup();
 
-            foreach (['Obligation', 'Autre'] as $type) {
-                $t = new \Models\Type();
-                $t->nom = $type;
-                $t->save();
+            if (file_exists(self::DATASET_FILE)) {
+                if ($dataset = file_get_contents(self::DATASET_FILE)) {
+                    $result = $db->exec(explode(PHP_EOL, $dataset));
+                }
             }
         }
 
