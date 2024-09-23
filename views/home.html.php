@@ -59,7 +59,10 @@
 </div>
 
 <script>
-  document.getElementById('calendar').addEventListener('click', function (e) {
+document.addEventListener('DOMContentLoaded', function () {
+  const calendars = document.getElementById('calendars');
+
+  calendars.addEventListener('click', function (e) {
     if (e.target.classList.contains('active')) {
       let ligne = e.target.closest('.cal-ligne')
       if (! ligne) {
@@ -76,4 +79,35 @@
       link.click()
     }
   })
+
+  calendars.addEventListener('mouseover', function (e) {
+    const el = e.target
+    if (el.classList.contains('jour')) {
+      addMonthDay(el)
+    }
+  })
+
+  function addMonthDay(day) {
+    document.querySelectorAll(".monthday").forEach(div => div.remove());
+
+    const cal = day.closest('.calendar')
+    const rect = day.getBoundingClientRect()
+    const monthheader = cal.querySelector('.cal-ligne.cal-ligne-head')
+
+    let message = document.createElement('div')
+    message.innerHTML = day.title.split(' ')[0]
+
+    message.classList.add('monthday')
+    message.style.position = "absolute"
+    message.style.left = "calc(" + rect.left + "px - 8px)"
+    message.style.top = "calc(" + monthheader.getBoundingClientRect().bottom + "px - 1.2rem)"
+    message.style.fontSize = "0.9rem"
+    message.style.width = "20px"
+    message.style.textAlign = "center"
+    message.style.opacity = 0.7
+
+    document.body.append(message)
+  }
+
+})
 </script>
