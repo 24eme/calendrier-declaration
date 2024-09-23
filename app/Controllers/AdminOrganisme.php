@@ -58,8 +58,12 @@ class AdminOrganisme extends AdminController
 
     public function update($f3, $params)
     {
+        $logo = $this->organisme->logo;
         $this->organisme->copyfrom('POST', $this->organisme->fillable);
         $this->organisme->visible_filtre = $f3->get('POST.visible_filtre');
+        if ($logo && !$this->organisme->logo) {
+            $this->organisme->logo = $logo;
+        }
         $this->organisme->save();
 
         return $f3->reroute('@organismelist');
