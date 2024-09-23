@@ -44,7 +44,7 @@ class AdminOrganisme extends AdminController
         $this->organisme->visible_filtre = $f3->get('POST.visible_filtre');
         $this->organisme->save();
 
-        return $f3->reroute(['organismeedit', ['organisme' => $this->organisme->id]]);
+        return $f3->reroute('@organismelist');
     }
 
     public function edit($f3, $params)
@@ -62,7 +62,7 @@ class AdminOrganisme extends AdminController
         $this->organisme->visible_filtre = $f3->get('POST.visible_filtre');
         $this->organisme->save();
 
-        return $f3->reroute('@organismeedit');
+        return $f3->reroute('@organismelist');
     }
 
     public function delete($f3, $params)
