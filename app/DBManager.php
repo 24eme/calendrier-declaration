@@ -15,7 +15,7 @@ class DBManager
             die("Fatal error while creating PDO connexion: ".$e->getMessage());
         }
 
-        if (! $db->schema('evenements') && \Base::instance()->get('db.create') === true) {
+        if (!$db->schema('evenements')) {
             \Models\Evenement::setup();
             \Models\Organisme::setup();
             \Models\Type::setup();
