@@ -12,6 +12,13 @@
     </div>
 
     <div class="row mb-3">
+      <label for="nom" class="col-2 col-form-label">Nom court</label>
+      <div class="col-4">
+        <input type="text" class="form-control " name="nom_court" value="<?php echo $organisme->nom_court ?>"/>
+      </div>
+    </div>
+
+    <div class="row mb-3">
       <label for="adresse" class="col-2 col-form-label">Adresse</label>
       <div class="col-4">
         <input type="text" class="form-control" id="adresse" name="adresse" value="<?php echo $organisme->adresse ?>">

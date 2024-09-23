@@ -70,7 +70,7 @@ header h1 {
     text-align: left;
 }
 
-#calendar {
+#calendars {
     --calendar-bg-day-color: #fff;
     --calendar-bg-day-event-color: #fbbabb; /* rose */
     --calendar-bg-day-current-color: #666;
@@ -79,6 +79,10 @@ header h1 {
 
     overflow: scroll;
     width: calc(100vw - 17rem);
+}
+
+.calendar:not(:last-child) {
+    margin-bottom: 1rem;
 }
 
 #sidebar {
@@ -341,7 +345,7 @@ opacity: 1 !important;
 }
 
 @media (max-width: 991px) {
-    #calendar {
+    #calendars {
         width: 100vw;
         overflow: scroll;
     }

@@ -15,6 +15,7 @@ class Organisme extends Cortex
 
     protected $fieldConf = [
         'nom' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'unique' => true, 'nullable' => false],
+        'nom_court' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'adresse' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
         'code_postal' => ['type' => \DB\SQL\Schema::DT_VARCHAR128, 'nullable' => true],
         'ville' => ['type' => \DB\SQL\Schema::DT_VARCHAR256, 'nullable' => true],
@@ -36,5 +37,9 @@ class Organisme extends Cortex
     public function set_visible_filtre($visible)
     {
         return $visible ? true : false;
+    }
+
+    public function getNomCourt() {
+        return $this->nom_court ?: $this->nom;
     }
 }

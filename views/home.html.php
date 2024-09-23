@@ -1,6 +1,6 @@
-<div class="d-none d-sm-block" id="calendar" style="">
+<div class="d-none d-sm-block" id="calendars">
   <?php foreach($evenementsByTpe as $type => $evenements): ?>
-  <div class="mb-3">
+  <div class="calendar">
   <div class="cal-header">
       <div class="cal-titre cal-titre-header h5">
         <?php echo $type ?>
@@ -31,7 +31,7 @@
       <div class="cal-titre" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="<strong><?php echo $nom ?></strong><br /><i class='bi bi-calendar'></i> <?php echo \Helpers\MonthTimeline::renderDatelines($evenement) ?><br /><i class='bi bi-buildings'></i> <?php echo implode(', ', $evenement->getNomsOrganismes()) ?><?php if($evenement->liendeclaration): ?><br /><i class='bi bi-globe'></i> <?php echo $evenement->liendeclaration ?><?php endif; ?>" data-bs-placement="right" data-bs-custom-class="tooltip-app">
         <a class="cal-titre-txt" href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id], Base::instance()->get('activefiltersparams')) ?>"><i class='bi bi-file-earmark opacity-25'></i> <i class='bi bi-eye d-none'></i> <?php echo $evenement->getNomCourt(); ?></a>
         <?php if ($evenement->liendeclaration): ?>
-        <a href="<?php echo $evenement->liendeclaration ?>" class="btn btn-sm btn-warning px-1 py-0 me-2 mt-2 float-end">
+        <a href="<?php echo $evenement->liendeclaration ?>" class="btn btn-sm btn-warning px-1 py-0 me-2 mt-2 float-end" target="_blank">
           <i class="d-inline-flex bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
         </a>
         <?php endif ?>
@@ -59,7 +59,10 @@
 </div>
 
 <script>
-  document.getElementById('calendar').addEventListener('click', function (e) {
+document.addEventListener('DOMContentLoaded', function () {
+  const calendars = document.getElementById('calendars');
+
+  calendars.addEventListener('click', function (e) {
     if (e.target.classList.contains('active')) {
       let ligne = e.target.closest('.cal-ligne')
       if (! ligne) {
@@ -76,4 +79,35 @@
       link.click()
     }
   })
+
+  calendars.addEventListener('mouseover', function (e) {
+    const el = e.target
+    if (el.classList.contains('jour')) {
+      addMonthDay(el)
+    }
+  })
+
+  function addMonthDay(day) {
+    document.querySelectorAll(".monthday").forEach(div => div.remove());
+
+    const cal = day.closest('.calendar')
+    const rect = day.getBoundingClientRect()
+    const monthheader = cal.querySelector('.cal-ligne.cal-ligne-head')
+
+    let message = document.createElement('div')
+    message.innerHTML = day.title.split(' ')[0]
+
+    message.classList.add('monthday')
+    message.style.position = "absolute"
+    message.style.left = "calc(" + rect.left + "px - 8px)"
+    message.style.top = "calc(" + monthheader.getBoundingClientRect().bottom + "px - 1.2rem)"
+    message.style.fontSize = "0.9rem"
+    message.style.width = "20px"
+    message.style.textAlign = "center"
+    message.style.opacity = 0.7
+
+    document.body.append(message)
+  }
+
+})
 </script>

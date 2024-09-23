@@ -12,13 +12,14 @@ ALTER TABLE evenements RENAME COLUMN rrule TO recurrence;
 ALTER TABLE evenements RENAME COLUMN created_at TO date_creation;
 ALTER TABLE evenements RENAME COLUMN updated_at TO date_modification;
 ALTER TABLE evenements ADD COLUMN element_declencheur varchar;
-ALTER TABLE evenements ADD COLUMN nom_court varchar;
+ALTER TABLE evenements ADD COLUMN nom_court varchar AFTER nom;
 
 ALTER TABLE familles DROP COLUMN slug;
 ALTER TABLE familles DROP COLUMN couleur;
 
 ALTER TABLE organismes DROP COLUMN slug;
 ALTER TABLE organismes DROP COLUMN couleur;
+ALTER TABLE organismes ADD COLUMN nom_court varchar AFTER nom;
 
 ALTER TABLE tags DROP COLUMN slug;
 
