@@ -29,7 +29,7 @@
     <?php foreach ($evenements as $nom => $evts): $evenement = current($evts); ?>
       <div class="cal-ligne">
       <div class="cal-titre" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="<strong><?php echo $nom ?></strong><br /><i class='bi bi-calendar'></i> <?php echo \Helpers\MonthTimeline::renderDatelines($evenement) ?><br /><i class='bi bi-buildings'></i> <?php echo implode(', ', $evenement->getNomsOrganismes()) ?><?php if($evenement->liendeclaration): ?><br /><i class='bi bi-globe'></i> <?php echo $evenement->liendeclaration ?><?php endif; ?>" data-bs-placement="right" data-bs-custom-class="tooltip-app">
-        <a class="cal-titre-txt" href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id], Base::instance()->get('activefiltersparams')) ?>"><i class='bi bi-file-earmark opacity-25'></i> <i class='bi bi-eye d-none'></i> <?php if ($evenement->nom_court) {echo $evenement->nom_court;} else { echo $nom;} ?></a>
+        <a class="cal-titre-txt" href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id], Base::instance()->get('activefiltersparams')) ?>"><i class='bi bi-file-earmark opacity-25'></i> <i class='bi bi-eye d-none'></i> <?php echo $evenement->getNomCourt(); ?></a>
         <?php if ($evenement->liendeclaration): ?>
         <a href="<?php echo $evenement->liendeclaration ?>" class="btn btn-sm btn-warning px-1 py-0 me-2 mt-2 float-end">
           <i class="d-inline-flex bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>

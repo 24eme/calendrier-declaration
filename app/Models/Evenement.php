@@ -94,6 +94,10 @@ class Evenement extends Cortex
         return $noms;
     }
 
+    public function getNomCourt() {
+        return $this->nom_court ?: $this->nom;
+    }
+
     public function set_actif($actif)
     {
         return $actif ? true : false;
