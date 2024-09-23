@@ -83,12 +83,19 @@ document.addEventListener('DOMContentLoaded', function () {
   calendars.addEventListener('mouseover', function (e) {
     const el = e.target
     if (el.classList.contains('jour')) {
+      document.querySelectorAll(".monthday").forEach(div => div.remove());
       addMonthDay(el)
     }
   })
 
+  calendars.addEventListener('mouseout', function (e) {
+    const el = e.target
+    if (el.classList.contains('jour')) {
+      document.querySelectorAll(".monthday").forEach(div => div.remove());
+    }
+  })
+
   function addMonthDay(day) {
-    document.querySelectorAll(".monthday").forEach(div => div.remove());
 
     const cal = day.closest('.calendar')
     const rect = day.getBoundingClientRect()
