@@ -28,7 +28,7 @@
         </a>
         <?php endif ?>
         <?php foreach ($evenement->organismes as $organisme): ?>
-          <img class="img-fluid float-end mx-1" style="height: 25px;" src="/images/logos/organismes/<?php echo $organisme->logo ?>" data-bs-toggle="tooltip" data-bs-title="<?php echo $organisme->nom ?>">
+          <img class="img-fluid float-end mx-1" style="height: 25px;" src="<?php echo Base::instance()->alias('organismelogo', ['organisme' => $organisme->id]) ?>" data-bs-toggle="tooltip" data-bs-title="<?php echo $organisme->nom ?>">
         <?php endforeach; ?>
       </td>
       <td><?php echo $evenement->element_declencheur; ?></td>
