@@ -23,5 +23,6 @@ ALTER TABLE organismes ADD COLUMN nom_court varchar AFTER nom;
 
 ALTER TABLE tags DROP COLUMN slug;
 
+ALTER TABLE types RENAME COLUMN name TO nom;
 ALTER TABLE types DROP COLUMN slug;
 ALTER TABLE types DROP COLUMN color;

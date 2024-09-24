@@ -1,5 +1,13 @@
 <div class="d-none d-sm-block" id="calendars">
+  <?php
+    $hasEvents = false;
+    foreach($evenementsByTpe as $type => $evenements) { if ($evenements) $hasEvents = true; }
+    if (!$hasEvents):
+  ?>
+    <?php echo \View::instance()->render('noresult.html.php'); ?>
+  <?php else: ?>
   <?php foreach($evenementsByTpe as $type => $evenements): ?>
+  <?php if (!$evenements) continue; ?>
   <div class="calendar">
   <div class="cal-header">
       <div class="cal-titre cal-titre-header h5">
@@ -28,7 +36,7 @@
     <?php $hasTitre = false; ?>
     <?php foreach ($evenements as $nom => $evts): $evenement = current($evts); ?>
       <div class="cal-ligne">
-      <div class="cal-titre" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="<strong><?php echo $nom ?></strong><br /><i class='bi bi-calendar'></i> <?php echo \Helpers\MonthTimeline::renderDatelines($evenement) ?><br /><i class='bi bi-buildings'></i> <?php echo implode("<br /><i class='bi bi-buildings'></i> ", $evenement->getNomsOrganismes()) ?><?php if($evenement->liendeclaration): ?><br /><i class='bi bi-globe'></i> <?php echo $evenement->liendeclaration ?><?php endif; ?>" data-bs-placement="right" data-bs-custom-class="tooltip-app">
+      <div class="cal-titre" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="<strong><?php echo $nom ?></strong><br /><i class='bi bi-calendar'></i> <?php echo \Helpers\MonthTimeline::renderDatelines($evenement) ?><br /><i class='bi bi-buildings'></i> <?php echo implode("<br /><i class='bi bi-buildings'></i> ", $evenement->getNomsOrganismes(true)) ?><?php if($evenement->liendeclaration): ?><br /><i class='bi bi-globe'></i> <?php echo $evenement->liendeclaration ?><?php endif; ?>" data-bs-placement="right" data-bs-custom-class="tooltip-app">
         <a class="cal-titre-txt" href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id], Base::instance()->get('activefiltersparams')) ?>"><i class='bi bi-file-earmark opacity-25'></i> <i class='bi bi-eye d-none'></i> <?php echo $evenement->getNomCourt(); ?></a>
         <?php if ($evenement->liendeclaration): ?>
         <a href="<?php echo $evenement->liendeclaration ?>" class="btn btn-sm btn-warning px-1 py-0 me-2 mt-2 float-end" target="_blank">
@@ -52,6 +60,7 @@
   </div>
   </div>
   <?php endforeach; ?>
+  <?php endif; ?>
 </div>
 
 <div class="d-sm-none ps-3 pe-2">

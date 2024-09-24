@@ -1,11 +1,15 @@
 <?php if(Base::instance()->get('SESSION.user')): ?>
   <div class="text-end mb-3">
-    <a type="button" class="btn btn-light" href="<?php echo Base::instance()->alias('eventcreate') ?>"><i class="bi bi-calendar-plus"></i> Créer une déclaration</a>
+    <a type="button" class="btn btn-primary" href="<?php echo Base::instance()->alias('eventcreate') ?>"><i class="bi bi-calendar-plus"></i> Créer une déclaration</a>
   </div>
 <?php endif; ?>
+<?php if (!$evenements): ?>
+  <?php echo \View::instance()->render('noresult.html.php'); ?>
+<?php else: ?>
 <table class="table table-bordered table-striped table-hover table-sm">
   <thead>
     <tr>
+      <?php if(Base::instance()->get('SESSION.user')): ?><th>Nom court</th><?php endif ?>
       <th>Déclarations</th>
       <th>Déclencheur</th>
       <th>Échéances</th>
@@ -15,6 +19,7 @@
   <tbody>
     <?php foreach ($evenements as $evenement): ?>
     <tr>
+      <?php if(Base::instance()->get('SESSION.user')): ?><td><a href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id]) ?>?referer=event&<?php echo Base::instance()->get('activefiltersparams'); ?>"><?php echo $evenement->nom_court ?></a></td><?php endif ?>
       <td>
         <a href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id]) ?>?referer=event&<?php echo Base::instance()->get('activefiltersparams'); ?>"><?php echo $evenement->nom ?></a>
         <?php if ($evenement->liendeclaration): ?>
@@ -22,6 +27,9 @@
           <i class="d-inline-flex bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
         </a>
         <?php endif ?>
+        <?php foreach ($evenement->organismes as $organisme): ?>
+          <img class="img-fluid float-end mx-1" style="height: 25px;" src="/images/logos/organismes/<?php echo $organisme->logo ?>" data-bs-toggle="tooltip" data-bs-title="<?php echo $organisme->nom ?>">
+        <?php endforeach; ?>
       </td>
       <td><?php echo $evenement->element_declencheur; ?></td>
       <td><?php echo \Helpers\MonthTimeline::renderDatelines($evenement);?></td>
@@ -34,3 +42,4 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+<?php endif; ?>

@@ -9,6 +9,11 @@
         color: #a43e40;
     }
 
+    .list-group-item.active {
+        border-color: var(--primary-color);
+        background-color: var(--primary-color);
+    }
+
     #footer {
         color: #fff;
         background-color: #18142f
