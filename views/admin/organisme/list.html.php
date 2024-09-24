@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Logo</th>
+      <th>Nom court</th>
       <th>Organisme</th>
       <th>Adresse</th>
       <th>Contact</th>
@@ -14,7 +15,8 @@
     <?php foreach ($organismes as $organisme): ?>
     <tr>
       <td><img class="img-fluid" style="height: 30px;" src="/images/logos/organismes/<?php echo $organisme->logo ?>"></td>
-      <td><?php echo ($organisme->nom_court)? '<span class="text-muted small">'.$organisme->nom_court.'</span> ' : ''; ?><?php echo $organisme->nom ?></td>
+      <td><?php echo $organisme->nom_court ?></td>
+      <td><?php echo $organisme->nom ?></td>
       <td><?php echo nl2br("$organisme->adresse \n $organisme->code_postal $organisme->ville") ?></td>
       <td>
         <?php if ($organisme->telephone): ?>
