@@ -26,6 +26,7 @@ $f3->route('GET|POST @organismecreate: /admin/organismes/create', AdminOrganisme
 $f3->route('GET      @organismeedit:   /admin/organismes/edit/@organisme', AdminOrganisme::class.'->edit');
 $f3->route('POST     @organismeupdate: /admin/organismes/update/@organisme', AdminOrganisme::class.'->update');
 $f3->route('GET      @organismedelete: /admin/organismes/delete/@organisme', AdminOrganisme::class.'->delete');
+$f3->route('GET      @organismelogo:   /admin/organismes/logo/@organisme', AdminOrganisme::class.'->getLogoOrganisme');
 
 $f3->route('GET      @famillelist:   /admin/familles', AdminFamille::class.'->index');
 $f3->route('GET|POST @famillecreate: /admin/familles/create', AdminFamille::class.'->new');

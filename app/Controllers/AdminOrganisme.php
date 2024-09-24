@@ -4,6 +4,8 @@ namespace Controllers;
 
 use Base;
 use View;
+use Image;
+use Web;
 use Models\Organisme;
 
 class AdminOrganisme extends AdminController
@@ -58,15 +60,56 @@ class AdminOrganisme extends AdminController
 
     public function update($f3, $params)
     {
-        $logo = $this->organisme->logo;
         $this->organisme->copyfrom('POST', $this->organisme->fillable);
         $this->organisme->visible_filtre = $f3->get('POST.visible_filtre');
-        if ($logo && !$this->organisme->logo) {
-            $this->organisme->logo = $logo;
+
+        if ($f3->get('FILES.logo') && $f3->get('FILES.logo')['size']) {
+            $oldUploadDir = $f3->get('UPLOADS');
+            $f3->set('UPLOADS', Organisme::$uploadDir);
+
+            $files = Web::instance()->receive(function ($file, $fieldName) {
+                if ($fieldName !== 'logo') { return false; }
+                if (strpos($file['type'], 'image/') !== 0) { return false; }
+
+                return true;
+            }, true);
+
+            foreach ($files as $path => $uploaded) {
+                if ($uploaded === false) {
+                    continue;
+                }
+
+                $image = new Image($path, false, '');
+                $this->organisme->logo = $image->dump();
+                unlink($path);
+
+            }
+            $f3->set('UPLOADS', $oldUploadDir);
         }
+
         $this->organisme->save();
 
         return $f3->reroute('@organismelist');
+    }
+
+    public function getLogoOrganisme($f3, $params)
+    {
+        $image = @imagecreatefromstring($this->organisme->logo);
+        if (! $image) {
+            return $f3->error('No image');
+        }
+
+        $infos = getimagesizefromstring($this->organisme->logo);
+        if ($infos) {
+            header("Content-Type: ".$infos['mime']);
+        }
+
+        $format = str_replace('image/', '', $infos['mime']);
+
+        return call_user_func_array(
+            'image'.$format,
+            [$image, null, -1, -1]
+        );
     }
 
     public function delete($f3, $params)

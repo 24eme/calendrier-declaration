@@ -3,7 +3,7 @@
   </nav>
 
   <div class="mainContent clearfix">
-  <form method="post" action="<?php echo $formurl ?>" id="event-form">
+  <form method="post" action="<?php echo $formurl ?>" id="event-form" enctype="multipart/form-data">
     <div class="row mb-3">
       <label for="nom" class="col-2 col-form-label">Nom de l'organisme</label>
       <div class="col-4">
@@ -70,7 +70,7 @@
     <div class="row mb-3">
       <label for="logo" class="col-2 col-form-label">Logo</label>
       <div class="col-4">
-        <img src="/images/logos/organismes/<?php echo $organisme->logo ?>" class="d-inline-block img-fluid img-thumbnail" alt="Logo">
+        <img src="<?php echo Base::instance()->alias('organismelogo', ['organisme' => $organisme->id]) ?>" class="d-inline-block img-fluid img-thumbnail" alt="Logo">
         <input type="file" class="form-control d-inline-block" id="logo" name="logo" accept="image/jpeg, image/png"/>
       </div>
     </div>

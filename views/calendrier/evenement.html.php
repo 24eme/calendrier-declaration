@@ -57,7 +57,7 @@
             <?php foreach ($event->organismes as $organisme): ?>
               <div class="organisme-card p-3 rounded">
                 <div class="pb-2">
-                  <img src="/images/logos/organismes/<?php echo $organisme->logo ?>" class="img-fluid" style="height: 25px">
+                  <img src="<?php echo Base::instance()->alias('organismelogo', ['organisme' => $organisme->id]) ?>" class="img-fluid" style="height: 25px">
                   <strong><?php echo $organisme->nom ?></strong>
                 </div>
                 <div>

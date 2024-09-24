@@ -32,7 +32,7 @@
 <div data-bs-toggle="tooltip" data-bs-title="<?php echo $organisme->nom ?>" class="mb-1 d-inline-block">
   <input name="filters[organismes][]" value="<?php echo $organisme->id ?>" type="checkbox" class="btn-check" id="btn-check-organismes-<?php echo $organisme->id ?>" autocomplete="off"
       <?php echo isset($filters['organismes']) && in_array($organisme->id, $filters['organismes']) ? 'checked' : null ?> >
-  <label class="btn btn-outline-primary btn-sm p-0 position-relative <?php echo isset($filters['organismes']) && in_array($organisme->id, $filters['organismes']) ? 'active' : null ?>" style="background: center / cover no-repeat url('/images/logos/organismes/<?php echo $organisme->logo ?>');" for="btn-check-organismes-<?php echo $organisme->id ?>"><span class="position-absolute bottom-0 start-50 translate-middle-x bg-white text-primary px-1"><?php echo $organisme->getNomCourt() ?></span></label>
+  <label class="btn btn-outline-primary btn-sm p-0 position-relative <?php echo isset($filters['organismes']) && in_array($organisme->id, $filters['organismes']) ? 'active' : null ?>" style="background: center / cover no-repeat url('<?php echo Base::instance()->alias('organismelogo', ['organisme' => $organisme->id]) ?>');" for="btn-check-organismes-<?php echo $organisme->id ?>"><span class="position-absolute bottom-0 start-50 translate-middle-x bg-white text-primary px-1"><?php echo $organisme->getNomCourt() ?></span></label>
 </div>
 <?php endforeach ?>
 </div>
