@@ -42,11 +42,11 @@ class Sidebar extends Prefab
             return;
         }
 
-        foreach ($this->data['tags']->find(['id IN ?', array_keys($filtres['tags'])]) as $tagged) {
+        foreach ($this->data['tags']->find(['id IN ?', $filtres['tags']]) as $tagged) {
             yield $tagged;
         }
 
-        foreach ($this->data['tags']->find(['id not IN ?', array_keys($filtres['tags'])]) as $nottagged) {
+        foreach ($this->data['tags']->find(['id not IN ?', $filtres['tags']]) as $nottagged) {
             yield $nottagged;
         }
     }
