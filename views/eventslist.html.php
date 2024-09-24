@@ -3,6 +3,9 @@
     <a type="button" class="btn btn-primary" href="<?php echo Base::instance()->alias('eventcreate') ?>"><i class="bi bi-calendar-plus"></i> Créer une déclaration</a>
   </div>
 <?php endif; ?>
+<?php if (!$evenements): ?>
+  <?php echo \View::instance()->render('noresult.html.php'); ?>
+<?php else: ?>
 <table class="table table-bordered table-striped table-hover table-sm">
   <thead>
     <tr>
@@ -36,3 +39,4 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+<?php endif; ?>

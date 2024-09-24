@@ -1,3 +1,6 @@
+<?php if (!isset($timeline['nondate']) || (!$timeline['nondate'] && !$timeline['events'])): ?>
+  <?php echo \View::instance()->render('noresult.html.php'); ?>
+<?php else: ?>
 <div class="d-flex justify-content-center mt-3 ms-3 ps-3 pe-2">
   <ul class="timeline">
     <li class="timeline-item">
@@ -77,3 +80,4 @@
     <?php endforeach; endif; ?>
   </ul>
 </div>
+<?php endif; ?>

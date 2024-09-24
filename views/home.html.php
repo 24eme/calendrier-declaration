@@ -1,5 +1,13 @@
 <div class="d-none d-sm-block" id="calendars">
+  <?php
+    $hasEvents = false;
+    foreach($evenementsByTpe as $type => $evenements) { if ($evenements) $hasEvents = true; }
+    if (!$hasEvents):
+  ?>
+    <?php echo \View::instance()->render('noresult.html.php'); ?>
+  <?php else: ?>
   <?php foreach($evenementsByTpe as $type => $evenements): ?>
+  <?php if (!$evenements) continue; ?>
   <div class="calendar">
   <div class="cal-header">
       <div class="cal-titre cal-titre-header h5">
@@ -52,6 +60,7 @@
   </div>
   </div>
   <?php endforeach; ?>
+  <?php endif; ?>
 </div>
 
 <div class="d-sm-none ps-3 pe-2">
