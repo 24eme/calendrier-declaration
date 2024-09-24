@@ -74,24 +74,28 @@
   const showmoretags = document.getElementById("show-more-tags")
   let state = 'minimized'
 
-  showmoretags.addEventListener('click', function (e) {
-    if (state === 'minimized') {
-      listtags.style.maxHeight = 'fit-content'
-      state = 'full'
-      showmoretags.textContent = 'Voir moins'
-    } else {
-      listtags.style.maxHeight = '30vh'
-      state = 'minimized'
-      showmoretags.textContent = 'Voir plus'
-    }
-  });
+  if (showmoretags) {
+    showmoretags.addEventListener('click', function (e) {
+      if (state === 'minimized') {
+        listtags.style.maxHeight = 'fit-content'
+        state = 'full'
+        showmoretags.textContent = 'Voir moins'
+      } else {
+        listtags.style.maxHeight = '30vh'
+        state = 'minimized'
+        showmoretags.textContent = 'Voir plus'
+      }
+    });
+  }
 
   const formfilter = document.getElementById("filter-form")
-  formfilter.addEventListener('input', function(e) {
-    if (e.inputType === "insertText") {
-      return false; // on ne veut pas submit dès qu'on rentre du texte
-    }
+  if (formfilter) {
+    formfilter.addEventListener('input', function(e) {
+      if (e.inputType === "insertText") {
+        return false; // on ne veut pas submit dès qu'on rentre du texte
+      }
 
-    formfilter.submit();
-  })
+      formfilter.submit();
+    })
+  }
 </script>
