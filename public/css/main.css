@@ -77,11 +77,10 @@ header h1 {
     --calendar-line-height: 40px;
     --calendar-day-width: 3px;
 
-    overflow: scroll;
     width: calc(100vw - 17rem);
 }
 
-.calendar:not(:last-child) {
+.calendar {
     margin-bottom: 1rem;
 }
 
