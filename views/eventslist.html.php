@@ -27,6 +27,9 @@
           <i class="d-inline-flex bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
         </a>
         <?php endif ?>
+        <?php foreach ($evenement->organismes as $organisme): ?>
+          <img class="img-fluid float-end mx-1" style="height: 25px;" src="/images/logos/organismes/<?php echo $organisme->logo ?>" data-bs-toggle="tooltip" data-bs-title="<?php echo $organisme->nom ?>">
+        <?php endforeach; ?>
       </td>
       <td><?php echo $evenement->element_declencheur; ?></td>
       <td><?php echo \Helpers\MonthTimeline::renderDatelines($evenement);?></td>
