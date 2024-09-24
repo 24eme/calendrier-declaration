@@ -2,7 +2,7 @@
 <h4 class="m-0"><i class="bi bi-lock-fill"></i> Administration</h4>
 
 <div class="list-group my-3">
-  <a href="<?php echo Base::instance()->alias('events') ?>" class="list-group-item list-group-item-action py-1<?php if (strpos(Base::instance()->get('URI'), '/admin/evenement') !== false): ?> active<?php endif; ?>"><i class="bi bi-calendar-week"></i> Déclarations</a>
+  <a href="<?php echo Base::instance()->alias('events') ?>" class="list-group-item list-group-item-action py-1<?php if (strpos(Base::instance()->get('URI'), '/admin/evenement') !== false || strpos(Base::instance()->get('URI'), '/evenements') !== false): ?> active<?php endif; ?>"><i class="bi bi-calendar-week"></i> Déclarations</a>
   <a href="<?php echo Base::instance()->alias('famillelist') ?>" class="list-group-item list-group-item-action py-1<?php if (strpos(Base::instance()->get('URI'), '/admin/familles') !== false): ?> active<?php endif; ?>"><i class="bi bi-people-fill"></i> Familles viti/vinicoles</a>
   <a href="<?php echo Base::instance()->alias('organismelist') ?>" class="list-group-item list-group-item-action py-1<?php if (strpos(Base::instance()->get('URI'), '/admin/organismes') !== false): ?> active<?php endif; ?>"><i class="bi bi-grid-3x3-gap-fill"></i> Organismes destinataires</a>
   <a href="http<?php echo ($_SERVER['SERVER_PORT'] == 443)? 's' : '' ?>://logout:logout@<?php echo Base::instance()->get('HEADERS')['Host'] ?>/logout" class="list-group-item list-group-item-action py-1"><i class="bi bi-box-arrow-left"></i> Déconnexion</a>
