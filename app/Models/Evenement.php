@@ -84,11 +84,11 @@ class Evenement extends Cortex
         return $this->organismes && $this->organismes->contains($organismeid);
     }
 
-    public function getNomsOrganismes()
+    public function getNomsOrganismes($noms_courts = false)
     {
         $noms = [];
         foreach($this->organismes as $organisme) {
-            $noms[] = $organisme->nom;
+            $noms[] = ($noms_courts)? $organisme->nom_court : $organisme->nom;
         }
 
         return $noms;
