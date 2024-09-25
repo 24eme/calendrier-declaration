@@ -30,7 +30,7 @@ class MonthTimeline
         $nbDays = $monthEnd->format('t');
         $current = new DateTime($monthStart->format('Y-m-d'));
 
-        return View::instance()->render('calendrier/_timeline.html.php',
+        return View::instance()->render('calendrier/_blocMois.html.php',
             'text/html',
             compact('events', 'nbDays', 'today', 'current')
         );

@@ -1,1 +1,0 @@
-<?php for($j = 1; $j <= $nbDays; $j++): ?><i title="<?php echo strtolower(str_replace(array_keys(Models\Evenement::$months), array_values(Models\Evenement::$months), $current->format("j F Y"))) ?>" class="<?php echo \Helpers\MonthTimeline::getTimelineClass($events, $current, $today) ?>"></i><?php $current->modify('+1 day'); ?><?php endfor; ?>
