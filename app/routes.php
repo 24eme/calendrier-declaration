@@ -8,7 +8,7 @@ use Controllers\AdminAuth;
 
 $f3 = \Base::instance();
 
-$f3->set('UPLOADS', sys_get_temp_dir());
+$f3->set('UPLOADS', sys_get_temp_dir().DIRECTORY_SEPARATOR);
 
 $f3->route('GET      @home:        /', Calendrier::class.'->home');
 
