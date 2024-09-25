@@ -108,10 +108,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (fin) {
           tooltipOptions.title = "Fin : "+fin.title
-        }
 
-        tooltip = new bootstrap.Tooltip(el, tooltipOptions)
-        tooltip.show()
+          tooltip = new bootstrap.Tooltip(el, tooltipOptions)
+          tooltip.show()
+        }
       }
     }
   })
