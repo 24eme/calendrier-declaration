@@ -8,6 +8,8 @@ use Controllers\AdminAuth;
 
 $f3 = \Base::instance();
 
+$f3->set('UPLOADS', sys_get_temp_dir());
+
 $f3->route('GET      @home:        /', Calendrier::class.'->home');
 
 $f3->route('GET      @events:      /evenements', Calendrier::class.'->eventsList');
