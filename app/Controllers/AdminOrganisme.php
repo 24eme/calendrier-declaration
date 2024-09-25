@@ -92,26 +92,6 @@ class AdminOrganisme extends AdminController
         return $f3->reroute('@organismelist');
     }
 
-    public function getLogoOrganisme($f3, $params)
-    {
-        $image = @imagecreatefromstring($this->organisme->logo);
-        if (! $image) {
-            return $f3->error('No image');
-        }
-
-        $infos = getimagesizefromstring($this->organisme->logo);
-        if ($infos) {
-            header("Content-Type: ".$infos['mime']);
-        }
-
-        $format = str_replace('image/', '', $infos['mime']);
-
-        return call_user_func_array(
-            'image'.$format,
-            [$image, null, -1, -1]
-        );
-    }
-
     public function delete($f3, $params)
     {
         $this->organisme->erase();
