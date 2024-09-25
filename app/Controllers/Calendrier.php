@@ -17,11 +17,11 @@ class Calendrier extends Controller
         if ($year != date('Y')) {
             $start = new \DateTimeImmutable("$year-01-01");
         }
-        $evenementsByTpe = $evenement->getPourCalendrier($start, $f3->get('filters'));
-        $timeline = $evenement->getPourTimeline($evenementsByTpe, $start);
+        $evenementsByType = $evenement->getPourCalendrier($start, $f3->get('filters'));
+        $timeline = $evenement->getPourTimeline($evenementsByType, $start);
         $f3->push('mainCssClass', 'main-calendar');
         $f3->set('content', 'home.html.php');
-        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenementsByTpe', 'timeline', 'today', 'year'));
+        echo \View::instance()->render('layout.html.php', 'text/html', compact('evenementsByType', 'timeline', 'today', 'year'));
     }
 
     public function show(Base $f3)
