@@ -9,17 +9,15 @@
 <table class="table table-bordered table-striped table-hover table-sm">
   <thead>
     <tr>
-      <?php if(Base::instance()->get('SESSION.user')): ?><th>Nom court</th><?php endif ?>
       <th>Déclarations</th>
-      <th>Déclencheur</th>
-      <th>Échéances</th>
+      <?php if(Base::instance()->get('SESSION.user')): ?><th>Nom court</th><?php endif ?>
+      <th>Organisme</th>
       <?php if(Base::instance()->get('SESSION.user')): ?><th></th><?php endif ?>
     </tr>
   </thead>
   <tbody>
     <?php foreach ($evenements as $evenement): ?>
     <tr>
-      <?php if(Base::instance()->get('SESSION.user')): ?><td><a href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id]) ?>?referer=event&<?php echo Base::instance()->get('activefiltersparams'); ?>"><?php echo $evenement->nom_court ?></a></td><?php endif ?>
       <td>
         <a href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id]) ?>?referer=event&<?php echo Base::instance()->get('activefiltersparams'); ?>"><?php echo $evenement->nom ?></a>
         <?php if ($evenement->liendeclaration): ?>
@@ -27,11 +25,13 @@
           <i class="d-inline-flex bi bi-box-arrow-up-right" title="Accéder à la déclaration"></i>
         </a>
         <?php endif ?>
+      </td>
+      <?php if(Base::instance()->get('SESSION.user')): ?><td><a href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id]) ?>?referer=event&<?php echo Base::instance()->get('activefiltersparams'); ?>"><?php echo $evenement->nom_court ?></a></td><?php endif ?>
+      <td>
         <?php foreach ($evenement->organismes as $organisme): ?>
-          <img class="img-fluid float-end mx-1" style="height: 25px;" src="<?php echo Base::instance()->alias('organismelogo', ['organisme' => $organisme->id]) ?>" data-bs-toggle="tooltip" data-bs-title="<?php echo $organisme->nom ?>">
+          <img class="img-fluid mx-1" style="height: 25px;" src="<?php echo Base::instance()->alias('organismelogo', ['organisme' => $organisme->id]) ?>" data-bs-toggle="tooltip" data-bs-title="<?php echo $organisme->nom ?>">
         <?php endforeach; ?>
       </td>
-      <td><?php echo $evenement->element_declencheur; ?></td>
       <td><?php echo \Helpers\MonthTimeline::renderDatelines($evenement);?></td>
       <?php if(Base::instance()->get('SESSION.user')): ?>
         <td>
