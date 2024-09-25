@@ -11,11 +11,10 @@
     <link href="/css/quill.snow.css?v2.0.2" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css?<?php echo Base::instance()->get('COMMIT') ?>" />
     <?php
+      $themePath = null;
       if (Base::instance()->get('theme')) {
-        $themePath = implode(DIRECTORY_SEPARATOR, [Base::instance()->get('ROOT'), 'themes', Base::instance()->get('theme')]).'/';
+        $themePath = implode(DIRECTORY_SEPARATOR, [Base::instance()->get('UI'), 'themes', Base::instance()->get('theme')]).'/';
         include($themePath.'css.php');
-      } else {
-        $themePath = null;
       }
     ?>
 </head>

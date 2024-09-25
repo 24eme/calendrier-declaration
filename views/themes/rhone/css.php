@@ -1,3 +1,5 @@
+<link rel="shortcut icon" href="https://login.syndicat-cotesdurhone.com/cas/favicon.ico" >
+
 <style>
     :root {
         --primary-color: #80002d;

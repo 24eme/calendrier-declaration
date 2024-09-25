@@ -1,3 +1,5 @@
+<link rel="shortcut icon" href="/images/logos/logo-P.svg" >
+
 <style>
     :root {
         --primary-color: #ca5658;
