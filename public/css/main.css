@@ -343,13 +343,6 @@ opacity: 1 !important;
     }
 }
 
-@media (max-width: 991px) {
-    #calendars {
-        width: 100vw;
-        overflow: scroll;
-    }
-}
-
 @media (min-width: 768px) {
     .timeline:after {
         left: 15%;
