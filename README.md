@@ -1,5 +1,10 @@
 # Calendrier des déclarations viticoles et vinicoles
 
+Le projet est déjà déployé par :
+
+- Le conseil interprofessionnel des Vins de Provence : https://calendrier-vitivini.vinsdeprovence.com/
+- Le syndictat des Côtes du Rhône : https://calendrier.syndicat-cotesdurhone.com/
+
 ## Installation
 
 Installation des dépendances :
