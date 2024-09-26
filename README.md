@@ -13,7 +13,7 @@ Lancer le projet, via la console :
 php -S localhost:8000 -t public
 ```
 
-Peronnaliser la configuration en créant le fichier `app/config.ini` (les valeurs par défaut sont ici : [https://github.com/24eme/calendrier-declaration/tree/master/app](https://github.com/24eme/calendrier-declaration/blob/master/app/default.ini)) :
+Personnaliser la configuration en créant le fichier `app/config.ini` (les valeurs par défaut sont ici : [https://github.com/24eme/calendrier-declaration/tree/master/app](https://github.com/24eme/calendrier-declaration/blob/master/app/default.ini)) :
 
 ```
 # Changer le niveau de debug : 0 (by default) sans debug et 3 le plus verbeux :
