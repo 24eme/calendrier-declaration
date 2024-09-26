@@ -64,9 +64,6 @@ class AdminOrganisme extends AdminController
         $this->organisme->visible_filtre = $f3->get('POST.visible_filtre');
 
         if ($f3->get('FILES.logo') && $f3->get('FILES.logo')['size']) {
-            $oldUploadDir = $f3->get('UPLOADS');
-            $f3->set('UPLOADS', Organisme::$uploadDir);
-
             $files = Web::instance()->receive(function ($file, $fieldName) {
                 if ($fieldName !== 'logo') { return false; }
                 if (strpos($file['type'], 'image/') !== 0) { return false; }
@@ -84,32 +81,11 @@ class AdminOrganisme extends AdminController
                 unlink($path);
 
             }
-            $f3->set('UPLOADS', $oldUploadDir);
         }
 
         $this->organisme->save();
 
         return $f3->reroute('@organismelist');
-    }
-
-    public function getLogoOrganisme($f3, $params)
-    {
-        $image = @imagecreatefromstring($this->organisme->logo);
-        if (! $image) {
-            return $f3->error('No image');
-        }
-
-        $infos = getimagesizefromstring($this->organisme->logo);
-        if ($infos) {
-            header("Content-Type: ".$infos['mime']);
-        }
-
-        $format = str_replace('image/', '', $infos['mime']);
-
-        return call_user_func_array(
-            'image'.$format,
-            [$image, null, -1, -1]
-        );
     }
 
     public function delete($f3, $params)

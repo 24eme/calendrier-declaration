@@ -1,12 +1,12 @@
 <div class="d-none d-sm-block" id="calendars">
   <?php
     $hasEvents = false;
-    foreach($evenementsByTpe as $type => $evenements) { if ($evenements) $hasEvents = true; }
+    foreach($evenementsByType as $type => $evenements) { if ($evenements) $hasEvents = true; }
     if (!$hasEvents):
   ?>
     <?php echo \View::instance()->render('noresult.html.php'); ?>
   <?php else: ?>
-  <?php foreach($evenementsByTpe as $type => $evenements): ?>
+  <?php foreach($evenementsByType as $type => $evenements): ?>
   <?php if (!$evenements) continue; ?>
   <div class="calendar">
   <div class="cal-header">
@@ -49,7 +49,7 @@
         for($i = 0; $i < Models\Evenement::$displayMonths; $i++):
       ?>
       <div class="cal-month">
-        <?php echo \Helpers\MonthTimeline::render($date, $today, $evts); ?>
+        <?php echo \Helpers\MonthTimeline::render($date, $today, $evts, $type); ?>
       </div>
       <?php
         $date->modify('next month');
@@ -102,12 +102,12 @@ document.addEventListener('DOMContentLoaded', function () {
         let fin
         let month = el.closest('.cal-month')
 
-        while (month && ! (fin = month.querySelector('.jourfin'))) {
+        while (month && ! (fin = month.querySelector('[data-df]'))) {
           month = month.nextElementSibling
         }
 
         if (fin) {
-          tooltipOptions.title = "Fin : "+fin.title
+          tooltipOptions.title = "Fin : "+fin.dataset.df
 
           tooltip = new bootstrap.Tooltip(el, tooltipOptions)
           tooltip.show()
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const monthheader = cal.querySelector('.cal-ligne.cal-ligne-head')
 
     let message = document.createElement('div')
-    message.innerHTML = day.title.split(' ')[0]
+    message.innerHTML = day.dataset.d
 
     message.classList.add(classe)
     message.style.position = "absolute"

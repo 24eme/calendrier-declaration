@@ -4,18 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calendrier des déclarations viti/vinicoles</title>
-    <link rel="shortcut icon" href="/images/logos/logo-P.svg" >
-
     <link href="/css/bootstrap.min.css?v5.3.3" rel="stylesheet" />
     <link rel="stylesheet" href="/css/bootstrap-icons.min.css?v1.11.3">
     <link href="/css/quill.snow.css?v2.0.2" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css?<?php echo Base::instance()->get('COMMIT') ?>" />
     <?php
+      $themePath = null;
       if (Base::instance()->get('theme')) {
-        $themePath = implode(DIRECTORY_SEPARATOR, [Base::instance()->get('ROOT'), 'themes', Base::instance()->get('theme')]).'/';
+        $themePath = implode(DIRECTORY_SEPARATOR, [Base::instance()->get('UI'), 'themes', Base::instance()->get('theme')]).'/';
         include($themePath.'css.php');
-      } else {
-        $themePath = null;
       }
     ?>
 </head>

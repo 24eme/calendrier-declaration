@@ -10,7 +10,6 @@ class Organisme extends Cortex
 
     protected $db = 'DB';
     protected $table = 'organismes';
-    public static $uploadDir = __DIR__.'/../../public/images/logos/organismes/';
 
     protected $fillable = ['nom', 'adresse', 'code_postal', 'ville', 'contact', 'telephone', 'email', 'site', 'couleur'];
 

@@ -8,11 +8,14 @@ use Controllers\AdminAuth;
 
 $f3 = \Base::instance();
 
+$f3->set('UPLOADS', sys_get_temp_dir().DIRECTORY_SEPARATOR);
+
 $f3->route('GET      @home:        /', Calendrier::class.'->home');
 
 $f3->route('GET      @events:      /evenements', Calendrier::class.'->eventsList');
 $f3->route('GET      @timeline:    /chronologie', Calendrier::class.'->timeline');
 $f3->route('GET      @event:       /evenement/show/@evenement', Calendrier::class.'->show');
+$f3->route('GET      @organismelogo:   /organismes/logo/@organisme', Calendrier::class.'->getLogoOrganisme');
 
 $f3->route('GET      @statics:    /pages/@page', Calendrier::class.'->statics');
 
@@ -26,7 +29,6 @@ $f3->route('GET|POST @organismecreate: /admin/organismes/create', AdminOrganisme
 $f3->route('GET      @organismeedit:   /admin/organismes/edit/@organisme', AdminOrganisme::class.'->edit');
 $f3->route('POST     @organismeupdate: /admin/organismes/update/@organisme', AdminOrganisme::class.'->update');
 $f3->route('GET      @organismedelete: /admin/organismes/delete/@organisme', AdminOrganisme::class.'->delete');
-$f3->route('GET      @organismelogo:   /admin/organismes/logo/@organisme', AdminOrganisme::class.'->getLogoOrganisme');
 
 $f3->route('GET      @famillelist:   /admin/familles', AdminFamille::class.'->index');
 $f3->route('GET|POST @famillecreate: /admin/familles/create', AdminFamille::class.'->new');

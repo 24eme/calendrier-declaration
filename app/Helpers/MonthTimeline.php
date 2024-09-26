@@ -14,7 +14,7 @@ class MonthTimeline
      * @param int $month Mois (1 - 12)
      * @param array $evenements Les évènements à afficher
      */
-    public static function render(DateTime $date, DateTimeInterface $today, array $evenements)
+    public static function render(DateTime $date, DateTimeInterface $today, array $evenements, $type)
     {
         $monthStart = new DateTimeImmutable($date->format('Y-m-d'));
         $monthEnd = $monthStart->modify('last day of');
@@ -30,9 +30,9 @@ class MonthTimeline
         $nbDays = $monthEnd->format('t');
         $current = new DateTime($monthStart->format('Y-m-d'));
 
-        return View::instance()->render('calendrier/_timeline.html.php',
+        return View::instance()->render('calendrier/_blocMois.html.php',
             'text/html',
-            compact('events', 'nbDays', 'today', 'current')
+            compact('events', 'nbDays', 'today', 'current', 'type')
         );
     }
 
@@ -64,6 +64,17 @@ class MonthTimeline
 
         $class = array_unique($class);
         return implode(' ', $class);
+    }
+
+    public static function getDateFin($events)
+    {
+        foreach ($events as $event) {
+            if($event->isDate()) {
+                return $event->date_fin;
+            }
+        }
+
+        return false;
     }
 
 
