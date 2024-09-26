@@ -15,5 +15,10 @@
     <li class="nav-item d-inline-block mx-2" id="nav-item-admin" role="menuitem">
       <a class="nav-link" id="nav-link-admin" href="<?php echo Base::instance()->alias('login') ?>"><i class="fas fa-user-lock"></i> Administration</a>
     </li>
+    <?php if(Base::instance()->get('SESSION.user')): ?>
+    <li class="nav-item d-inline-block mx-2" id="nav-item-admin" role="menuitem">
+      <a class="nav-link" id="nav-link-admin" href="https://matomo.24eme.fr/index.php?idSite=3" target="_blang"><i class="fas fa-user-lock"></i> Stats</a>
+    </li>
+    <?php endif; ?>
   </ul>
 </div>
