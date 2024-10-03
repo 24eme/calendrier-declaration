@@ -35,18 +35,18 @@ class Sidebar extends Prefab
 
     public function getTags($filtres) {
         if (! isset($filtres['tags']) || empty($filtres['tags'])) {
-            foreach ($this->data['tags']->find() as $all) {
+            foreach ($this->data['tags']->find(null, ['order' => 'tags.nom COLLATE NOCASE ASC']) as $all) {
                 yield $all;
             }
 
             return;
         }
 
-        foreach ($this->data['tags']->find(['id IN ?', $filtres['tags']]) as $tagged) {
+        foreach ($this->data['tags']->find(['id IN ?', $filtres['tags']], ['order' => 'tags.nom COLLATE NOCASE ASC']) as $tagged) {
             yield $tagged;
         }
 
-        foreach ($this->data['tags']->find(['id not IN ?', $filtres['tags']]) as $nottagged) {
+        foreach ($this->data['tags']->find(['id not IN ?', $filtres['tags']], ['order' => 'tags.nom COLLATE NOCASE ASC']) as $nottagged) {
             yield $nottagged;
         }
     }
