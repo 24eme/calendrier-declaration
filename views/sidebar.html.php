@@ -13,6 +13,12 @@
 
 <h4 class="m-0"><i class="bi bi-filter-circle"></i> Filtrer par</h4>
 
+<?php if ($filters): ?>
+<p class="primary-link mt-3 mb-0">
+  <a href="<?php echo Base::instance()->alias($route) ?>?resetfilters=true">[x] Voir toutes les déclarations</a>
+</p>
+<?php endif; ?>
+
 <form action="<?php echo Base::instance()->alias($route) ?>" method="get" id="filter-form">
 
 <h5 class="my-3">Familles</h5>
@@ -62,10 +68,6 @@
 </div>
 
 </form>
-
-<p class="primary-link text-end">
-  <a href="<?php echo Base::instance()->alias($route) ?>?resetfilters=true">[x] Voir toutes les déclarations</a>
-</p>
 
 <?php endif; ?>
 
