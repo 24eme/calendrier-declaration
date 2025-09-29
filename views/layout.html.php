@@ -32,7 +32,7 @@
     <div class="d-sm-flex">
       <?php if (strpos(Base::instance()->get('URI'), '/pages') === false): ?>
       <div id="sidebar" class="d-sm-flex flex-column flex-shrink-0 border-end px-3 collapse">
-        <header class="text-center mb-5 d-none d-sm-block">
+        <header class="text-center mb-3 d-none d-sm-block">
           <?php if (isset($themePath)) {include($themePath.'/header.php');} ?>
         </header>
         <?php \Helpers\Sidebar::instance()->render(); ?>

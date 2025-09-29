@@ -4,3 +4,4 @@
 </a>
 </div>
 <h1 class="text-uppercase text-center h5">Déclarations viti/vinicoles</h1>
+<p>Calendrier des obligations déclaratives <span class="text-muted">– Liste non exhaustive</span></p>
