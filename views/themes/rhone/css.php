@@ -1,8 +1,8 @@
-<link rel="shortcut icon" href="https://login.syndicat-cotesdurhone.com/cas/favicon.ico" >
+<link rel="shortcut icon" href="/images/logos/favico_odgrhone.png" >
 
 <style>
     :root {
-        --primary-color: #80002d;
+        --primary-color: #e30613;
         --bs-primary: var(--primary-color);
         --bs-primary-rgb: 128, 0, 45;
     }
