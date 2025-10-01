@@ -2,13 +2,13 @@
 
 <style>
     :root {
-        --primary-color: #e30613;
+        --primary-color: #c20f1b;
         --bs-primary: var(--primary-color);
-        --bs-primary-rgb: 128, 0, 45;
+        --bs-primary-rgb: 194, 15, 27;
     }
 
     .nav-link:hover, a:hover {
-        color: #5e0323;
+        color: #a40e1a;
     }
 
     .list-group-item.active {
