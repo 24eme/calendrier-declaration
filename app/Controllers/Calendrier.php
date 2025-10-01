@@ -20,6 +20,8 @@ class Calendrier extends Controller
         $evenementsByType = $evenement->getPourCalendrier($start, $f3->get('filters'));
         $timeline = $evenement->getPourTimeline($evenementsByType, $start);
         $f3->push('mainCssClass', 'main-calendar');
+
+        $f3->set('page_title', "Calendrier des déclarations viti/vinicoles");
         $f3->set('content', 'home.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('evenementsByType', 'timeline', 'today', 'year'));
     }
@@ -33,6 +35,7 @@ class Calendrier extends Controller
             return $f3->error(404, "L'évènement n'existe pas");
         }
 
+        $f3->set('page_title', $event->nom." - détails des déclarations viti/vinicoles");
         $f3->set('content', 'calendrier/evenement.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('event', 'referer'));
     }
@@ -43,6 +46,8 @@ class Calendrier extends Controller
         $today = new \DateTimeImmutable();
         $evenement->addFilters($f3->get('filters'));
         $evenements = $evenement->find($evenement->computeFilters(), ['order' => 'evenements.nom ASC']);
+
+        $f3->set('page_title', "Toutes les déclarations viti/vinicoles (liste)");
         $f3->set('content', 'eventslist.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('evenements', 'today'));
     }
@@ -52,6 +57,8 @@ class Calendrier extends Controller
         $evenement = new Evenement();
         $today = new \DateTimeImmutable();
         $timeline = $evenement->getPourTimeline($evenement->getPourCalendrier($today, $f3->get('filters')), $today);
+
+        $f3->set('page_title', "La chronologie des déclarations viti/vinicoles");
         $f3->set('content', 'timeline.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('timeline', 'today'));
     }
@@ -84,6 +91,8 @@ class Calendrier extends Controller
     public function statics(Base $f3)
     {
         $page = $f3->get('PARAMS.page');
+
+        $f3->set('page_title', ucfirst($page)." - déclarations viti/vinicoles");
         $f3->set('content', 'statics.html.php');
         echo \View::instance()->render('layout.html.php', 'text/html', compact('page'));
     }

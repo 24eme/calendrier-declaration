@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Calendrier des déclarations viti/vinicoles</title>
+    <title><?php echo Base::instance()->get('page_title'); ?> - <?php echo Base::instance()->get('instancename'); ?></title>
     <link href="/css/bootstrap.min.css?v5.3.3" rel="stylesheet" />
     <link rel="stylesheet" href="/css/bootstrap-icons.min.css?v1.11.3">
     <link href="/css/quill.snow.css?v2.0.2" rel="stylesheet">
