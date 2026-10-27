@@ -72,7 +72,7 @@ class Calendrier extends Controller
 
         $image = @imagecreatefromstring($organisme->logo);
         if (! $image) {
-            return $f3->error('No image');
+            return $f3->error(404, 'No image');
         }
 
         $infos = getimagesizefromstring($organisme->logo);
