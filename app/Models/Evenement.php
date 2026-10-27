@@ -86,6 +86,10 @@ class Evenement extends Cortex
 
     public function getNomsOrganismes($noms_courts = false)
     {
+        if ($this->organismes === null) {
+            return [];
+        }
+
         $noms = [];
         foreach($this->organismes as $organisme) {
             $noms[] = ($noms_courts)? $organisme->nom_court : $organisme->nom;

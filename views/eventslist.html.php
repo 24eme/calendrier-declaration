@@ -28,9 +28,15 @@
       </td>
       <?php if(Base::instance()->get('SESSION.user')): ?><td><a href="<?php echo Base::instance()->alias('event', ['evenement' => $evenement->id]) ?>?referer=event&<?php echo Base::instance()->get('activefiltersparams'); ?>"><?php echo $evenement->nom_court ?></a></td><?php endif ?>
       <td>
-        <?php foreach ($evenement->organismes as $organisme): ?>
-          <img class="img-fluid mx-1" style="height: 25px;" src="<?php echo Base::instance()->alias('organismelogo', ['organisme' => $organisme->id]) ?>" data-bs-toggle="tooltip" data-bs-title="<?php echo $organisme->nom ?>">
-        <?php endforeach; ?>
+        <?php if ($evenement->organismes === null): ?>
+          <span>
+            <i class="bi bi-building-exclamation"></i> Pas d'organisme attaché
+          </span>
+        <?php else: ?>
+          <?php foreach ($evenement->organismes as $organisme): ?>
+            <img class="img-fluid mx-1" style="height: 25px;" src="<?php echo Base::instance()->alias('organismelogo', ['organisme' => $organisme->id]) ?>" data-bs-toggle="tooltip" data-bs-title="<?php echo $organisme->nom ?>">
+          <?php endforeach; ?>
+        <?php endif ?>
       </td>
       <td><?php echo \Helpers\MonthTimeline::renderDatelines($evenement);?></td>
       <?php if(Base::instance()->get('SESSION.user')): ?>
