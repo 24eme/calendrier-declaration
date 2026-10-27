@@ -10,7 +10,7 @@
   <?php if (!$evenements) continue; ?>
   <div class="calendar">
   <div class="cal-header">
-      <div class="cal-titre cal-titre-header h5">
+      <div class="cal-titre cal-titre-header h5 text-nowrap">
         <?php echo $type ?>
         <span class="">
           <a href="<?php echo Base::instance()->alias('home') ?>?annee=<?php echo $year-1; ?>&<?php echo Base::instance()->get('activefiltersparams'); ?>" class="opacity-25"><small class="bi bi-chevron-left small"></small></a>
